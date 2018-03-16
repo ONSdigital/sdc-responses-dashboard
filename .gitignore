@@ -1,0 +1,23 @@
+# Python temp file
+__pycache__
+*.py[cod]
+
+# intellij
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# Virtualenvs
+.env
+env
+env*
+venv
+
+## OS X
+._*
+.Spotlight-V100
+.Trashes
+
+.DS_Store
+.cache
