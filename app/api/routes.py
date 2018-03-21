@@ -5,4 +5,4 @@ routes_blueprint = Blueprint(name='routes', import_name=__name__)
 
 @routes_blueprint.route('/')
 def index():
-    return jsonify({'Hello': 'World!'})
+    return jsonify({'Hello My': 'FRIENDS!'})

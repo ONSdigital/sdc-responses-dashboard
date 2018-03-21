@@ -9,10 +9,14 @@ name = "pypi"
 
 flask = "*"
 flask-script = "*"
+"flake8" = "*"
 
 
 [dev-packages]
 
+pylint = "*"
+pylint-mccabe = "*"
+pylint-quotes = "*"
 
 
 [requires]
