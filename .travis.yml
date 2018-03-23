@@ -1,0 +1,16 @@
+language: python
+sudo: true
+python:
+  - "3.6"
+# command to install dependencies
+install:
+    - pip install pipenv
+    - pipenv install --dev
+    - pipenv check
+
+script:
+  - make lint
+
+branches:
+  only:
+    - master
