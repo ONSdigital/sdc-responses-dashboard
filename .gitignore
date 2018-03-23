@@ -9,6 +9,7 @@ __pycache__
 *.iws
 
 # Virtualenvs
+.env
 env
 env*
 venv
