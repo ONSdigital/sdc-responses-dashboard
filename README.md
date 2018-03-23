@@ -19,6 +19,6 @@ pipenv install --dev
 Run the server inside the virtual env created by Pipenv with:
 
 ```
-pipenv run sh ./scripts/run_app.sh
+pipenv run ./scripts/run_app.sh
 
 ```
