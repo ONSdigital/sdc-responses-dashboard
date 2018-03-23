@@ -1,24 +1,49 @@
 # SDC Responses Dashboard API
 
-## Setup
-It is preferable to use the version of Python locally that matches that
-used on deployment. This project has a `.python_version` file for this
-purpose.
+## Run the application
 
+**Initial Setup:**
 
-Upgrade pip and install dependencies:
-
+Install pyenv and pipenv
 ```
 brew install pyenv
 pyenv install
-pip install --upgrade pip setuptools pipenv
+pip install --U pip setuptools pipenv
+```
+
+**Run with Make:**
+
+Install dependencies with
+```
+make build
+```
+
+Run with
+```
+make start
+```
+
+**Alternatively, run manually:**
+
+Install dependencies to run:
+```
 pipenv install
+```
+
+Install dependencies to develop:
+```
 pipenv install --dev
 ```
 
 Run the server inside the virtual env created by Pipenv with:
 
 ```
-pipenv run ./scripts/run_app.sh
+pipenv run python run.py
+```
 
+## Testing and Linting
+
+Run linting with
+```
+make lint
 ```
