@@ -20,14 +20,6 @@ Run the server inside the virtual env created by Pipenv with:
 
 ```
 pipenv shell
-sh run_app.sh
-
-```
-
-Run linting:
-
-```
-
-sh run_lint.sh
+sh scripts/run_app.sh or python3 run.py runserver
 
 ```
