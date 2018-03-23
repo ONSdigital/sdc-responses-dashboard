@@ -19,7 +19,6 @@ pipenv install --dev
 Run the server inside the virtual env created by Pipenv with:
 
 ```
-pipenv shell
-sh scripts/run_app.sh or python3 run.py runserver
+pipenv run sh ./scripts/run_app.sh
 
 ```
