@@ -10,7 +10,7 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = os.getenv('DEBUG', True)
     PORT = os.getenv('PORT', 5000)
-    HOST = os.getenv('HOST', '0.0.0.0')
+    HOST = os.getenv('HOST', 'localhost')
 
 
 # TODO test config
