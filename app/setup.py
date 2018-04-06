@@ -16,5 +16,5 @@ def create_app():
 
 def add_blueprints(app):
 
-    from app.api.routes import routes_blueprint
-    app.register_blueprint(routes_blueprint)
+    from app.api.report import report_blueprint
+    app.register_blueprint(report_blueprint)
