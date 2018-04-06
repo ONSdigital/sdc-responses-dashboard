@@ -1,6 +1,6 @@
 # SDC Responses Dashboard API
 [![Build Status](https://api.travis-ci.org/ONSdigital/sdc-responses-dashboard-api.svg?branch=master)](https://travis-ci.org/ONSdigital/sdc-responses-dashboard-api)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7aaabdc5ce3a47e587d95f6e2243be82)](https://www.codacy.com/app/ONSDigital/sdc-responses-dashboard-api)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7aaabdc5ce3a47e587d95f6e2243be82)](https://www.codacy.com/app/ONSDigital/sdc-responses-dashboard-api/dashboard)
 
 ## Run the application
 
