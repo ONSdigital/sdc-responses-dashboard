@@ -15,12 +15,12 @@ def get_report(collection_exercise_id):
     uploads = randint(0, downloads)
 
     return jsonify({
-        'collection_exercise_id': collection_exercise_id,
+        'collectionExerciseId': collection_exercise_id,
         'details': {
             'downloads': downloads,
             'uploads': uploads,
-            'accounts-created': accounts_created,
-            'sample-size': sample_size,
+            'accountsCreated': accounts_created,
+            'sampleSize': sample_size,
             'updated': int(datetime.now().timestamp())
         }
     })
