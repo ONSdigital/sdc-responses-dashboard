@@ -16,13 +16,13 @@ def get_report(collection_exercise_id):
 
     return jsonify({
         'metadata': {
-            'collection_exercise_id': collection_exercise_id,
-            'updated': int(datetime.now().timestamp())
+            'collectionExerciseId': collection_exercise_id,
+            'timeUpdated': int(datetime.now().timestamp())
         },
         'report': {
             'downloads': downloads,
             'uploads': uploads,
-            'accounts-created': accounts_created,
-            'sample-size': sample_size
+            'accountsCreated': accounts_created,
+            'sampleSize': sample_size
         }
     })
