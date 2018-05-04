@@ -1,18 +1,27 @@
 [[source]]
+
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
+
 [packages]
+
 flask = "*"
 flask-script = "*"
 "flake8" = "*"
 flask-cors = "*"
+pytest = "*"
+pytest-cov = "*"
+
 
 [dev-packages]
+
 pylint = "*"
 pylint-mccabe = "*"
 pylint-quotes = "*"
 
+
 [requires]
+
 python_version = "3.6"

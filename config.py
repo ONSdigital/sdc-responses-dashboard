@@ -14,4 +14,6 @@ class DevelopmentConfig(Config):
     HOST = os.getenv('HOST', 'localhost')
 
 
-# TODO test config
+class TestingConfig(Config):
+    PORT = os.getenv('PORT', 5000)
+    HOST = os.getenv('HOST', 'localhost')

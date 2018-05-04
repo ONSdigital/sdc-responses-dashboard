@@ -1,6 +1,8 @@
 # Python temp file
 __pycache__
 *.py[cod]
+.coverage
+.pytest_cache/
 
 # intellij
 .idea/
