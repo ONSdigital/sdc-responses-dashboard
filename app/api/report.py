@@ -28,4 +28,4 @@ def get_report(collection_exercise_id):
                 'sampleSize': sample_size
             }
         }),
-        content_type="Application/json")
+        content_type='application/json')
