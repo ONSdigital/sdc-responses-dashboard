@@ -6,10 +6,9 @@ python:
 install:
     - pip install pipenv
     - pipenv install --dev
-    - pipenv check
 
 script:
-  - make lint
+  - make test
 
 branches:
   only:
