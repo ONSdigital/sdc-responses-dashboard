@@ -5,6 +5,7 @@ class Config:
     DEBUG = os.getenv('DEBUG', False)
     PORT = os.getenv('PORT')
     HOST = os.getenv('HOST')
+    THREADED = os.getenv('THREADED', True)
 
 
 class DevelopmentConfig(Config):
