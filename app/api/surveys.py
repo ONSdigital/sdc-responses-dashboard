@@ -1,6 +1,5 @@
 from datetime import datetime
 import json
-from pprint import pprint
 import uuid
 
 from flask import Blueprint, Response
@@ -39,15 +38,15 @@ def get_surveys_example():
                     'surveyRef': '221',
                     'collectionExercises': [
                         {
-                            'period': 2018,
+                            'exerciseRef': 2018,
                             'collexId': '8d50b535-e852-433c-af1f-e7d027533078'
                         },
                         {
-                            'period': 2017,
+                            'exerciseRef': 2017,
                             'collexId': str(uuid.uuid4())
                         },
                         {
-                            'period': 2016,
+                            'exerciseRef': 2016,
                             'collexId': str(uuid.uuid4())
                         }
                     ]
@@ -58,7 +57,7 @@ def get_surveys_example():
                     'surveyRef': '222',
                     'collectionExercises': [
                         {
-                            'period': 2018,
+                            'exerciseRef': 2018,
                             'collexId': str(uuid.uuid4())
                         }
                     ]
@@ -69,7 +68,7 @@ def get_surveys_example():
                     'surveyRef': '223',
                     'collectionExercises': [
                         {
-                            'period': 2018,
+                            'exerciseRef': 2018,
                             'collexId': str(uuid.uuid4())
                         }
                     ]
@@ -80,7 +79,7 @@ def get_surveys_example():
                     'surveyRef': '224',
                     'collectionExercises': [
                         {
-                            'period': 2018,
+                            'exerciseRef': 2018,
                             'collexId': str(uuid.uuid4())
                         }
                     ]
@@ -91,7 +90,7 @@ def get_surveys_example():
                     'surveyRef': '225',
                     'collectionExercises': [
                         {
-                            'period': 2018,
+                            'exerciseRef': 2018,
                             'collexId': str(uuid.uuid4())
                         }
                     ]
