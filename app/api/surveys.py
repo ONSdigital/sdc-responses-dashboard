@@ -12,8 +12,8 @@ report_blueprint = Blueprint(name='surveys', import_name=__name__)
 def get_report():
     return Response(
         json.dumps({
-            'timestamp': datetime.now().timestamp()
-            [
+            'timestamp': datetime.now().timestamp(),
+            'surveys': [
                 {
                     'shortName': 'BRES',
                     'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
