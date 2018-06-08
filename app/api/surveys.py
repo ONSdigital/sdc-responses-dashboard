@@ -4,11 +4,11 @@ import uuid
 
 from flask import Blueprint, Response
 
-report_blueprint = Blueprint(name='surveys', import_name=__name__)
+surveys_blueprint = Blueprint(name='surveys', import_name=__name__)
 
 
 # Hardcoded example response for development
-@report_blueprint.route('/surveys', methods=['GET'])
+@surveys_blueprint.route('/surveys', methods=['GET'])
 def get_report():
     return Response(
         json.dumps({
@@ -24,51 +24,51 @@ def get_report():
                         },
                         {
                             'period': 2017,
-                            'collexId': uuid.uuid4()
+                            'collexId': str(uuid.uuid4())
                         },
                         {
                             'period': 2016,
-                            'collexId': uuid.uuid4()
+                            'collexId': str(uuid.uuid4())
                         }
                     ]
                 },
                 {
                     'shortName': 'BRAS',
-                    'surveyId': uuid.uuid4(),
+                    'surveyId': str(uuid.uuid4()),
                     'collectionExercises': [
                         {
                             'period': 2018,
-                            'collexId': uuid.uuid4()
+                            'collexId': str(uuid.uuid4())
                         }
                     ]
                 },
                 {
                     'shortName': 'BRIS',
-                    'surveyId': uuid.uuid4(),
+                    'surveyId': str(uuid.uuid4()),
                     'collectionExercises': [
                         {
                             'period': 2018,
-                            'collexId': uuid.uuid4()
+                            'collexId': str(uuid.uuid4())
                         }
                     ]
                 },
                 {
                     'shortName': 'BRUS',
-                    'surveyId': uuid.uuid4(),
+                    'surveyId': str(uuid.uuid4()),
                     'collectionExercises': [
                         {
                             'period': 2018,
-                            'collexId': uuid.uuid4()
+                            'collexId': str(uuid.uuid4())
                         }
                     ]
                 },
                 {
                     'shortName': 'BROS',
-                    'surveyId': uuid.uuid4(),
+                    'surveyId': str(uuid.uuid4()),
                     'collectionExercises': [
                         {
                             'period': 2018,
-                            'collexId': uuid.uuid4()
+                            'collexId': str(uuid.uuid4())
                         }
                     ]
                 }
