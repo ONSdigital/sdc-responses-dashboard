@@ -19,7 +19,7 @@ def get_report(collection_exercise_id):
         json.dumps({
             'metadata': {
                 'collectionExerciseId': collection_exercise_id,
-                'timeUpdated': int(datetime.now().timestamp())
+                'timeUpdated': datetime.now().timestamp()
             },
             'report': {
                 'downloads': downloads,
