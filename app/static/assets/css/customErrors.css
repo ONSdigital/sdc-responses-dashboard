@@ -1,0 +1,27 @@
+/*
+ * Custom CSS
+ * -----------
+ */
+
+@media (max-width: 767px) {
+	.main-header .navbar {
+		display: none;
+	}
+}
+
+.content-wrapper,
+.main-footer {
+	margin-left: 0px;
+}
+
+.error-page>.error-content {
+	margin-left: 0px;
+	display: block;
+	margin-top: 0px;
+	text-align: center;
+}
+
+.error-page>.headline {
+	float: none;
+	text-align: center;
+}

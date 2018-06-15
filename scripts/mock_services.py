@@ -89,7 +89,131 @@ def get_collection_exercises():
                         }
                     ],
                     "exerciseRef": "201712",
-                    "userDescription": "December 2017",
+                    "userDescription": "May 2017",
+                    "created": None,
+                    "updated": None,
+                    "deleted": False,
+                    "validationErrors": None
+                },
+                {
+                    "id": "14fb3e68-4dca-46db-bf49-04b84e07e7cc",
+                    "surveyId": "cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87",
+                    "name": "Business Register an",
+                    "actualExecutionDateTime": None,
+                    "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
+                    "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                    "actualPublishDateTime": None,
+                    "periodStartDateTime": "2017-09-14T23:00:00.000Z",
+                    "periodEndDateTime": "2017-09-15T22:59:59.000Z",
+                    "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
+                    "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
+                    "executedBy": None,
+                    "state": "CREATED",
+                    "caseTypes": [
+                        {
+                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
+                            "sampleUnitType": "B"
+                        },
+                        {
+                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
+                            "sampleUnitType": "BI"
+                        }
+                    ],
+                    "exerciseRef": "201712",
+                    "userDescription": "September 2017",
+                    "created": None,
+                    "updated": None,
+                    "deleted": False,
+                    "validationErrors": None
+                },
+                {
+                    "id": "14fb3e68-4dca-46db-bf49-04b84e07e777",
+                    "surveyId": "cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87",
+                    "name": "Business Register an",
+                    "actualExecutionDateTime": None,
+                    "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
+                    "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                    "actualPublishDateTime": None,
+                    "periodStartDateTime": "2017-09-14T23:00:00.000Z",
+                    "periodEndDateTime": "2017-09-15T22:59:59.000Z",
+                    "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
+                    "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
+                    "executedBy": None,
+                    "state": "CREATED",
+                    "caseTypes": [
+                        {
+                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
+                            "sampleUnitType": "B"
+                        },
+                        {
+                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
+                            "sampleUnitType": "BI"
+                        }
+                    ],
+                    "exerciseRef": "201712",
+                    "userDescription": "January 2018",
+                    "created": None,
+                    "updated": None,
+                    "deleted": False,
+                    "validationErrors": None
+                },
+                {
+                    "id": "14fb3e68-4dca-46db-bf49-04b84e07e799",
+                    "surveyId": "04dbb407-4438-4f89-acc4-53445d75330c",
+                    "name": "Business Register an",
+                    "actualExecutionDateTime": None,
+                    "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
+                    "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                    "actualPublishDateTime": None,
+                    "periodStartDateTime": "2017-09-14T23:00:00.000Z",
+                    "periodEndDateTime": "2017-09-15T22:59:59.000Z",
+                    "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
+                    "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
+                    "executedBy": None,
+                    "state": "CREATED",
+                    "caseTypes": [
+                        {
+                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
+                            "sampleUnitType": "B"
+                        },
+                        {
+                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
+                            "sampleUnitType": "BI"
+                        }
+                    ],
+                    "exerciseRef": "201712",
+                    "userDescription": "March 2017",
+                    "created": None,
+                    "updated": None,
+                    "deleted": False,
+                    "validationErrors": None
+                },
+                {
+                    "id": "14fb3e68-4dca-46db-bf49-04b84e07e77c",
+                    "surveyId": "04dbb407-4438-4f89-acc4-53445d75330c",
+                    "name": "BRES_2018",
+                    "actualExecutionDateTime": None,
+                    "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
+                    "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                    "actualPublishDateTime": None,
+                    "periodStartDateTime": "2017-09-14T23:00:00.000Z",
+                    "periodEndDateTime": "2017-09-15T22:59:59.000Z",
+                    "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
+                    "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
+                    "executedBy": None,
+                    "state": "CREATED",
+                    "caseTypes": [
+                        {
+                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
+                            "sampleUnitType": "B"
+                        },
+                        {
+                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
+                            "sampleUnitType": "BI"
+                        }
+                    ],
+                    "exerciseRef": "221_201712",
+                    "userDescription": None,
                     "created": None,
                     "updated": None,
                     "deleted": False,
