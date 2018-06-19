@@ -4,6 +4,7 @@ import uuid
 
 from flask import Blueprint, Response
 
+from app.common.survey_metadata import map_surveys_to_collection_exercises
 from app.controllers.collection_exercise_controller import get_collection_exercise_list
 from app.controllers.survey_controller import get_survey_list
 
@@ -15,7 +16,7 @@ surveys_blueprint = Blueprint(name='surveys', import_name=__name__)
 def get_surveys():
     surveys = get_survey_list()
     collexs = get_collection_exercise_list()
-    survey_data = _process_survey_metadata(surveys, collexs)
+    survey_data = map_surveys_to_collection_exercises(surveys, collexs)
     return Response(
         json.dumps({
             'timestamp': datetime.now().timestamp(),
@@ -24,7 +25,6 @@ def get_surveys():
         content_type='application/json')
 
 
-# TODO remove once no longer required
 # Example response endpoint for convenience in development
 @surveys_blueprint.route('/surveys/example', methods=['GET'])
 def get_surveys_example():
@@ -120,4 +120,3 @@ def _process_survey_metadata(surveys, collection_exercises):
         )
 
     return list(survey_data.values())
-
