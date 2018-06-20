@@ -12,6 +12,7 @@ pytest = "*"
 pytest-cov = "*"
 requests = "*"
 responses = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pylint = "*"
