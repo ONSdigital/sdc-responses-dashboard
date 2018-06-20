@@ -317,7 +317,7 @@
 
         console.log(collex_id)
         $.ajax({
-          url: "/report/collection-exercise/" + collex_id,
+          url: {{ reporting_url|tojson }} + "reporting-api/v1/response-dashboard/collection_exercise/" + collex_id,
           success: function (result) {
 
             var downloads = result.report.downloads
