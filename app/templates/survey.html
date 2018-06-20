@@ -99,7 +99,7 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1 id="survey-name">
-          Dashboard
+          {{ collection_exercise_name }}
         </h1>
         <ol class="breadcrumb">
           <li>
@@ -151,7 +151,7 @@
                           </thead>
                           <tbody>
 
-                            {% for survey in all_surveys.surveys %} {% for collex in survey.collectionExercises %}
+                            {% for survey in all_surveys %} {% for collex in survey.collectionExercises %}
                             <tr role="row" class="even" id="{{ collex.collexId }}">
                               <td class="sorting_1">{{ survey.shortName }}</td>
                               <td>{{ survey.surveyRef }}</td>
@@ -248,7 +248,7 @@
                       <span class="progress-text">Samples Completed</span>
                       <span class="progress-number">
                         <b>
-                          <span id="progress-enrolled">160</span>
+                          <span id="progress-uploaded">160</span>
                         </b>/
                         <span id="progress-size">0</span>
                       </span>
@@ -325,7 +325,7 @@
             var accountsEnrolled = result.report.accountsEnrolled
             var sampleSize = result.report.sampleSize
             var timeUpdated = moment.unix(result.metadata.timeUpdated).calendar()
-            var progress = (accountsEnrolled / sampleSize * 100).toFixed(2)
+            var progress = (uploads / sampleSize * 100).toFixed(2)
             var progressClass = "w3-green"
             var collexBox = "box-success"
             if (progress < 26) {
@@ -344,7 +344,7 @@
             $("#accounts-enrolled-counter").text(accountsEnrolled).effect("bounce", "slow");
             $("#sample-size-counter").text(sampleSize).effect("bounce", "slow");
             $("#time-updated").text(timeUpdated);
-            $("#progress-enrolled").text(accountsEnrolled);
+            $("#progress-uploaded").text(uploads);
             $("#progress-size").text(sampleSize);
 
             $("#collex-progress").text(progress + "%").css("width", progress + "%").removeClass(
