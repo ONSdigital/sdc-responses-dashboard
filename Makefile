@@ -13,3 +13,6 @@ check:
 
 test: check lint
 	pipenv run pytest tests --cov-report term-missing --cov app --capture no
+
+mock_services:
+	pipenv run python scripts/mock_services.py
