@@ -1,6 +1,10 @@
+from structlog import get_logger
+
 from app.controllers.collection_exercise_controller import get_collection_exercise_list
 from app.controllers.survey_controller import get_survey_list
 from app.exceptions import UnknownSurveyError
+
+logger = get_logger()
 
 
 def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
@@ -23,6 +27,10 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
             )
         except KeyError as e:
             if str(e) == f"'{collection_exercise['surveyId']}'":
+                logger.error(
+                    "Collection exercise referenced a survey ID that is unknown",
+                    collection_exercise_id=collection_exercise['id'],
+                    survey_id=collection_exercise['surveyId'])
                 raise UnknownSurveyError(
                     message='Reference to unknown survey id in collection exercise',
                     survey_id=['surveyId']) from e

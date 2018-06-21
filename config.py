@@ -10,6 +10,7 @@ class Config:
     REPORTING_URL = os.getenv('REPORTING_URL')
     AUTH_USERNAME = os.getenv('AUTH_USERNAME')
     AUTH_PASSWORD = os.getenv('AUTH_PASSWORD')
+    LOGGING_LEVEL = os.getenv('LOGGING_LEVEL', 'INFO')
 
 
 class DevelopmentConfig(Config):
