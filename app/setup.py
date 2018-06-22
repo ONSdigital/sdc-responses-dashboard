@@ -23,7 +23,7 @@ def create_app():
 def add_blueprints(app):
 
     from app.api.health import health_blueprint
-    from app.api.surveys import surveys_blueprint
+    from app.views.dashboard import dashboard_blueprint
 
     app.register_blueprint(health_blueprint)
-    app.register_blueprint(surveys_blueprint)
+    app.register_blueprint(dashboard_blueprint)

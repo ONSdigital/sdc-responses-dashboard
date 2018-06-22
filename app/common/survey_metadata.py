@@ -8,6 +8,7 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
         survey['id']: {
             'surveyId': survey['id'],
             'shortName': survey['shortName'],
+            'longName': survey['longName'],
             'surveyRef': survey['surveyRef'],
             'collectionExercises': []
         } for survey in surveys
@@ -17,8 +18,9 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
         try:
             survey_data[collection_exercise['surveyId']]['collectionExercises'].append(
                 {
-                    'collexId': collection_exercise['id'],
-                    'collexName': collection_exercise['name']
+                    'collectionExerciseId': collection_exercise['id'],
+                    'userDescription': collection_exercise['userDescription'],
+                    'exerciseRef': collection_exercise['exerciseRef']
                 }
             )
         except KeyError as e:
@@ -36,10 +38,11 @@ def map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises) -> 
     collection_exercises_to_survey_ids = {}
     for survey in surveys_to_collection_exercises:
         for collection_exercise in survey['collectionExercises']:
-            collection_exercises_to_survey_ids[collection_exercise['collexId']] = {
+            collection_exercises_to_survey_ids[collection_exercise['collectionExerciseId']] = {
                 'surveyId': survey['surveyId'],
                 'shortName': survey['shortName'],
-                'collexName': collection_exercise['collexName']
+                'userDescription': collection_exercise['userDescription'],
+                'exerciseRef': collection_exercise['exerciseRef']
             }
 
     return collection_exercises_to_survey_ids

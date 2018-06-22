@@ -67,7 +67,7 @@ def get_collection_exercises():
                 {
                     "id": "14fb3e68-4dca-46db-bf49-04b84e07e77c",
                     "surveyId": "cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87",
-                    "name": "BRES_2017",
+                    "name": "Business Register an",
                     "actualExecutionDateTime": None,
                     "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
                     "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
@@ -88,8 +88,8 @@ def get_collection_exercises():
                             "sampleUnitType": "BI"
                         }
                     ],
-                    "exerciseRef": "221_201712",
-                    "userDescription": None,
+                    "exerciseRef": "201712",
+                    "userDescription": "December 2017",
                     "created": None,
                     "updated": None,
                     "deleted": False,
