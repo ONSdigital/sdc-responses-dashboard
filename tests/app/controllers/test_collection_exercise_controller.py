@@ -1,8 +1,8 @@
 import json
 import os
 
+from requests import HTTPError
 import responses
-from werkzeug.exceptions import InternalServerError
 
 from app.controllers.collection_exercise_controller import get_collection_exercise_list
 from tests.app.app_context_test_case import AppContextTestCase
@@ -28,12 +28,12 @@ class TestSurveyController(AppContextTestCase):
         self.assertEqual(self.collection_exercises_response, controller_output)
 
     @responses.activate
-    def test_get_collection_exercise_list_auth_failure_raises_internal_server_error(self):
+    def test_get_collection_exercise_list_auth_failure_raises_http_error(self):
         with self.app.app_context():
             responses.add(
                 responses.GET,
                 self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
                 status=401)
 
-            with self.assertRaises(InternalServerError):
+            with self.assertRaises(HTTPError):
                 get_collection_exercise_list()
