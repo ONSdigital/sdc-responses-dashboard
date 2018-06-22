@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87",
+    "shortName": "BRES",
+    "longName": "Business Register and Employment Survey",
+    "surveyRef": "221",
+    "legalBasis": "Statistics of Trade Act 1947",
+    "legalBasisRef": "STA1947"
+  },
+  {
+    "id": "04dbb407-4438-4f89-acc4-53445d75330c",
+    "shortName": "AOFDI",
+    "longName": "Annual Outward Foreign Direct Investment Survey",
+    "surveyRef": "063",
+    "legalBasis": "Statistics of Trade Act 1947",
+    "legalBasisRef": "STA1947"
+  }
+]

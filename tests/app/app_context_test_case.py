@@ -7,6 +7,6 @@ from config import TestingConfig
 class AppContextTestCase(unittest.TestCase):
 
     def setUp(self):
-        app = create_app()
-        app.config.from_object(TestingConfig)
-        self.test_client = app.test_client()
+        self.app = create_app()
+        self.app.config.from_object(TestingConfig)
+        self.test_client = self.app.test_client()
