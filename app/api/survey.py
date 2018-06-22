@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, current_app
+from flask import Blueprint, render_template, current_app, abort
 
 from app.api.nocache import nocache
 from app.common.survey_metadata import fetch_survey_and_collection_exercise_metadata
@@ -9,9 +9,12 @@ survey_blueprint = Blueprint(name='survey', import_name=__name__)
 @survey_blueprint.route('/survey/collection-exercise/<collection_exercise_id>', methods=['GET'])
 @nocache
 def get_survey(collection_exercise_id):
-
     surveys_metadata, collection_exercise_metadata = fetch_survey_and_collection_exercise_metadata()
-    collection_exercise_name = collection_exercise_metadata[collection_exercise_id]['collexName']
+
+    try:
+        collection_exercise_name = collection_exercise_metadata[collection_exercise_id]['collexName']
+    except KeyError:
+        abort(404)
 
     return render_template(
         'survey.html',
