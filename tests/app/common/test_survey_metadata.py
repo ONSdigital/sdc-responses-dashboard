@@ -21,17 +21,20 @@ class TestSurveyMetadata(unittest.TestCase):
             {
                 'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                 'shortName': 'BRES',
+                'longName': 'Business Register and Employment Survey',
                 'surveyRef': '221',
                 'collectionExercises': [
                     {
-                        'collexId': '14fb3e68-4dca-46db-bf49-04b84e07e77c',
-                        'collexName': 'BRES_2017'
+                        'collectionExerciseId': '14fb3e68-4dca-46db-bf49-04b84e07e77c',
+                        'userDescription': 'December 2017',
+                        'exerciseRef': '201712'
                     }
                 ]
             },
             {
                 'surveyId': '04dbb407-4438-4f89-acc4-53445d75330c',
                 'shortName': 'AOFDI',
+                'longName': 'Annual Outward Foreign Direct Investment Survey',
                 'surveyRef': '063',
                 'collectionExercises': []
             }
@@ -48,7 +51,8 @@ class TestSurveyMetadata(unittest.TestCase):
             '14fb3e68-4dca-46db-bf49-04b84e07e77c': {
                 'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                 'shortName': 'BRES',
-                'collexName': 'BRES_2017'
+                'userDescription': 'December 2017',
+                'exerciseRef': '201712'
             }
         }
 
