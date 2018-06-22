@@ -14,9 +14,10 @@ def get_survey_list():
             url,
             auth=HTTPBasicAuth(app.config['AUTH_USERNAME'],
                                app.config['AUTH_PASSWORD']))
-    except ConnectionError as e:
+    except ConnectionError:
         logger.error("Failed to connect to survey service")
         abort(500)
+
     if response.status_code != 200:
         logger.error("Failed to retrieve surveys")
         response.raise_for_status()
