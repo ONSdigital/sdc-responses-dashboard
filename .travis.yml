@@ -13,3 +13,4 @@ script:
 branches:
   only:
     - master
+    - frontend-bootstrap-feature-branch
