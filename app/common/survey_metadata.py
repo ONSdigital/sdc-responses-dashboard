@@ -25,7 +25,7 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
             if str(e) == f"'{collection_exercise['surveyId']}'":
                 raise UnknownSurveyError(
                     message='Reference to unknown survey id in collection exercise',
-                    survey_id=['surveyId'])
+                    survey_id=['surveyId']) from e
             else:
                 raise
 
