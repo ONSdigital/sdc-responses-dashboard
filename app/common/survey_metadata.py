@@ -57,9 +57,18 @@ def map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises) -> 
 
 def fetch_survey_and_collection_exercise_metadata() -> (list, dict):
     collection_exercises = get_collection_exercise_list()
+    live_collection_exercises = _filter_ready_collection_exercises(collection_exercises)
     surveys = get_survey_list()
 
-    surveys_to_collection_exercises = map_surveys_to_collection_exercises(surveys, collection_exercises)
+    surveys_to_collection_exercises = map_surveys_to_collection_exercises(surveys, live_collection_exercises)
     collection_exercises_to_survey_ids = map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises)
 
     return surveys_to_collection_exercises, collection_exercises_to_survey_ids
+
+
+def _filter_ready_collection_exercises(collection_exercises: list) -> list:
+    return [
+        collection_exercise
+        for collection_exercise in collection_exercises
+        if collection_exercise['state'] in {'READY_FOR_LIVE', 'LIVE'}
+    ]
