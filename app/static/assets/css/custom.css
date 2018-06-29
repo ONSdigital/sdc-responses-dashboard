@@ -21,7 +21,7 @@
 	color: #fff
 }
 
-#surveys_filter {
+#survey-datatable_filter {
 	display: none;
 }
 
@@ -36,4 +36,53 @@ div.dataTables_wrapper div.dataTables_paginate {
 
 .dataTables_scrollHeadInner {
 	width: auto !important;
+}
+
+#longName {
+    font-size: 11px;
+}
+
+#collex-datatable_filter {
+	display: none;
+}
+
+#survey-datatable_info {
+    font-style: italic;
+    font-weight: 700;
+    font-size: 12px;
+    padding-left: 7px;
+}
+
+#collex-datatable_info {
+    font-style: italic;
+    font-weight: 700;
+    font-size: 12px;
+    padding-left: 7px;
+}
+
+.table-datatable-hover>tbody>tr:hover {
+    color: white;
+    background-color: #38484f;
+}
+
+.table tr {
+    cursor: pointer;
+}
+
+#main-content {
+    display: none;
+}
+
+#alert-reporting-error {
+    display: none;
+}
+
+#error-reporting {
+    display: none;
+    min-height: 250px;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
 }

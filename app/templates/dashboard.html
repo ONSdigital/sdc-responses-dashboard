@@ -47,7 +47,7 @@
 						<li class="active treeview menu-open">
 							<ul class="treeview-menu">
 								<li>
-									<a href="" data-toggle="modal" data-target="#modal-default">
+									<a href="" data-toggle="modal" data-target="#modal-survey">
 									<i class="fa fa-arrow-right"></i> Choose Survey</a>
 								</li>
 							</ul>
@@ -74,9 +74,25 @@
 						<li class="active" id="survey-long-name">{{ survey_long_name }}</li>
 					</ol>
 				</section>
+
 				<!-- Main content -->
-				<section class="content">
-					{% include 'partials/_modal.html' %}
+                {% include 'partials/_modal_collex.html' %}
+                {% include 'partials/_modal_survey.html' %}
+                <section id="error-reporting">
+                    <div class="error-page">
+						<div class="error-content">
+							<h3>
+								<i class="fa fa-warning text-red"></i> Oops! Not Found
+							</h3>
+							<p>
+								Sorry, data retrieval failed, meanwhile, you may
+								<a href="#">return to the dashboard</a>
+							</p>
+						</div>
+						<!-- /.error-content -->
+					</div>
+                </section>
+				<section id="main-content" class="content">
 					<div class="row">
 						<div class="col-lg-6 col-xs-6">
 							<!-- small box -->
@@ -191,5 +207,8 @@
 		<script src="https://cdn.datatables.net/scroller/1.4.4/js/dataTables.scroller.min.js"></script>
 		<!-- App -->
 		<script src="{{ url_for('static', filename='assets/js/dashboard.js') }}"></script>
+		<script>
+			$('#collex-id').data('surveys', '{{ all_surveys|tojson|safe }}');
+		</script>
 	</body>
 </html>
