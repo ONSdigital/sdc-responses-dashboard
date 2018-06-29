@@ -5,7 +5,7 @@ from requests import HTTPError
 import responses
 
 from app.controllers.collection_exercise_controller import get_collection_exercise_list
-from tests.app.app_context_test_case import AppContextTestCase
+from tests.app import AppContextTestCase
 
 
 class TestSurveyController(AppContextTestCase):

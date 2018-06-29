@@ -30,7 +30,11 @@ class DevelopmentConfig(Config):
     LOGGING_JSON_INDENT = strtobool(os.getenv('LOGGING_JSON_INDENT', 'True'))
 
 
-class TestingConfig(DevelopmentConfig):
+class TestingConfig(Config):
+    testing_url = 'http://test/'
+    COLLECTION_EXERCISE_URL = os.getenv('COLLECTION_EXERCISE_URL', testing_url)
+    SURVEY_URL = os.getenv('SURVEY_URL', testing_url)
+    REPORTING_URL = os.getenv('REPORTING_URL', testing_url)
     PORT = os.getenv('PORT', 5000)
     HOST = os.getenv('HOST', 'localhost')
     TESTING = True
