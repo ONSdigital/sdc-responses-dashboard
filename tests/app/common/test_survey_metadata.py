@@ -51,6 +51,7 @@ class TestSurveyMetadata(unittest.TestCase):
             '14fb3e68-4dca-46db-bf49-04b84e07e77c': {
                 'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                 'shortName': 'BRES',
+                'longName': 'Business Register and Employment Survey',
                 'userDescription': 'December 2017',
                 'exerciseRef': '201712'
             }
