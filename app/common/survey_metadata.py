@@ -47,6 +47,7 @@ def map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises) -> 
             collection_exercises_to_survey_ids[collection_exercise['collectionExerciseId']] = {
                 'surveyId': survey['surveyId'],
                 'shortName': survey['shortName'],
+                'longName': survey['longName'],
                 'userDescription': collection_exercise['userDescription'],
                 'exerciseRef': collection_exercise['exerciseRef']
             }

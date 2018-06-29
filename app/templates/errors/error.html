@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>SDC | Dashboard</title>
+		<!-- Tell the browser to be responsive to screen width -->
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		{% include 'partials/_styles.html' %}
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/customErrors.css') }}">
+	</head>
+	<body class="no-sidebar skin-black">
+		<!-- sidebar-collapse -->
+		<div class="wrapper">
+			<header class="main-header">
+				<!-- Logo -->
+				<a href="" class="logo">
+					<!-- mini logo for sidebar mini 50x50 pixels -->
+					<span class="logo-mini">
+					<b>R</b>D</span>
+					<!-- logo for regular state and mobile devices -->
+					<span class="logo-lg">
+					<b>Responses</b>Dashboard</span>
+				</a>
+				<!-- Header Navbar: style can be found in header.less -->
+				<nav class="navbar navbar-static-top">
+					<!-- Navbar Right Menu -->
+					<div class="navbar-custom-menu">
+					</div>
+				</nav>
+			</header>
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<ol class="breadcrumb">
+						<li>
+							<a href="#">
+							<i class="fa fa-dashboard"></i> Dashboard</a>
+						</li>
+						<li class="active">{{ status_code ~ " " ~ error_name }}</li>
+					</ol>
+				</section>
+				<!-- Main content -->
+				<section class="content">
+					<div class="error-page">
+						<h2 class="headline text-red"> {{ status_code }}</h2>
+						<div class="error-content">
+							<h3>
+								<i class="fa fa-warning text-red"></i> Oops! {{ error_name }}
+							</h3>
+							<p>
+								{{ error_msg }} Meanwhile, you may
+								<a href="#">return to the dashboard</a>
+							</p>
+						</div>
+						<!-- /.error-content -->
+					</div>
+					<!-- /.error-page -->
+				</section>
+				<!-- /.content -->
+			</div>
+			<!-- /.content-wrapper -->
+			<footer class="main-footer">
+				<div class="pull-right hidden-xs">
+					<b>SDC Responses Dashboard</b> v2.0.0
+				</div>
+				<strong>
+				<span id="time-updated">&nbsp;</span>
+				</strong>
+			</footer>
+		</div>
+		<!-- ./wrapper -->
+		{% include 'partials/_scripts.html' %}
+	</body>
+</html>

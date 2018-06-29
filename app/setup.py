@@ -23,6 +23,7 @@ def create_app():
                       indent=app.config['LOGGING_JSON_INDENT'])
 
     add_blueprints(app)
+    add_error_handlers(app)
 
     return app
 
@@ -34,6 +35,14 @@ def add_blueprints(app):
 
     app.register_blueprint(health_blueprint)
     app.register_blueprint(dashboard_blueprint)
+
+
+def add_error_handlers(app):
+
+    from app.errors.handlers import not_found_error, internal_server_error
+
+    app.register_error_handler(404, not_found_error)
+    app.register_error_handler(500, internal_server_error)
 
 
 def _configure_logger(level='INFO', indent=False):

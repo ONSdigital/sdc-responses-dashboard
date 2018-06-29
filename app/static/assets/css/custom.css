@@ -1,0 +1,39 @@
+/*
+ * Custom CSS
+ * -----------
+ */
+
+.small-box .icon .fa-color-white {
+	color: rgba(255, 255, 255, 0.42);
+}
+
+.progress-bar-blue {
+	background-color: #00364F;
+}
+
+.bg-ons-light-blue {
+	background-color: #3398c5;
+	color: #fff
+}
+
+.bg-ons-blue {
+	background-color: #00364F;
+	color: #fff
+}
+
+#surveys_filter {
+	display: none;
+}
+
+.modal-body {
+	position: relative;
+	padding: 0px 15px 15px 15px;
+}
+
+div.dataTables_wrapper div.dataTables_paginate {
+	display: none;
+}
+
+.dataTables_scrollHeadInner {
+	width: auto !important;
+}

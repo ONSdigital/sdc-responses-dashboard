@@ -3286,7 +3286,7 @@ table.text-center th {
  */
 .error-page {
   width: 600px;
-  margin: 20px auto 0 auto;
+  margin: 100px auto 0 auto;
 }
 @media (max-width: 991px) {
   .error-page {
