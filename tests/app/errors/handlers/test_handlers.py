@@ -1,6 +1,6 @@
 import responses
 
-from tests.app.app_context_test_case import AppContextTestCase
+from tests.app import AppContextTestCase
 
 
 class TestErrorHandlers(AppContextTestCase):

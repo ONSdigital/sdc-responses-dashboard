@@ -5,7 +5,7 @@ from requests import HTTPError
 import responses
 
 from app.controllers.survey_controller import get_survey_list
-from tests.app.app_context_test_case import AppContextTestCase
+from tests.app import AppContextTestCase
 
 
 class TestSurveyController(AppContextTestCase):

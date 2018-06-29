@@ -77,7 +77,7 @@ def get_collection_exercises():
                     "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
                     "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
                     "executedBy": None,
-                    "state": "CREATED",
+                    "state": "READY_FOR_LIVE",
                     "caseTypes": [
                         {
                             "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
@@ -88,7 +88,7 @@ def get_collection_exercises():
                             "sampleUnitType": "BI"
                         }
                     ],
-                    "exerciseRef": "201712",
+                    "exerciseRef": "201705",
                     "userDescription": "May 2017",
                     "created": None,
                     "updated": None,
@@ -108,7 +108,7 @@ def get_collection_exercises():
                     "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
                     "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
                     "executedBy": None,
-                    "state": "CREATED",
+                    "state": "LIVE",
                     "caseTypes": [
                         {
                             "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
@@ -119,7 +119,7 @@ def get_collection_exercises():
                             "sampleUnitType": "BI"
                         }
                     ],
-                    "exerciseRef": "201712",
+                    "exerciseRef": "201709",
                     "userDescription": "September 2017",
                     "created": None,
                     "updated": None,
@@ -139,7 +139,7 @@ def get_collection_exercises():
                     "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
                     "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
                     "executedBy": None,
-                    "state": "CREATED",
+                    "state": "LIVE",
                     "caseTypes": [
                         {
                             "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
@@ -150,7 +150,7 @@ def get_collection_exercises():
                             "sampleUnitType": "BI"
                         }
                     ],
-                    "exerciseRef": "201712",
+                    "exerciseRef": "201801",
                     "userDescription": "January 2018",
                     "created": None,
                     "updated": None,
@@ -170,7 +170,7 @@ def get_collection_exercises():
                     "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
                     "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
                     "executedBy": None,
-                    "state": "CREATED",
+                    "state": "READY_FOR_LIVE",
                     "caseTypes": [
                         {
                             "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
@@ -191,7 +191,7 @@ def get_collection_exercises():
                 {
                     "id": "14fb3e68-4dca-46db-bf49-04b84e07e77c",
                     "surveyId": "04dbb407-4438-4f89-acc4-53445d75330c",
-                    "name": "BRES_2018",
+                    "name": "Business Register an",
                     "actualExecutionDateTime": None,
                     "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
                     "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
@@ -212,8 +212,8 @@ def get_collection_exercises():
                             "sampleUnitType": "BI"
                         }
                     ],
-                    "exerciseRef": "221_201712",
-                    "userDescription": None,
+                    "exerciseRef": "201812",
+                    "userDescription": "You Can't See Me",
                     "created": None,
                     "updated": None,
                     "deleted": False,
