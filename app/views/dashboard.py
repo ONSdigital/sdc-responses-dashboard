@@ -25,6 +25,7 @@ def get_survey(collection_exercise_id):
         reporting_refresh_cycle=current_app.config['REPORTING_REFRESH_CYCLE']
     )
 
+
 @dashboard_blueprint.after_request
 def add_cache_control(response):
     response.cache_control.no_cache = True
