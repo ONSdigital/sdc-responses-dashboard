@@ -27,3 +27,4 @@ class TestErrorHandlers(AppContextTestCase):
         self.assertEqual(response.status, '500 INTERNAL SERVER ERROR')
         self.assertIn(b'Internal Server Error', response.data, )
         self.assertIn(b'Sorry, something has gone wrong.', response.data)
+

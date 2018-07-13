@@ -5,8 +5,27 @@ from app.common.survey_metadata import fetch_survey_and_collection_exercise_meta
 dashboard_blueprint = Blueprint(name='dashboard', import_name=__name__)
 
 
+@dashboard_blueprint.before_request
+def clear_trailing():
+    from flask import redirect, request
+
+    rp = request.path
+    if rp != '/' and rp.endswith('/'):
+        return redirect(rp[:-1])
+
+
+@dashboard_blueprint.route('/dashboard', methods=['GET'])
+def get_surveys():
+    surveys_metadata, _ = fetch_survey_and_collection_exercise_metadata()
+
+    return render_template(
+        'dashboard.html',
+        all_surveys=surveys_metadata
+    )
+
+
 @dashboard_blueprint.route('/dashboard/collection-exercise/<collection_exercise_id>', methods=['GET'])
-def get_survey(collection_exercise_id):
+def get_survey_details(collection_exercise_id):
     surveys_metadata, collection_exercise_metadata = fetch_survey_and_collection_exercise_metadata()
 
     try:
@@ -15,7 +34,7 @@ def get_survey(collection_exercise_id):
         abort(404)
 
     return render_template(
-        'dashboard.html',
+        'reporting.html',
         collex_id=collection_exercise_id,
         all_surveys=surveys_metadata,
         survey_short_name=collection_exercise['shortName'],

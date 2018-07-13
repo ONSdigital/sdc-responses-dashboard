@@ -1,0 +1,12 @@
+/*
+ * Custom CSS
+ * -----------
+ */
+
+.modal-header .close {
+    display: none;
+}
+
+.modal-survey-footer {
+    display: none;
+}
