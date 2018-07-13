@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/homepage_custom.css') }}">
 	</head>
-	<body id="collex-id" class="sidebar-mini skin-black sidebar-collapse">
+	<body id="collex-id" class="no-sidebar skin-black">
 		<!-- sidebar-collapse -->
 		<div class="wrapper">
 			<header class="main-header">
@@ -29,7 +29,7 @@
 				<!-- Header Navbar: style can be found in header.less -->
 				<nav class="navbar navbar-static-top">
 					<!-- Sidebar toggle button -->
-					<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+					<a href="#" data-toggle="modal" data-target="#modal-survey" role="button">
 					<span class="sr-only">Toggle navigation</span>
 					</a>
 					<!-- Navbar Right Menu -->
@@ -37,26 +37,6 @@
 					</div>
 				</nav>
 			</header>
-			<!-- Left side column. contains the logo and sidebar -->
-			<aside class="main-sidebar">
-				<!-- sidebar: style can be found in sidebar.less -->
-				<section class="sidebar" style="height: auto;">
-					<!-- Sidebar user panel -->
-					<!-- sidebar menu: : style can be found in sidebar.less -->
-					<ul class="sidebar-menu tree" data-widget="tree">
-						<li class="header">MAIN NAVIGATION</li>
-						<li class="active treeview menu-open">
-							<ul class="treeview-menu">
-								<li>
-									<a href="" data-toggle="modal" data-target="#modal-survey">
-									<i class="fa fa-arrow-right"></i> Choose Survey</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</section>
-				<!-- /.sidebar -->
-			</aside>
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
