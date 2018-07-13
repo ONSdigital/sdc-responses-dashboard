@@ -9,9 +9,9 @@ from tests.app import AppContextTestCase
 
 
 class TestSurveyController(AppContextTestCase):
-    this_file_path = os.path.dirname(__file__)
+    current_file_path = os.path.dirname(__file__)
 
-    with open(os.path.join(this_file_path, '../../test_data/get_collection_exercises_response.json')) as fp:
+    with open(os.path.join(current_file_path, '../../test_data/get_collection_exercises_response.json')) as fp:
         collection_exercises_response = json.load(fp)
 
     @responses.activate
