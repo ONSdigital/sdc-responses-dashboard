@@ -86,3 +86,23 @@ div.dataTables_wrapper div.dataTables_paginate {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+@media (max-width: 767px) {
+	.main-header .navbar {
+		display: none;
+	}
+}
+
+.content-wrapper,
+.main-footer {
+	margin-left: 0px;
+}
+
+.sidebar-toggle {
+    font-weight: bold;
+    font-color:
+}
+
+#chooseSurveyButton {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
