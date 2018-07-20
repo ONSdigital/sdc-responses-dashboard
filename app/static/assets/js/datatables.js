@@ -75,16 +75,16 @@ function loadCollexTableData(collexTable, id) {
     const surveys = JSON.parse($('#collex-id').data('surveys'));
 
     collexTable.clear().draw();
-    collexTable.rows.add(get_collex_from_survey_id(surveys, id)).draw();
+    collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw();
 
     $("#modal-collex").modal("toggle");
 
     $("#collex-datatable tbody").on("click", "tr", function() {
         const id = collexTable.row(this).id();
-        const reporting_url = $("#collex-id").data("reporting-url");
+        const reportingURL = $("#collex-id").data("reporting-url");
 
         if (typeof id !== "undefined") {
-            if (typeof reporting_url == "undefined") {
+            if (typeof reportingURL == "undefined") {
                 window.location.href = 'dashboard/collection-exercise/' + id;
             } else {
                 window.location.href = id;
@@ -94,12 +94,12 @@ function loadCollexTableData(collexTable, id) {
     });
 }
 
-function get_collex_from_survey_id(surveys, survey_id) {
+function getCollexFromSurveyId(surveys, survey_id) {
 
     for (let i = 0; i < surveys.length; i++) {
         if (surveys[i].surveyId === survey_id) {
-            let collection_exercises = surveys[i].collectionExercises;
-            return collection_exercises;
+            let collectionExercises = surveys[i].collectionExercises;
+            return collectionExercises;
         }
     }
 }

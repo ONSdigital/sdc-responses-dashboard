@@ -38,7 +38,7 @@ div.dataTables_wrapper div.dataTables_paginate {
 	width: auto !important;
 }
 
-#longName {
+#long-name {
     font-size: 11px;
 }
 
@@ -103,6 +103,6 @@ div.dataTables_wrapper div.dataTables_paginate {
     font-color:
 }
 
-#chooseSurveyButton {
+#choose-survey {
     font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
