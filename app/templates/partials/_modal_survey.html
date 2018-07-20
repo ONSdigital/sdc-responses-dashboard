@@ -37,7 +37,7 @@
                                         {% for survey in all_surveys %}
 											{% if survey.collectionExercises %}
 												<tr role="row" class="even" id="{{ survey.surveyId }}" data-survey-short-name="{{ survey.shortName }}" data-survey-long-name="{{ survey.longName }}">
-													<td class="sorting_1">{{ survey.shortName }}<span id="longName"> - {{ survey.longName }}</span></td>
+													<td class="sorting_1">{{ survey.shortName }}<span id="long-name"> - {{ survey.longName }}</span></td>
 													<td>{{ survey.surveyRef }}</td>
 												</tr>
 											{% endif %}
