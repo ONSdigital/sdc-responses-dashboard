@@ -1,6 +1,17 @@
 from distutils.util import strtobool
 import os
 
+REQUIRED_ENVIRONMENT_VARIABLES = {
+    'PORT',
+    'HOST',
+    'COLLECTION_EXERCISE_URL',
+    'SURVEY_URL',
+    'REPORTING_URL',
+    'REPORTING_REFRESH_CYCLE',
+    'AUTH_USERNAME',
+    'AUTH_PASSWORD'
+}
+
 
 class Config:
     DEBUG = os.getenv('DEBUG', False)
@@ -32,9 +43,13 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     testing_url = 'http://test/'
-    COLLECTION_EXERCISE_URL = os.getenv('COLLECTION_EXERCISE_URL', testing_url)
-    SURVEY_URL = os.getenv('SURVEY_URL', testing_url)
-    REPORTING_URL = os.getenv('REPORTING_URL', testing_url)
-    PORT = os.getenv('PORT', 5000)
-    HOST = os.getenv('HOST', 'localhost')
+    COLLECTION_EXERCISE_URL = testing_url
+    SURVEY_URL = testing_url
+    REPORTING_URL = testing_url
+    PORT = 5000
+    HOST = 'localhost'
     TESTING = True
+    ENV = 'testing'
+    REPORTING_REFRESH_CYCLE = 10000
+    AUTH_USERNAME = 'admin'
+    AUTH_PASSWORD = 'secret'

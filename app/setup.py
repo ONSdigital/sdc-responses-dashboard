@@ -7,17 +7,20 @@ from flask_cors import CORS
 import structlog
 from structlog.processors import JSONRenderer
 
+from app.exceptions import MissingConfigError
 import config
 
 
 def create_app():
+
+    app_config = getattr(config, os.getenv('APP_SETTINGS', 'Config'))
+    check_required_config(app_config)
 
     app = Flask(__name__)
     app.url_map.strict_slashes = False
 
     CORS(app)
 
-    app_config = getattr(config, os.getenv('APP_SETTINGS', 'Config'))
     app.config.from_object(app_config)
 
     _configure_logger(level=app.config['LOGGING_LEVEL'],
@@ -64,3 +67,9 @@ def _configure_logger(level='INFO', indent=False):
         wrapper_class=structlog.stdlib.BoundLogger,
         cache_logger_on_first_use=True,
     )
+
+
+def check_required_config(app_config):
+    missing_vars = {var for var in config.REQUIRED_ENVIRONMENT_VARIABLES if not vars(app_config).get(var)}
+    if missing_vars:
+        raise MissingConfigError(missing_vars)
