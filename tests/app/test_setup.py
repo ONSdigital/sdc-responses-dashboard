@@ -5,7 +5,7 @@ from app.setup import check_required_config
 from config import DevelopmentConfig
 
 
-class MyTestCase(unittest.TestCase):
+class TestSetup(unittest.TestCase):
     def test_incomplete_config_raises_exception(self):
 
         class IncompleteConfig:
