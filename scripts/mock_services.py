@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-from random import randint
+from random import SystemRandom
 
 from flask import Response, Flask
 from flask_cors import CORS
@@ -12,12 +12,13 @@ CORS(app)
 
 @app.route('/reporting-api/v1/response-dashboard/<collection_instrument_type>/collection-exercise/<collection_exercise_id>', methods=['GET'])
 def get_report(collection_instrument_type, collection_exercise_id):
+    rand_gen = SystemRandom()
 
-    sample_size = randint(100, 1000)
-    accounts_created = randint(0, sample_size)
-    downloads = randint(0, accounts_created)
-    uploads = randint(0, downloads)
-    accounts_enrolled = randint(uploads, accounts_created)
+    sample_size = rand_gen.randint(100, 1000)
+    accounts_created = rand_gen.randint(0, sample_size)
+    downloads = rand_gen.randint(0, accounts_created)
+    uploads = rand_gen.randint(0, downloads)
+    accounts_enrolled = rand_gen.randint(uploads, accounts_created)
 
     if collection_instrument_type.lower() == 'seft':
         response = {
@@ -246,7 +247,7 @@ def get_collection_exercises():
                     "validationErrors": None
                 },
                 {
-                    "id": "14fb3e68-4dca-46db-bf49-04b84e07e777",
+                    "id": "14fb3e68-4dca-46db-bf49-04b84e07e999",
                     "surveyId": "04dbb407-4438-4f89-acc4-53445d753111",
                     "name": "Quarterly Business Survey",
                     "actualExecutionDateTime": None,
@@ -269,8 +270,8 @@ def get_collection_exercises():
                             "sampleUnitType": "BI"
                         }
                     ],
-                    "exerciseRef": "201812",
-                    "userDescription": "Quarterly Business Survey",
+                    "exerciseRef": "201712",
+                    "userDescription": "December 2017",
                     "created": None,
                     "updated": None,
                     "deleted": False,

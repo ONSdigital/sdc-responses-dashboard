@@ -1,67 +1,4 @@
 /*jshint esversion: 6 */
-function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true) {
-    const reportingURL = $("#collex-id").data("reporting-url");
-    const reportingRefreshCycle = $("#collex-id").data("reporting-refresh-cycle");
-    const collectionInstrumentType = $("#collex-id").data("collection-instrument-type");
-
-    $.ajax({
-        dataType: "json",
-        url: reportingURL + "reporting-api/v1/response-dashboard/" + collectionInstrumentType + "/collection-exercise/" + collexID
-    }).done((result) => {
-
-        $('#error-reporting').hide();
-        $('.content').show();
-
-        displayCollectionInstrumentData(collectionInstrumentType, result);
-
-    }).fail((result) => {
-        $('#error-reporting').show();
-        $('.content').hide();
-    }).always(function() {
-        if (enableTimeout) {
-            setTimeout(callAPI, reportingRefreshCycle);
-        }
-    });
-}
-
-function displayCollectionInstrumentData(collectionInstrumentType, response) {
-
-    const timeUpdated = moment.unix(response.metadata.timeUpdated).calendar(); // eslint-disable-line
-    let report = {};
-
-    if (collectionInstrumentType.toLowerCase() == 'eq') {
-        report = getReportEQ(response);
-    } else {
-        report = getReportSEFT(response);
-    }
-
-    const progress = (report.uploads.value / report.sampleSize.value * 100).toFixed(2);
-
-    $("#progress-uploaded").text(report.uploads.value);
-    $("#time-updated").text(timeUpdated);
-    $("#progress-size").text(report.sampleSize.value);
-    $("#collex-progress").text(progress + "%").css("width", progress + "%");
-
-    $('#counters').empty();
-
-    for (let figure in report) {
-        $('#counters').append($('<div>', {
-            'class': 'col-lg-6 col-xs-6'
-        }).append($('<div>', {
-            'class': 'small-box bg-ons-light-blue'
-        }).append([$('<div>', {
-            'class': 'inner'
-        }).append([$('<h3>', {
-            'id': report[figure].id + '-counter'
-        }).text(report[figure].value), $('<p>').text(report[figure].title)]), $('<div>', {
-            'class': 'icon'
-        }).append($('<i>', {
-            'class': report[figure].class
-        }))])));
-        $('#' + report[figure].id + '-counter').effect("bounce", "slow");
-    }
-}
-
 function getReportSEFT(response) {
     const report = {
         "downloads": {
@@ -134,6 +71,74 @@ function getReportEQ(response) {
     };
 
     return report;
+}
+
+function displayCollectionInstrumentData(collectionInstrumentType, response) {
+
+    const timeUpdated = moment.unix(response.metadata.timeUpdated).calendar(); // eslint-disable-line
+    let report = {};
+
+    if (collectionInstrumentType.toLowerCase() === "eq") {
+        report = getReportEQ(response);
+    } else {
+        report = getReportSEFT(response);
+    }
+    $("#counters").empty();
+    /* eslint-disable */
+    for (let figure in report) {
+        if (report.hasOwnProperty(figure)) {
+            $("#counters").append($("<div>", {
+                "class": "col-lg-6 col-xs-6"
+            }).append($("<div>", {
+                "class": "small-box bg-ons-light-blue",
+                "id": report[figure].id + "-box"
+            }).append([$("<div>", {
+                "class": "inner"
+            }).append([$("<h3>", {
+                "id": report[figure].id + "-counter"
+            }).text(report[figure].value), $("<p>").text(report[figure].title)]), $("<div>", {
+                "class": "icon"
+            }).append($("<i>", {
+                "class": report[figure].class
+            }))])));
+            $("#" + report[figure].id + "-counter").effect("bounce", "slow");
+        }
+    }
+    /* eslint-enable */
+
+    const progress = (report.uploads.value / report.sampleSize.value * 100).toFixed(2);
+
+    $("#sample-size-box").removeClass("bg-ons-light-blue").addClass("bg-ons-blue");
+    $("#progress-uploaded").text(report.uploads.value);
+    $("#time-updated").text(timeUpdated);
+    $("#progress-size").text(report.sampleSize.value);
+    $("#collex-progress").text(progress + "%").css("width", progress + "%");
+
+}
+
+function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true) {
+    const reportingURL = $("#collex-id").data("reporting-url");
+    const reportingRefreshCycle = $("#collex-id").data("reporting-refresh-cycle");
+    const collectionInstrumentType = $("#collex-id").data("collection-instrument-type");
+
+    $.ajax({
+        dataType: "json",
+        url: reportingURL + "reporting-api/v1/response-dashboard/" + collectionInstrumentType + "/collection-exercise/" + collexID
+    }).done((result) => {
+
+        $("#error-reporting").hide();
+        $(".content").show();
+
+        displayCollectionInstrumentData(collectionInstrumentType, result);
+
+    }).fail((result) => {
+        $("#error-reporting").show();
+        $(".content").hide();
+    }).always(function() {
+        if (enableTimeout) {
+            setTimeout(callAPI, reportingRefreshCycle);
+        }
+    });
 }
 
 $(document).ready(function() {

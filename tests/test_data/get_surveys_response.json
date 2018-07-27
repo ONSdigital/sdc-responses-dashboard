@@ -14,5 +14,13 @@
     "surveyRef": "063",
     "legalBasis": "Statistics of Trade Act 1947",
     "legalBasisRef": "STA1947"
+  },
+  {
+    "id": "04dbb407-4438-4f89-acc4-53445d753111",
+    "shortName": "QBS",
+    "longName": "Quarterly Business Survey",
+    "surveyRef": "064",
+    "legalBasis": "Statistics of Trade Act 1947",
+    "legalBasisRef": "STA1947"
   }
 ]

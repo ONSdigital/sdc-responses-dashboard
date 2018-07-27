@@ -60,5 +60,36 @@
     "updated": null,
     "deleted": false,
     "validationErrors": null
+  },
+  {
+    "id": "14fb3e68-4dca-46db-bf49-04b84e07e777",
+    "surveyId": "04dbb407-4438-4f89-acc4-53445d753111",
+    "name": "Quarterly Business Survey",
+    "actualExecutionDateTime": null,
+    "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
+    "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+    "actualPublishDateTime": null,
+    "periodStartDateTime": "2017-09-14T23:00:00.000Z",
+    "periodEndDateTime": "2017-09-15T22:59:59.000Z",
+    "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
+    "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
+    "executedBy": null,
+    "state": "LIVE",
+    "caseTypes": [
+      {
+        "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
+        "sampleUnitType": "B"
+      },
+      {
+        "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
+        "sampleUnitType": "BI"
+      }
+    ],
+    "exerciseRef": "201812",
+    "userDescription": "Quarterly Business Survey",
+    "created": null,
+    "updated": null,
+    "deleted": false,
+    "validationErrors": null
   }
 ]
