@@ -12,7 +12,7 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom.css') }}">
 	</head>
-	<body id="collex-id" data-collex="{{ collex_id }}" data-reporting-url="{{ reporting_url }}" data-reporting-refresh-cycle="{{ reporting_refresh_cycle }}" class="no-sidebar skin-black">
+	<body id="collex-id" data-collex="{{ collex_id }}" data-collection-instrument-type="{{ collection_instrument_type }}" data-reporting-url="{{ reporting_url }}" data-reporting-refresh-cycle="{{ reporting_refresh_cycle }}" class="no-sidebar skin-black">
 		<!-- sidebar-collapse -->
 		<div class="wrapper">
 			<header class="main-header">
@@ -74,60 +74,8 @@
 					</div>
                 </section>
 				<section id="main-content" class="content">
-					<div class="row">
-						<div class="col-lg-6 col-xs-6">
-							<!-- small box -->
-							<div class="small-box bg-ons-light-blue">
-								<div class="inner">
-									<h3 id="downloads-counter">0</h3>
-									<p>Downloads</p>
-								</div>
-								<div class="icon">
-									<i class="fa fa-download"></i>
-								</div>
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-6 col-xs-6">
-							<!-- small box -->
-							<div class="small-box bg-ons-light-blue">
-								<div class="inner">
-									<h3 id="uploads-counter">0
-										<sup style="font-size: 20px"></sup>
-									</h3>
-									<p>Uploads</p>
-								</div>
-								<div class="icon">
-									<i class="fa fa-upload"></i>
-								</div>
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-6 col-xs-6">
-							<!-- small box -->
-							<div class="small-box bg-ons-light-blue">
-								<div class="inner">
-									<h3 id="accounts-enrolled-counter">0</h3>
-									<p>Accounts Enrolled</p>
-								</div>
-								<div class="icon">
-									<i class="fa fa-users"></i>
-								</div>
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-6 col-xs-6">
-							<!-- small box -->
-							<div class="small-box bg-ons-blue">
-								<div class="inner">
-									<h3 id="sample-size-counter">0</h3>
-									<p>Sample Size</p>
-								</div>
-								<div class="icon">
-									<i class="fa fa-sitemap fa-color-white"></i>
-								</div>
-							</div>
-						</div>
+					<div class="row" id="counters">
+						
 						<!-- ./col -->
 					</div>
 					<div class="row">

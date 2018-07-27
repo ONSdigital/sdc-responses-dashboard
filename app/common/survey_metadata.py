@@ -8,15 +8,22 @@ logger = get_logger()
 
 
 def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
+    all_eq_surveys = ['QBS']
+
     survey_data = {
         survey['id']: {
             'surveyId': survey['id'],
+            'collectionInstrumentType': 'seft',
             'shortName': survey['shortName'],
             'longName': survey['longName'],
             'surveyRef': survey['surveyRef'],
             'collectionExercises': []
         } for survey in surveys
     }
+
+    for survey in survey_data.values():
+        if survey['shortName'] in all_eq_surveys:
+            survey['collectionInstrumentType'] = 'eq'
 
     for collection_exercise in collection_exercises:
         try:
@@ -46,6 +53,7 @@ def map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises) -> 
         for collection_exercise in survey['collectionExercises']:
             collection_exercises_to_survey_ids[collection_exercise['collectionExerciseId']] = {
                 'surveyId': survey['surveyId'],
+                'collectionInstrumentType': survey['collectionInstrumentType'],
                 'shortName': survey['shortName'],
                 'longName': survey['longName'],
                 'userDescription': collection_exercise['userDescription'],

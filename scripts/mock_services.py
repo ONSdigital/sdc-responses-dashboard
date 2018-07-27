@@ -10,15 +10,17 @@ app.env = 'development'
 CORS(app)
 
 
-@app.route('/reporting-api/v1/response-dashboard/collection_exercise/<collection_exercise_id>', methods=['GET'])
-def get_report(collection_exercise_id):
+@app.route('/reporting-api/v1/response-dashboard/<collection_instrument_type>/collection-exercise/<collection_exercise_id>', methods=['GET'])
+def get_report(collection_instrument_type, collection_exercise_id):
+
     sample_size = randint(100, 1000)
     accounts_created = randint(0, sample_size)
     downloads = randint(0, accounts_created)
     uploads = randint(0, downloads)
+    accounts_enrolled = randint(uploads, accounts_created)
 
-    return Response(
-        json.dumps({
+    if collection_instrument_type.lower() == 'seft':
+        response = {
             'metadata': {
                 'collectionExerciseId': collection_exercise_id,
                 'timeUpdated': datetime.now().timestamp()
@@ -29,8 +31,24 @@ def get_report(collection_exercise_id):
                 'accountsEnrolled': accounts_created,
                 'sampleSize': sample_size
             }
-        }),
-        content_type='application/json')
+        }
+    else:
+        response = {
+            'metadata': {
+                'collectionExerciseId': collection_exercise_id,
+                'timeUpdated': datetime.now().timestamp()
+            },
+            'report': {
+                'inProgress': downloads - uploads,
+                'accountsCreated': accounts_created,
+                'accountsEnrolled': accounts_enrolled,
+                'notStarted': sample_size - downloads,
+                'completed': uploads,
+                'sampleSize': sample_size
+            }
+        }
+
+    return Response(json.dumps(response), content_type='application/json')
 
 
 @app.route('/surveys', methods=['GET'])
@@ -51,6 +69,14 @@ def get_surveys():
                     "shortName": "AOFDI",
                     "longName": "Annual Outward Foreign Direct Investment Survey",
                     "surveyRef": "063",
+                    "legalBasis": "Statistics of Trade Act 1947",
+                    "legalBasisRef": "STA1947"
+                },
+                {
+                    "id": "04dbb407-4438-4f89-acc4-53445d753111",
+                    "shortName": "QBS",
+                    "longName": "Quarterly Business Survey",
+                    "surveyRef": "064",
                     "legalBasis": "Statistics of Trade Act 1947",
                     "legalBasisRef": "STA1947"
                 }
@@ -214,6 +240,37 @@ def get_collection_exercises():
                     ],
                     "exerciseRef": "201812",
                     "userDescription": "You Can't See Me",
+                    "created": None,
+                    "updated": None,
+                    "deleted": False,
+                    "validationErrors": None
+                },
+                {
+                    "id": "14fb3e68-4dca-46db-bf49-04b84e07e777",
+                    "surveyId": "04dbb407-4438-4f89-acc4-53445d753111",
+                    "name": "Quarterly Business Survey",
+                    "actualExecutionDateTime": None,
+                    "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
+                    "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                    "actualPublishDateTime": None,
+                    "periodStartDateTime": "2017-09-14T23:00:00.000Z",
+                    "periodEndDateTime": "2017-09-15T22:59:59.000Z",
+                    "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
+                    "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
+                    "executedBy": None,
+                    "state": "LIVE",
+                    "caseTypes": [
+                        {
+                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
+                            "sampleUnitType": "B"
+                        },
+                        {
+                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
+                            "sampleUnitType": "BI"
+                        }
+                    ],
+                    "exerciseRef": "201812",
+                    "userDescription": "Quarterly Business Survey",
                     "created": None,
                     "updated": None,
                     "deleted": False,

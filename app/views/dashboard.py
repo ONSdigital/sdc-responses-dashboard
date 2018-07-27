@@ -37,6 +37,7 @@ def get_survey_details(collection_exercise_id):
         'reporting.html',
         collex_id=collection_exercise_id,
         all_surveys=surveys_metadata,
+        collection_instrument_type=collection_exercise['collectionInstrumentType'],
         survey_short_name=collection_exercise['shortName'],
         survey_long_name=collection_exercise['longName'],
         collection_exercise=collection_exercise['userDescription'],
