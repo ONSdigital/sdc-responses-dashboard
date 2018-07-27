@@ -1,6 +1,18 @@
 from distutils.util import strtobool
 import os
 
+REQUIRED_ENVIRONMENT_VARIABLES = {
+    'DEBUG',
+    'PORT',
+    'HOST',
+    'COLLECTION_EXERCISE_URL',
+    'SURVEY_URL',
+    'REPORTING_URL',
+    'REPORTING_REFRESH_CYCLE',
+    'AUTH_USERNAME',
+    'AUTH_PASSWORD'
+}
+
 
 class Config:
     DEBUG = os.getenv('DEBUG', False)
