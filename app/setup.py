@@ -70,6 +70,6 @@ def _configure_logger(level='INFO', indent=False):
 
 
 def check_required_config(app_config):
-    missing_vars = {var for var in config.REQUIRED_ENVIRONMENT_VARIABLES if vars(app_config).get(var) is None}
+    missing_vars = {var for var in config.REQUIRED_ENVIRONMENT_VARIABLES if not vars(app_config).get(var)}
     if missing_vars:
         raise MissingConfigError(missing_vars)
