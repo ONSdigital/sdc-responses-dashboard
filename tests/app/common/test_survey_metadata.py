@@ -111,7 +111,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'shortName': 'BRES',
                  'surveyType': 'Business',
                  'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
-                 'userDescription': 'January 2018'},
+                 'userDescription': 'January 2018'}
         }
 
         actual_result = map_collection_exercise_id_to_survey_id(
@@ -179,8 +179,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'shortName': 'QBS',
                  'surveyType': 'Business',
                  'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
-                 'userDescription': 'Quarterly '
-                                    'Business Survey'},
+                 'userDescription': 'Quarterly Business Survey'},
             '24fb3e68-4dca-46db-bf49-04b84e07e77c':
                 {'collectionInstrumentType': 'seft',
                  'exerciseRef': '201801',
@@ -204,10 +203,14 @@ class TestSurveyMetadata(AppContextTestCase):
         collection_exercises, surveys = self.fetch_mock_survey_and_collection_exercises_response()
 
         for survey in surveys:
-            self.assertEqual(survey['surveyType'], 'Business')
+            self.assertEqual(survey['surveyType'],
+                             'Business',
+                             'Found survey type not equal to "Business" in surveys list')
 
         for collection_exercise in collection_exercises.values():
-            self.assertEqual(collection_exercise['surveyType'], 'Business')
+            self.assertEqual(collection_exercise['surveyType'],
+                             'Business',
+                             'Found survey type not equal to "Business" in collection exercise map')
 
     def fetch_mock_survey_and_collection_exercises_response(self):
         # Requires @responses.activate
