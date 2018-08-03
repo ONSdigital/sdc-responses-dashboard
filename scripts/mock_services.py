@@ -10,7 +10,9 @@ app.env = 'development'
 CORS(app)
 
 
-@app.route('/reporting-api/v1/response-dashboard/<collection_instrument_type>/collection-exercise/<collection_exercise_id>', methods=['GET'])
+@app.route(
+    '/reporting-api/v1/response-dashboard/<collection_instrument_type>/collection-exercise/<collection_exercise_id>',
+    methods=['GET'])
 def get_report(collection_instrument_type, collection_exercise_id):
     rand_gen = SystemRandom()
 
@@ -63,7 +65,8 @@ def get_surveys():
                     "longName": "Business Register and Employment Survey",
                     "surveyRef": "221",
                     "legalBasis": "Statistics of Trade Act 1947",
-                    "legalBasisRef": "STA1947"
+                    "legalBasisRef": "STA1947",
+                    "surveyType": "Business"
                 },
                 {
                     "id": "04dbb407-4438-4f89-acc4-53445d75330c",
@@ -71,13 +74,24 @@ def get_surveys():
                     "longName": "Annual Outward Foreign Direct Investment Survey",
                     "surveyRef": "063",
                     "legalBasis": "Statistics of Trade Act 1947",
-                    "legalBasisRef": "STA1947"
+                    "legalBasisRef": "STA1947",
+                    "surveyType": "Business"
                 },
                 {
                     "id": "04dbb407-4438-4f89-acc4-53445d753111",
                     "shortName": "QBS",
                     "longName": "Quarterly Business Survey",
                     "surveyRef": "064",
+                    "legalBasis": "Statistics of Trade Act 1947",
+                    "legalBasisRef": "STA1947",
+                    "surveyType": "Business"
+                },
+                {
+                    "id": "56dbb407-4438-4f89-acc4-53445d753111",
+                    "shortName": "LMS",
+                    "longName": "Labour Market Survey",
+                    "surveyRef": "999",
+                    "surveyType": "Social",
                     "legalBasis": "Statistics of Trade Act 1947",
                     "legalBasisRef": "STA1947"
                 }

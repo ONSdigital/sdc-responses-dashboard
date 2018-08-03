@@ -27,17 +27,14 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
     survey_data = {
         survey['id']: {
             'surveyId': survey['id'],
-            'collectionInstrumentType': 'eq',
+            'collectionInstrumentType': 'seft' if survey['id'] in SEFT_SURVEYS else 'eq',
             'shortName': survey['shortName'],
             'longName': survey['longName'],
             'surveyRef': survey['surveyRef'],
+            'surveyType': survey['surveyType'],
             'collectionExercises': []
         } for survey in surveys
     }
-
-    for survey in survey_data.values():
-        if survey['surveyId'] in SEFT_SURVEYS:
-            survey['collectionInstrumentType'] = 'seft'
 
     for collection_exercise in collection_exercises:
         try:
@@ -70,6 +67,7 @@ def map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises) -> 
                 'collectionInstrumentType': survey['collectionInstrumentType'],
                 'shortName': survey['shortName'],
                 'longName': survey['longName'],
+                'surveyType': survey['surveyType'],
                 'userDescription': collection_exercise['userDescription'],
                 'exerciseRef': collection_exercise['exerciseRef']
             }
@@ -82,8 +80,14 @@ def fetch_survey_and_collection_exercise_metadata() -> (list, dict):
     live_collection_exercises = _filter_ready_collection_exercises(collection_exercises)
     surveys = get_survey_list()
 
-    surveys_to_collection_exercises = map_surveys_to_collection_exercises(surveys, live_collection_exercises)
-    collection_exercises_to_survey_ids = map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises)
+    surveys_to_collection_exercises = _filter_surveys_to_business_surveys(
+        map_surveys_to_collection_exercises(
+            surveys,
+            live_collection_exercises))
+
+    collection_exercises_to_survey_ids = _filter_collection_exercise_to_business_surveys(
+        map_collection_exercise_id_to_survey_id(
+            surveys_to_collection_exercises))
 
     return surveys_to_collection_exercises, collection_exercises_to_survey_ids
 
@@ -94,3 +98,16 @@ def _filter_ready_collection_exercises(collection_exercises: list) -> list:
         for collection_exercise in collection_exercises
         if collection_exercise['state'] in {'READY_FOR_LIVE', 'LIVE'}
     ]
+
+
+def _filter_surveys_to_business_surveys(surveys: list) -> list:
+    return [
+        survey for survey in surveys
+        if survey['surveyType'] == 'Business'
+    ]
+
+
+def _filter_collection_exercise_to_business_surveys(collection_exercises: dict) -> dict:
+    return {
+        k: v for k, v in collection_exercises.items() if v['surveyType'] == 'Business'
+    }
