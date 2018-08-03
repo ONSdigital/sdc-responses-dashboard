@@ -1,0 +1,21 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a href="{{ url_for('dashboard.get_surveys') }}" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">
+        <b>R</b>D</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">
+        <b>Responses</b>Dashboard</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        {%- if collex_id -%}
+            <!-- Choose Survey button -->
+            <a href="#" data-toggle="modal" data-target="#modal-survey" class="sidebar-toggle" role="button">
+            <span class="sr-only">Choose Survey</span>
+                <strong id="choose-survey"> Choose Survey</strong>
+            </a>
+        {%- endif %}
+    </nav>
+</header>

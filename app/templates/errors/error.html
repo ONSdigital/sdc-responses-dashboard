@@ -13,35 +13,11 @@
 	<body class="no-sidebar skin-black">
 		<!-- sidebar-collapse -->
 		<div class="wrapper">
-			<header class="main-header">
-				<!-- Logo -->
-				<a href="../../dashboard" class="logo">
-					<!-- mini logo for sidebar mini 50x50 pixels -->
-					<span class="logo-mini">
-					<b>R</b>D</span>
-					<!-- logo for regular state and mobile devices -->
-					<span class="logo-lg">
-					<b>Responses</b>Dashboard</span>
-				</a>
-				<!-- Header Navbar: style can be found in header.less -->
-				<nav class="navbar navbar-static-top">
-					<!-- Navbar Right Menu -->
-					<div class="navbar-custom-menu">
-					</div>
-				</nav>
-			</header>
+			{% include 'partials/_header.html' %}
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
-				<section class="content-header">
-					<ol class="breadcrumb">
-						<li>
-							<a href="../../dashboard">
-							<i class="fa fa-dashboard"></i> Dashboard</a>
-						</li>
-						<li class="active">{{ status_code ~ " " ~ error_name }}</li>
-					</ol>
-				</section>
+				{% include 'partials/_content_header.html' %}
 				<!-- Main content -->
 				<section class="content">
 					<div class="error-page">
@@ -52,7 +28,7 @@
 							</h3>
 							<p>
 								{{ error_msg }} Meanwhile, you may
-								<a href="../../dashboard">return to the homepage</a>
+								<a href="{{ url_for('dashboard.get_surveys') }}">return to the homepage</a>
 							</p>
 						</div>
 						<!-- /.error-content -->
@@ -62,14 +38,7 @@
 				<!-- /.content -->
 			</div>
 			<!-- /.content-wrapper -->
-			<footer class="main-footer">
-				<div class="pull-right hidden-xs">
-					<b>SDC Responses Dashboard</b> v2.0.0
-				</div>
-				<strong>
-				<span id="time-updated">&nbsp;</span>
-				</strong>
-			</footer>
+			{% include 'partials/_footer.html' %}
 		</div>
 		<!-- ./wrapper -->
 		{% include 'partials/_scripts.html' %}

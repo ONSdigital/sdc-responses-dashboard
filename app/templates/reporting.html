@@ -10,48 +10,16 @@
 		<!-- DataTables -->
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap.min.css">
 		<!-- Custom CSS -->
-		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom-reporting.css') }}">
 	</head>
 	<body id="collex-id" data-collex="{{ collex_id }}" data-collection-instrument-type="{{ collection_instrument_type }}" data-reporting-url="{{ reporting_url }}" data-reporting-refresh-cycle="{{ reporting_refresh_cycle }}" class="no-sidebar skin-black">
 		<!-- sidebar-collapse -->
 		<div class="wrapper">
-			<header class="main-header">
-				<!-- Logo -->
-				<a href="../../dashboard" class="logo">
-					<!-- mini logo for sidebar mini 50x50 pixels -->
-					<span class="logo-mini">
-					<b>R</b>D</span>
-					<!-- logo for regular state and mobile devices -->
-					<span class="logo-lg">
-					<b>Responses</b>Dashboard</span>
-				</a>
-				<!-- Header Navbar: style can be found in header.less -->
-				<nav class="navbar navbar-static-top">
-					<!-- Sidebar toggle button -->
-					<a href="#" data-toggle="modal" data-target="#modal-survey" class="sidebar-toggle" role="button">
-					<span class="sr-only">Choose Survey</span>
-						<strong id="choose-survey"> Choose Survey</strong>
-					</a>
-				</nav>
-			</header>
+			{% include 'partials/_header.html' %}
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
-				<section class="content-header">
-					<h1 id="survey-short-name">
-						{{ survey_short_name ~ " | " ~ collection_exercise }}
-					</h1>
-					<ol class="breadcrumb">
-						<li>
-							<a href="../../dashboard">
-							<i class="fa fa-dashboard"></i> Dashboard</a>
-						</li>
-						<li>
-							<a href="#">Survey</a>
-						</li>
-						<li class="active" id="survey-long-name">{{ survey_long_name }}</li>
-					</ol>
-				</section>
+				{% include 'partials/_content_header.html' %}
 				<!-- Main content -->
                 {% include 'partials/_modal_collex.html' %}
                 {% include 'partials/_modal_survey.html' %}
@@ -63,7 +31,7 @@
 							</h3>
 							<p>
 								Sorry, data retrieval failed, meanwhile, you may
-								<a href="../../dashboard">return to the homepage</a>
+								<a href="{{ url_for('dashboard.get_surveys') }}">return to the homepage</a>
 							</p>
 						</div>
 						<!-- /.error-content -->
@@ -111,14 +79,7 @@
 				<!-- /.content -->
 			</div>
 			<!-- /.content-wrapper -->
-			<footer class="main-footer">
-				<div class="pull-right hidden-xs">
-					<b>SDC Responses Dashboard</b> v2.0.0
-				</div>
-				<strong>Last Updated:
-				<span id="time-updated">01/01/2018</span>
-				</strong>
-			</footer>
+			{% include 'partials/_footer.html' %}
 		</div>
 		<!-- ./wrapper -->
 		{% include 'partials/_scripts.html' %}

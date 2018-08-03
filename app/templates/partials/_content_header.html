@@ -1,0 +1,21 @@
+<section class="content-header">
+    {% if survey_short_name and collection_exercise %}
+        <h1 id="survey-short-name">
+            {{ survey_short_name ~ " | " ~ collection_exercise }}
+        </h1>
+    {% endif %}
+    <ol class="breadcrumb">
+        <li>
+            <a href="{{ url_for('dashboard.get_surveys') }}">
+            <i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        {% if survey_long_name and collection_exercise %}
+            <li>
+                <a href="#">Survey</a>
+            </li>
+            <li class="active" id="survey-long-name">{{ survey_long_name }}</li>
+        {% elif status_code and error_name %}
+            <li class="active">{{ status_code ~ " " ~ error_name }}</li>
+        {% endif %}
+    </ol>
+</section>
