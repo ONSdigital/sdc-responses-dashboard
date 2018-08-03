@@ -4,6 +4,7 @@
     "shortName": "BRES",
     "longName": "Business Register and Employment Survey",
     "surveyRef": "221",
+    "surveyType": "Business",
     "legalBasis": "Statistics of Trade Act 1947",
     "legalBasisRef": "STA1947"
   },
@@ -12,6 +13,7 @@
     "shortName": "AOFDI",
     "longName": "Annual Outward Foreign Direct Investment Survey",
     "surveyRef": "063",
+    "surveyType": "Business",
     "legalBasis": "Statistics of Trade Act 1947",
     "legalBasisRef": "STA1947"
   },
@@ -20,6 +22,16 @@
     "shortName": "QBS",
     "longName": "Quarterly Business Survey",
     "surveyRef": "064",
+    "surveyType": "Business",
+    "legalBasis": "Statistics of Trade Act 1947",
+    "legalBasisRef": "STA1947"
+  },
+  {
+    "id": "56dbb407-4438-4f89-acc4-53445d753111",
+    "shortName": "LMS",
+    "longName": "Labour Market Survey",
+    "surveyRef": "999",
+    "surveyType": "Social",
     "legalBasis": "Statistics of Trade Act 1947",
     "legalBasisRef": "STA1947"
   }
