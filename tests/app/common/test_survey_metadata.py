@@ -18,10 +18,62 @@ class TestSurveyMetadata(AppContextTestCase):
     with open(os.path.join(this_file_path, '../../test_data/get_collection_exercises_response.json')) as fp:
         collection_exercises_response = json.load(fp)
 
-    def test_map_surveys_to_collection_exercises(self):
+    def test_map_surveys_to_collection_exercises_for_seft(self):
         expected_result = [
             {
                 'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                'shortName': 'BRES',
+                'longName': 'Business Register and Employment Survey',
+                'collectionInstrumentType': 'seft',
+                'surveyRef': '221',
+                'collectionExercises': [
+                    {
+                        'collectionExerciseId': '14fb3e68-4dca-46db-bf49-04b84e07e77c',
+                        'userDescription': 'December 2017',
+                        'exerciseRef': '201712'
+                    },
+                    {
+                        'collectionExerciseId': '24fb3e68-4dca-46db-bf49-04b84e07e77c',
+                        'userDescription': 'January 2018',
+                        'exerciseRef': '201801'
+                    }
+                ]
+            },
+            {
+                'surveyId': '04dbb407-4438-4f89-acc4-53445d75330c',
+                'shortName': 'AOFDI',
+                'collectionInstrumentType': 'seft',
+                'longName': 'Annual Outward Foreign Direct Investment Survey',
+                'surveyRef': '063',
+                'collectionExercises': []
+            },
+            {
+                'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
+                'collectionInstrumentType': 'eq',
+                'shortName': 'QBS',
+                'longName': 'Quarterly Business Survey',
+                'surveyRef': '064',
+                'collectionExercises': [
+                    {
+                        'collectionExerciseId': '14fb3e68-4dca-46db-bf49-04b84e07e777',
+                        'userDescription': 'Quarterly Business Survey',
+                        'exerciseRef': '201812'
+                    }
+                ]
+            }
+        ]
+
+        actual_result = map_surveys_to_collection_exercises(
+            self.surveys_response,
+            self.collection_exercises_response)
+
+        self.assertEqual(expected_result, actual_result)
+
+    def test_map_surveys_to_collection_exercises_for_eq(self):
+        expected_result = [
+            {
+                'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                'collectionInstrumentType': 'seft',
                 'shortName': 'BRES',
                 'longName': 'Business Register and Employment Survey',
                 'surveyRef': '221',
@@ -40,10 +92,25 @@ class TestSurveyMetadata(AppContextTestCase):
             },
             {
                 'surveyId': '04dbb407-4438-4f89-acc4-53445d75330c',
+                'collectionInstrumentType': 'seft',
                 'shortName': 'AOFDI',
                 'longName': 'Annual Outward Foreign Direct Investment Survey',
                 'surveyRef': '063',
                 'collectionExercises': []
+            },
+            {
+                'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
+                'collectionInstrumentType': 'eq',
+                'shortName': 'QBS',
+                'longName': 'Quarterly Business Survey',
+                'surveyRef': '064',
+                'collectionExercises': [
+                    {
+                        'collectionExerciseId': '14fb3e68-4dca-46db-bf49-04b84e07e777',
+                        'userDescription': 'Quarterly Business Survey',
+                        'exerciseRef': '201812'
+                    }
+                ]
             }
         ]
 
@@ -55,21 +122,32 @@ class TestSurveyMetadata(AppContextTestCase):
 
     def test_map_collection_exercise_id_to_survey_id(self):
         expected_result = {
-            '14fb3e68-4dca-46db-bf49-04b84e07e77c': {
-                'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
-                'shortName': 'BRES',
-                'longName': 'Business Register and Employment Survey',
-                'userDescription': 'December 2017',
-                'exerciseRef': '201712'
-            },
-            '24fb3e68-4dca-46db-bf49-04b84e07e77c': {
-                'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
-                'shortName': 'BRES',
-                'longName': 'Business Register and Employment Survey',
-                'userDescription': 'January 2018',
-                'exerciseRef': '201801'
-            }
-        }
+            '14fb3e68-4dca-46db-bf49-04b84e07e777':
+                {'collectionInstrumentType': 'eq',
+                 'exerciseRef': '201812',
+                 'longName': 'Quarterly Business '
+                             'Survey',
+                 'shortName': 'QBS',
+                 'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
+                 'userDescription': 'Quarterly '
+                                    'Business Survey'},
+            '14fb3e68-4dca-46db-bf49-04b84e07e77c':
+                {'collectionInstrumentType': 'seft',
+
+                 'exerciseRef': '201712',
+                 'longName': 'Business Register and '
+                             'Employment Survey',
+                 'shortName': 'BRES',
+                 'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                 'userDescription': 'December 2017'},
+            '24fb3e68-4dca-46db-bf49-04b84e07e77c':
+                {'collectionInstrumentType': 'seft',
+                 'exerciseRef': '201801',
+                 'longName': 'Business Register and '
+                             'Employment Survey',
+                 'shortName': 'BRES',
+                 'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                 'userDescription': 'January 2018'}}
 
         actual_result = map_collection_exercise_id_to_survey_id(
             map_surveys_to_collection_exercises(self.surveys_response, self.collection_exercises_response))
@@ -83,9 +161,7 @@ class TestSurveyMetadata(AppContextTestCase):
 
     @responses.activate
     def test_only_ready_collection_exercises_returned_after_filter(self):
-
         with self.app.app_context():
-
             # Mock the survey and collection exercise services
             responses.add(
                 responses.GET,
@@ -102,6 +178,7 @@ class TestSurveyMetadata(AppContextTestCase):
             {
                 'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                 'shortName': 'BRES',
+                'collectionInstrumentType': 'seft',
                 'longName': 'Business Register and Employment Survey',
                 'surveyRef': '221',
                 'collectionExercises': [
@@ -115,21 +192,45 @@ class TestSurveyMetadata(AppContextTestCase):
             {
                 'surveyId': '04dbb407-4438-4f89-acc4-53445d75330c',
                 'shortName': 'AOFDI',
+                'collectionInstrumentType': 'seft',
                 'longName': 'Annual Outward Foreign Direct Investment Survey',
                 'surveyRef': '063',
                 'collectionExercises': []
+            },
+            {
+                'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
+                'collectionInstrumentType': 'eq',
+                'shortName': 'QBS',
+                'longName': 'Quarterly Business Survey',
+                'surveyRef': '064',
+                'collectionExercises': [
+                    {
+                        'collectionExerciseId': '14fb3e68-4dca-46db-bf49-04b84e07e777',
+                        'userDescription': 'Quarterly Business Survey',
+                        'exerciseRef': '201812'
+                    }
+                ]
             }
         ]
 
         expected_collection_exercises = {
-            '24fb3e68-4dca-46db-bf49-04b84e07e77c': {
-                'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
-                'shortName': 'BRES',
-                'longName': 'Business Register and Employment Survey',
-                'userDescription': 'January 2018',
-                'exerciseRef': '201801'
-            }
-        }
+            '14fb3e68-4dca-46db-bf49-04b84e07e777':
+                {'collectionInstrumentType': 'eq',
+                 'exerciseRef': '201812',
+                 'longName': 'Quarterly Business '
+                             'Survey',
+                 'shortName': 'QBS',
+                 'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
+                 'userDescription': 'Quarterly '
+                                    'Business Survey'},
+            '24fb3e68-4dca-46db-bf49-04b84e07e77c':
+                {'collectionInstrumentType': 'seft',
+                 'exerciseRef': '201801',
+                 'longName': 'Business Register and '
+                             'Employment Survey',
+                 'shortName': 'BRES',
+                 'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                 'userDescription': 'January 2018'}}
 
         self.assertEqual(expected_surveys,
                          surveys,

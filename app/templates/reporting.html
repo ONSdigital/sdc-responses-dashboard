@@ -12,7 +12,7 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom.css') }}">
 	</head>
-	<body id="collex-id" data-collex="{{ collex_id }}" data-reporting-url="{{ reporting_url }}" data-reporting-refresh-cycle="{{ reporting_refresh_cycle }}" class="no-sidebar skin-black">
+	<body id="collex-id" data-collex="{{ collex_id }}" data-collection-instrument-type="{{ collection_instrument_type }}" data-reporting-url="{{ reporting_url }}" data-reporting-refresh-cycle="{{ reporting_refresh_cycle }}" class="no-sidebar skin-black">
 		<!-- sidebar-collapse -->
 		<div class="wrapper">
 			<header class="main-header">
@@ -29,12 +29,9 @@
 				<nav class="navbar navbar-static-top">
 					<!-- Sidebar toggle button -->
 					<a href="#" data-toggle="modal" data-target="#modal-survey" class="sidebar-toggle" role="button">
-					<span class="sr-only">Toggle navigation</span>
+					<span class="sr-only">Choose Survey</span>
 						<strong id="choose-survey"> Choose Survey</strong>
 					</a>
-					<!-- Navbar Right Menu -->
-					<div class="navbar-custom-menu">
-					</div>
 				</nav>
 			</header>
 			<!-- Content Wrapper. Contains page content -->
@@ -55,7 +52,6 @@
 						<li class="active" id="survey-long-name">{{ survey_long_name }}</li>
 					</ol>
 				</section>
-
 				<!-- Main content -->
                 {% include 'partials/_modal_collex.html' %}
                 {% include 'partials/_modal_survey.html' %}
@@ -74,61 +70,7 @@
 					</div>
                 </section>
 				<section id="main-content" class="content">
-					<div class="row">
-						<div class="col-lg-6 col-xs-6">
-							<!-- small box -->
-							<div class="small-box bg-ons-light-blue">
-								<div class="inner">
-									<h3 id="downloads-counter">0</h3>
-									<p>Downloads</p>
-								</div>
-								<div class="icon">
-									<i class="fa fa-download"></i>
-								</div>
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-6 col-xs-6">
-							<!-- small box -->
-							<div class="small-box bg-ons-light-blue">
-								<div class="inner">
-									<h3 id="uploads-counter">0
-										<sup style="font-size: 20px"></sup>
-									</h3>
-									<p>Uploads</p>
-								</div>
-								<div class="icon">
-									<i class="fa fa-upload"></i>
-								</div>
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-6 col-xs-6">
-							<!-- small box -->
-							<div class="small-box bg-ons-light-blue">
-								<div class="inner">
-									<h3 id="accounts-enrolled-counter">0</h3>
-									<p>Accounts Enrolled</p>
-								</div>
-								<div class="icon">
-									<i class="fa fa-users"></i>
-								</div>
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-6 col-xs-6">
-							<!-- small box -->
-							<div class="small-box bg-ons-blue">
-								<div class="inner">
-									<h3 id="sample-size-counter">0</h3>
-									<p>Sample Size</p>
-								</div>
-								<div class="icon">
-									<i class="fa fa-sitemap fa-color-white"></i>
-								</div>
-							</div>
-						</div>
-						<!-- ./col -->
+					<div class="row" id="counters">
 					</div>
 					<div class="row">
 						<div class="col-md-12">
