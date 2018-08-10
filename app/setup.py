@@ -24,7 +24,7 @@ def create_app():
     app.config.from_object(app_config)
 
     _configure_logger(level=app.config['LOGGING_LEVEL'],
-                      indent=app.config['LOGGING_JSON_INDENT'])
+                      indent=int(app.config['LOGGING_JSON_INDENT']))
 
     add_blueprints(app)
     add_error_handlers(app)
@@ -49,7 +49,7 @@ def add_error_handlers(app):
     app.register_error_handler(500, internal_server_error)
 
 
-def _configure_logger(level='INFO', indent=False):
+def _configure_logger(level='INFO', indent=0):
     logging.basicConfig(stream=sys.stdout, level=level, format='%(asctime)s %(levelname)s %(message)s')
 
     structlog.configure(

@@ -42,7 +42,7 @@ def get_survey_details(collection_exercise_id):
         survey_long_name=collection_exercise['longName'],
         collection_exercise=collection_exercise['userDescription'],
         reporting_url=current_app.config['REPORTING_URL'],
-        reporting_refresh_cycle=current_app.config['REPORTING_REFRESH_CYCLE']
+        reporting_refresh_cycle=int(current_app.config['REPORTING_REFRESH_CYCLE'])
     )
 
 
