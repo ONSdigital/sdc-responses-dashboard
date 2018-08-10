@@ -50,8 +50,7 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
                 message = 'Reference to unknown survey id in collection exercise'
                 logger.error(message, collection_exercise_id=collection_exercise['id'])
                 raise UnknownSurveyError(
-                    message=message,
-                    survey_id=['surveyId'])
+                    message=message, survey_id=['surveyId'])
             else:
                 raise
 
