@@ -10,26 +10,13 @@
 		<!-- DataTables -->
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap.min.css">
 		<!-- Custom CSS -->
-		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom-reporting.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom-dashboard.css') }}">
 	</head>
 	<body id="collex-id" class="no-sidebar skin-black">
 		<!-- sidebar-collapse -->
 		<div class="wrapper">
-			<header class="main-header">
-				<!-- Logo -->
-				<a href="" class="logo">
-					<!-- mini logo for sidebar mini 50x50 pixels -->
-					<span class="logo-mini">
-					<b>R</b>D</span>
-					<!-- logo for regular state and mobile devices -->
-					<span class="logo-lg">
-					<b>Responses</b>Dashboard</span>
-				</a>
-				<!-- Header Navbar: style can be found in header.less -->
-				<nav class="navbar navbar-static-top">
-				</nav>
-			</header>
+			{% include 'partials/_header.html' %}
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
