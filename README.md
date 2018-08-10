@@ -1,6 +1,6 @@
-# SDC Responses Dashboard API
-[![Build Status](https://api.travis-ci.org/ONSdigital/sdc-responses-dashboard-api.svg?branch=master)](https://travis-ci.org/ONSdigital/sdc-responses-dashboard-api)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7aaabdc5ce3a47e587d95f6e2243be82)](https://www.codacy.com/app/MebinAbraham/sdc-responses-dashboard-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ONSdigital/sdc-responses-dashboard-api&amp;utm_campaign=Badge_Grade)
+# SDC Responses Dashboard
+[![Build Status](https://api.travis-ci.org/ONSdigital/sdc-responses-dashboard.svg?branch=master)](https://travis-ci.org/ONSdigital/sdc-responses-dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/80ad95f7aaa9477da6aa8fd9aec40f52)](https://www.codacy.com/project/MebinAbraham/sdc-responses-dashboard/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ONSdigital/sdc-responses-dashboard&amp;utm_campaign=Badge_Grade_Dashboard)
 
 ## Run the application
 

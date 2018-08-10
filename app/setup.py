@@ -36,9 +36,11 @@ def add_blueprints(app):
 
     from app.api.health import health_blueprint
     from app.views.dashboard import dashboard_blueprint
+    from app.api.reporting import reporting_blueprint
 
     app.register_blueprint(health_blueprint)
     app.register_blueprint(dashboard_blueprint)
+    app.register_blueprint(reporting_blueprint)
 
 
 def add_error_handlers(app):

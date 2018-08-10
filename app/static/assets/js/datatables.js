@@ -81,7 +81,7 @@ function loadCollexTableData(collexTable, id) {
 
     $("#collex-datatable tbody").on("click", "tr", function() {
         const id = collexTable.row(this).id();
-        const reportingURL = $("#collex-id").data("reporting-url");
+        const reportingURL = $("#collex-id").data("reporting-proxy-url");
 
         if (typeof id !== "undefined") {
             if (typeof reportingURL == "undefined") {
