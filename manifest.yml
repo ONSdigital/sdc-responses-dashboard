@@ -1,0 +1,10 @@
+---
+application:
+- name: sdc-responses-dashboard
+  disk_quota: 1G
+  health-check-http-endpoint: /health
+  health-check-type: http
+  instances: 1
+  memory: 512M
+  stack: cflinuxfs2
+  timeout: 180
