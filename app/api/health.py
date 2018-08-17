@@ -4,6 +4,5 @@ health_blueprint = Blueprint(name='health', import_name=__name__)
 
 
 @health_blueprint.route('/health')
-@health_blueprint.route('/')
 def health():
     return jsonify({'status': 'healthy'})
