@@ -14,7 +14,7 @@ def clear_trailing():
         return redirect(rp[:-1])
 
 
-@dashboard_blueprint.route('/dashboard', methods=['GET'])
+@dashboard_blueprint.route('/', methods=['GET'])
 def get_surveys():
     surveys_metadata, _ = fetch_survey_and_collection_exercise_metadata()
 
@@ -24,7 +24,7 @@ def get_surveys():
     )
 
 
-@dashboard_blueprint.route('/dashboard/collection-exercise/<collection_exercise_id>', methods=['GET'])
+@dashboard_blueprint.route('/collection-exercise/<collection_exercise_id>', methods=['GET'])
 def get_survey_details(collection_exercise_id):
     surveys_metadata, collection_exercise_metadata = fetch_survey_and_collection_exercise_metadata()
     reporting_proxy_url = f'//{current_app.config["HOST"]}:{current_app.config["PORT"]}/reporting/'
