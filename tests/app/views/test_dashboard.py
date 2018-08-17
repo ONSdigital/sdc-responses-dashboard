@@ -34,7 +34,7 @@ class TestSurveyController(AppContextTestCase):
     def test_dashboard_homepage(self):
         self.mock_successful_external_api_calls()
 
-        response = self.test_client.get('/dashboard')
+        response = self.test_client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Choose A Survey', response.data)
         self.assertIn(b'Survey', response.data)
@@ -48,7 +48,7 @@ class TestSurveyController(AppContextTestCase):
     def test_dashboard_report_fails_gracefully(self):
         self.mock_successful_external_api_calls()
 
-        response = self.test_client.get('/dashboard/collection-exercise/24fb3e68-4dca-46db-bf49-04b84e07e77c')
+        response = self.test_client.get('/collection-exercise/24fb3e68-4dca-46db-bf49-04b84e07e77c')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'BRES | January 2018', response.data)
         self.assertIn(b'Business Register and Employment Survey', response.data)
@@ -58,7 +58,7 @@ class TestSurveyController(AppContextTestCase):
     def test_dashboard_report_invalid_collex(self):
         self.mock_successful_external_api_calls()
 
-        response = self.test_client.get('/dashboard/collection-exercise/invalid-collex')
+        response = self.test_client.get('/collection-exercise/invalid-collex')
         self.assertEqual(response.status_code, 404)
         self.assertIn(b'Sorry, we could not find the page you were looking for.', response.data)
 
@@ -66,5 +66,5 @@ class TestSurveyController(AppContextTestCase):
     def test_dashboard_redirects_to_non_trailing_slash(self):
         self.mock_successful_external_api_calls()
 
-        response = self.test_client.get('/dashboard/')
+        response = self.test_client.get('/collection-exercise/24fb3e68-4dca-46db-bf49-04b84e07e77c/')
         self.assertEqual(response.status_code, 302)
