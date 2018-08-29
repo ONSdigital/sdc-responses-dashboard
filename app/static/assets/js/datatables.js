@@ -81,10 +81,10 @@ function loadCollexTableData(collexTable, id) {
 
     $("#collex-datatable tbody").on("click", "tr", function() {
         const id = collexTable.row(this).id();
-        const reportingURL = $("#collex-id").data("reporting-proxy-url");
+        collexID = $("#collex-id").data("collex")
 
         if (typeof id !== "undefined") {
-            if (typeof reportingURL == "undefined") {
+            if (typeof collexID == "undefined") {
                 window.location.href = 'collection-exercise/' + id;
             } else {
                 window.location.href = id;
