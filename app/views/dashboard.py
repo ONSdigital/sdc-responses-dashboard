@@ -27,7 +27,6 @@ def get_surveys():
 @dashboard_blueprint.route('/collection-exercise/<collection_exercise_id>', methods=['GET'])
 def get_survey_details(collection_exercise_id):
     surveys_metadata, collection_exercise_metadata = fetch_survey_and_collection_exercise_metadata()
-    reporting_proxy_url = f'//{current_app.config["HOST"]}:{current_app.config["PORT"]}/reporting/'
     try:
         collection_exercise = collection_exercise_metadata[collection_exercise_id]
     except KeyError:
@@ -40,7 +39,6 @@ def get_survey_details(collection_exercise_id):
         collection_instrument_type=collection_exercise['collectionInstrumentType'],
         survey_short_name=collection_exercise['shortName'],
         survey_long_name=collection_exercise['longName'],
-        reporting_proxy_url=reporting_proxy_url,
         collection_exercise=collection_exercise['userDescription'],
         reporting_refresh_cycle=int(current_app.config['REPORTING_REFRESH_CYCLE'])
     )

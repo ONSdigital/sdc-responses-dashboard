@@ -117,13 +117,12 @@ function displayCollectionInstrumentData(collectionInstrumentType, response) {
 }
 
 function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true) {
-    const reportingURL = $("#collex-id").data("reporting-proxy-url");
     const reportingRefreshCycle = $("#collex-id").data("reporting-refresh-cycle");
     const collectionInstrumentType = $("#collex-id").data("collection-instrument-type");
 
     $.ajax({
         dataType: "json",
-        url: reportingURL + collectionInstrumentType + "/collection-exercise/" + collexID
+        url: "/reporting/" + collectionInstrumentType + "/collection-exercise/" + collexID
     }).done((result) => {
 
         $("#error-reporting").hide();
