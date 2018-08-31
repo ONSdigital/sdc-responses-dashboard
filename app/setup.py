@@ -6,6 +6,7 @@ from flask import Flask
 from flask_cors import CORS
 import structlog
 from structlog.processors import JSONRenderer
+from structlog.threadlocal import wrap_dict
 
 from app.exceptions import MissingConfigError
 import config
@@ -52,23 +53,38 @@ def add_error_handlers(app):
 
 
 def _configure_logger(level='INFO', indent=0):
-    logging.basicConfig(stream=sys.stdout, level=level, format='%(asctime)s %(levelname)s %(message)s')
+    logging.basicConfig(stream=sys.stdout, level=level, format='%(message)s')
+
+    def parse_exception(_, __, event_dict):
+        exception = event_dict.get('exception')
+        if exception:
+            event_dict['exception'] = exception.replace("\"", "'").split("\n")
+        return event_dict
+
+    def add_service(logger, method_name, event_dict):  # pylint: disable=unused-argument
+        """
+        Add the service name to the event dict.
+        """
+        event_dict['service'] = os.getenv('NAME', 'sdc-responses-dashboard')
+        return event_dict
 
     structlog.configure(
         processors=[
             structlog.stdlib.add_logger_name,
             structlog.stdlib.add_log_level,
-            structlog.stdlib.PositionalArgumentsFormatter(),
-            structlog.processors.TimeStamper(fmt='%Y-%m-%d %H:%M.%S', utc=True),
-            structlog.processors.StackInfoRenderer(),
+            structlog.stdlib.filter_by_level,
+            add_service,
+            structlog.processors.TimeStamper(fmt='%Y-%m-%dT%H:%M%s', utc=True),
             structlog.processors.format_exc_info,
+            parse_exception,
             JSONRenderer(indent=indent)
         ],
-        context_class=dict,
+        context_class=wrap_dict(dict),
         logger_factory=structlog.stdlib.LoggerFactory(),
         wrapper_class=structlog.stdlib.BoundLogger,
         cache_logger_on_first_use=True,
     )
+
 
 
 def check_required_config(app_config):
