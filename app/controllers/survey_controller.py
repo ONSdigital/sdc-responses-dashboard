@@ -4,7 +4,7 @@ from requests.auth import HTTPBasicAuth
 import requests.exceptions
 from structlog import get_logger
 
-from app.exceptions import ApiConnectionError
+from app.exceptions import APIConnectionError
 
 logger = get_logger()
 
@@ -18,7 +18,7 @@ def get_survey_list():
             auth=HTTPBasicAuth(app.config['AUTH_USERNAME'],
                                app.config['AUTH_PASSWORD']))
     except requests.exceptions.ConnectionError:
-        raise ApiConnectionError('Failed to connect to survey service')
+        raise APIConnectionError('Failed to connect to survey service')
 
     if response.status_code != 200:
         logger.error('Failed to retrieve surveys',

@@ -12,7 +12,7 @@ from structlog.stdlib import add_log_level, add_logger_name, filter_by_level, Lo
 from structlog.threadlocal import wrap_dict
 
 from app.errors.handlers import api_connection_error
-from app.exceptions import MissingConfigError, ApiConnectionError
+from app.exceptions import MissingConfigError, APIConnectionError
 import config
 
 
@@ -56,7 +56,7 @@ def add_error_handlers(app):
 
     app.register_error_handler(404, not_found_error)
     app.register_error_handler(500, internal_server_error)
-    app.register_error_handler(ApiConnectionError, api_connection_error)
+    app.register_error_handler(APIConnectionError, api_connection_error)
 
 
 def _configure_logger(level='INFO', indent=None):

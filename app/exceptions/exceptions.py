@@ -13,8 +13,8 @@ class MissingConfigError(Exception):
         self.keys = keys
 
 
-class ApiConnectionError(Exception):
+class APIConnectionError(Exception):
 
     def __init__(self, message):
-        super(ApiConnectionError, self).__init__(message)
+        super(APIConnectionError, self).__init__(message)
         self.message = message

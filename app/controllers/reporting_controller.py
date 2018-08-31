@@ -2,7 +2,7 @@ from flask import current_app
 import requests
 from structlog import get_logger
 
-from app.exceptions import ApiConnectionError
+from app.exceptions import APIConnectionError
 
 logger = get_logger()
 
@@ -16,7 +16,7 @@ def get_reporting_details(collectioninstrumenttype, collex_id):
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
-        raise ApiConnectionError('Failed to connect to reporting service')
+        raise APIConnectionError('Failed to connect to reporting service')
 
     response.raise_for_status()
 
