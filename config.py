@@ -24,7 +24,7 @@ class Config:
     AUTH_USERNAME = os.getenv('AUTH_USERNAME')
     AUTH_PASSWORD = os.getenv('AUTH_PASSWORD')
     LOGGING_LEVEL = os.getenv('LOGGING_LEVEL', 'INFO')
-    LOGGING_JSON_INDENT = os.getenv('LOGGING_JSON_INDENT', '0')
+    LOGGING_JSON_INDENT = os.getenv('LOGGING_JSON_INDENT')
 
 
 class DevelopmentConfig(Config):
@@ -38,6 +38,7 @@ class DevelopmentConfig(Config):
     REPORTING_REFRESH_CYCLE = os.getenv('REPORTING_REFRESH_CYCLE', '10000')
     AUTH_USERNAME = os.getenv('AUTH_USERNAME', 'admin')
     AUTH_PASSWORD = os.getenv('AUTH_PASSWORD', 'secret')
+    LOGGING_LEVEL = os.getenv('LOGGING_LEVEL', 'DEBUG')
     LOGGING_JSON_INDENT = os.getenv('LOGGING_JSON_INDENT', '4')
 
 
