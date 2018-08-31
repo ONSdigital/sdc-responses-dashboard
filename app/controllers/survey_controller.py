@@ -1,7 +1,7 @@
-from flask import current_app as app, abort
+from flask import current_app as app
 import requests
-import requests.exceptions
 from requests.auth import HTTPBasicAuth
+import requests.exceptions
 from structlog import get_logger
 
 from app.exceptions import ApiConnectionError

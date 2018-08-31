@@ -2,18 +2,18 @@ import logging
 import os
 import sys
 
-import structlog
 from flask import Flask
 from flask_cors import CORS
+import structlog
 from structlog import wrap_logger
 from structlog.processors import JSONRenderer
 from structlog.processors import TimeStamper, format_exc_info
 from structlog.stdlib import add_log_level, add_logger_name, filter_by_level, LoggerFactory
 from structlog.threadlocal import wrap_dict
 
-import config
 from app.errors.handlers import api_connection_error
 from app.exceptions import MissingConfigError, ApiConnectionError
+import config
 
 
 def create_app():

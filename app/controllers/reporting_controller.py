@@ -1,8 +1,8 @@
-from app.exceptions import ApiConnectionError
-
-import requests
 from flask import current_app
+import requests
 from structlog import get_logger
+
+from app.exceptions import ApiConnectionError
 
 logger = get_logger()
 
