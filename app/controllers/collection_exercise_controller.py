@@ -1,8 +1,10 @@
-from flask import current_app, abort
 import requests
-from requests.auth import HTTPBasicAuth
 import requests.exceptions
+from flask import current_app, abort
+from requests.auth import HTTPBasicAuth
 from structlog import get_logger
+
+from app.exceptions import ApiConnectionError
 
 logger = get_logger()
 
@@ -16,8 +18,7 @@ def get_collection_exercise_list():
             auth=HTTPBasicAuth(current_app.config['AUTH_USERNAME'],
                                current_app.config['AUTH_PASSWORD']))
     except requests.exceptions.ConnectionError:
-        logger.error('Failed to connect to collection exercise service')
-        abort(500)
+        raise ApiConnectionError('Failed to connect to collection exercise service')
     if response.status_code != 200:
         logger.error('Failed to retrieve collection exercises',
                      status_code=response.status_code,

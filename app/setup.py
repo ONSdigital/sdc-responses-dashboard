@@ -2,17 +2,18 @@ import logging
 import os
 import sys
 
+import structlog
 from flask import Flask
 from flask_cors import CORS
-import structlog
 from structlog import wrap_logger
 from structlog.processors import JSONRenderer
-from structlog.threadlocal import wrap_dict
-from structlog.stdlib import add_log_level, add_logger_name, filter_by_level, LoggerFactory
 from structlog.processors import TimeStamper, format_exc_info
+from structlog.stdlib import add_log_level, add_logger_name, filter_by_level, LoggerFactory
+from structlog.threadlocal import wrap_dict
 
-from app.exceptions import MissingConfigError
 import config
+from app.errors.handlers import api_connection_error
+from app.exceptions import MissingConfigError, ApiConnectionError
 
 
 def create_app():
@@ -27,8 +28,9 @@ def create_app():
 
     app.config.from_object(app_config)
 
-    _configure_logger()
+    _configure_logger(app.config['LOGGING_LEVEL'])
     logger = wrap_logger(logging.getLogger(__name__))
+    logger.info('Logger created', log_level=app.config['LOGGING_LEVEL'])
     logger.debug('App configuration set', config=app_config)
 
     add_blueprints(app)
@@ -54,6 +56,7 @@ def add_error_handlers(app):
 
     app.register_error_handler(404, not_found_error)
     app.register_error_handler(500, internal_server_error)
+    app.register_error_handler(ApiConnectionError, api_connection_error)
 
 
 def _configure_logger(level='INFO', indent=None):

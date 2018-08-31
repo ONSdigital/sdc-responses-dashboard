@@ -11,3 +11,10 @@ class MissingConfigError(Exception):
     def __init__(self, keys: set):
         super(MissingConfigError, self).__init__(keys)
         self.keys = keys
+
+
+class ApiConnectionError(Exception):
+
+    def __init__(self, message):
+        super(ApiConnectionError, self).__init__(message)
+        self.message = message
