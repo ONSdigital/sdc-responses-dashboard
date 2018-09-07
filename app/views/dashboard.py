@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, current_app, abort
 
 from app.common.survey_metadata import fetch_survey_and_collection_exercise_metadata
 
-dashboard_blueprint = Blueprint(name='dashboard', import_name=__name__)
+dashboard_blueprint = Blueprint(name='dashboard', import_name=__name__, url_prefix='/dashboard')
 
 
 @dashboard_blueprint.before_request

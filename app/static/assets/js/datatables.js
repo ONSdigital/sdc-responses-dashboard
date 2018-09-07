@@ -85,7 +85,7 @@ function loadCollexTableData(collexTable, id) {
 
         if (typeof id !== "undefined") {
             if (typeof collexID == "undefined") {
-                window.location.href = 'collection-exercise/' + id;
+                window.location.href = '/dashboard/collection-exercise/' + id;
             } else {
                 window.location.href = id;
             }

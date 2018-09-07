@@ -122,7 +122,7 @@ function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true
 
     $.ajax({
         dataType: "json",
-        url: "/reporting/" + collectionInstrumentType + "/collection-exercise/" + collexID
+        url: "/dashboard/reporting/" + collectionInstrumentType + "/collection-exercise/" + collexID
     }).done((result) => {
 
         $("#error-reporting").hide();

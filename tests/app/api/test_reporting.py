@@ -32,14 +32,14 @@ class TestReporting(AppContextTestCase):
     @responses.activate
     def test_reporting_details_malformed_collex(self):
 
-        response = self.test_client.get('/reporting/eq/collection-exercise/0002133304032532504')
+        response = self.test_client.get('/dashboard/reporting/eq/collection-exercise/0002133304032532504')
         self.assertEqual(response.status_code, 404)
         self.assertIn(b'Sorry, we could not find the page you were looking for.', response.data)
 
     @responses.activate
     def test_reporting_details_invalid_CI_type(self):
 
-        response = self.test_client.get('/reporting/SAFT/collection-exercise/14fb3e68-4dca-46db-bf49-04b84e07e999')
+        response = self.test_client.get('/dashboard/reporting/SAFT/collection-exercise/14fb3e68-4dca-46db-bf49-04b84e07e999')
         self.assertEqual(response.status_code, 404)
         self.assertIn(b'Sorry, we could not find the page you were looking for.', response.data)
 
@@ -52,5 +52,5 @@ class TestReporting(AppContextTestCase):
                                                                             '/14fb3e68-4dca-46db-bf49'
                                                                             '-04b84e07e997',
                                                                             status=404)
-        response = self.test_client.get('/reporting/seft/collection-exercise/14fb3e68-4dca-46db-bf49-04b84e07e997')
+        response = self.test_client.get('/dashboard/reporting/seft/collection-exercise/14fb3e68-4dca-46db-bf49-04b84e07e997')
         self.assertEqual(response.status_code, 404)
