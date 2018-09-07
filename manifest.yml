@@ -2,7 +2,7 @@
 applications:
 - name: sdc-responses-dashboard
   disk_quota: 1G
-  health-check-http-endpoint: /health
+  health-check-http-endpoint: /dashboard/health
   health-check-type: http
   instances: 1
   memory: 256M
