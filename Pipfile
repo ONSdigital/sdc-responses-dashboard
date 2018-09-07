@@ -15,6 +15,9 @@ responses = "*"
 python-dotenv = "*"
 structlog = "*"
 gunicorn = "*"
+behave = "*"
+selenium = "*"
+chromedriver-installer = "*"
 
 [dev-packages]
 pylint = "*"
