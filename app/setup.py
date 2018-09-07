@@ -21,7 +21,7 @@ def create_app():
     app_config = getattr(config, os.getenv('APP_SETTINGS', 'Config'))
     check_required_config(app_config)
 
-    app = Flask(__name__)
+    app = Flask(__name__, static_url_path='/dashboard/static')
     app.url_map.strict_slashes = False
 
     CORS(app)
