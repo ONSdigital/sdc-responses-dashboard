@@ -1,5 +1,6 @@
 from flask import current_app
 import requests
+from requests.auth import HTTPBasicAuth
 from structlog import get_logger
 
 from app.exceptions import APIConnectionError
@@ -14,7 +15,9 @@ def get_reporting_details(collectioninstrumenttype, collex_id):
     url = f'{current_app.config["REPORTING_URL"]}reporting-api/v1/response-dashboard' \
           f'/{collectioninstrumenttype}/collection-exercise/{collex_id}'
     try:
-        response = requests.get(url)
+        response = requests.get(url,
+                                auth=HTTPBasicAuth(current_app.config['AUTH_USERNAME'],
+                                                   current_app.config['AUTH_PASSWORD']))
     except requests.exceptions.ConnectionError:
         raise APIConnectionError('Failed to connect to reporting service')
 
