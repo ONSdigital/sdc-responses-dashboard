@@ -8,9 +8,8 @@ logger = get_logger()
 
 
 def not_found_error(error):
-    logger.error('Handling 404 error',
+    logger.debug('Handling 404 error',
                  error=error)
-
     return render_template('errors/error.html',
                            status_code=404,
                            error_name='Not found error',
