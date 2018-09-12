@@ -7,10 +7,7 @@ ERROR_MESSAGE_UNEXPECTED = 'Sorry, something has gone wrong.'
 logger = get_logger()
 
 
-def not_found_error(error):
-    logger.error('Handling 404 error',
-                 error=error)
-
+def not_found_error(_):
     return render_template('errors/error.html',
                            status_code=404,
                            error_name='Not found error',
