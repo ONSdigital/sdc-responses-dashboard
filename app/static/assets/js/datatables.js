@@ -38,6 +38,7 @@ function initiliseDataTables() {
         data: [],
         columns: [{
             "data": "userDescription",
+            "defaultContent": "No description provided",
             "title": "Collection Exercise Period",
             "width": "600px"
         }],
@@ -71,6 +72,9 @@ function initiliseDataTables() {
 }
 
 function loadCollexTableData(collexTable, id) {
+    /**
+     *  Load the collection exercise data into the data table
+     */
 
     const surveys = JSON.parse($('#collex-id').data('surveys'));
 
@@ -80,8 +84,8 @@ function loadCollexTableData(collexTable, id) {
     $("#modal-collex").modal("toggle");
 
     $("#collex-datatable tbody").on("click", "tr", function() {
-        const id = collexTable.row(this).id();
-        collexID = $("#collex-id").data("collex")
+        let id = collexTable.row(this).id();
+        let collexID = $("#collex-id").data("collex")
 
         if (typeof id !== "undefined") {
             if (typeof collexID == "undefined") {
@@ -95,10 +99,21 @@ function loadCollexTableData(collexTable, id) {
 }
 
 function getCollexFromSurveyId(surveys, survey_id) {
+    /**
+     *  Returns an array of collection exercises for a given survey id
+     */
 
     for (let i = 0; i < surveys.length; i++) {
         if (surveys[i].surveyId === survey_id) {
             let collectionExercises = surveys[i].collectionExercises;
+            let surveyShortName = surveys[i].shortName;
+
+            for (let collex in collectionExercises) {
+                if (collectionExercises[collex].userDescription === "" ) {
+                    collectionExercises[collex].userDescription = 'No description provided'
+                }
+            }
+
             return collectionExercises;
         }
     }

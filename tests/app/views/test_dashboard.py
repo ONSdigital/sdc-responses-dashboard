@@ -1,5 +1,6 @@
 import json
 import os
+from pprint import pprint
 
 import responses
 
@@ -68,3 +69,48 @@ class TestSurveyController(AppContextTestCase):
 
         response = self.test_client.get('/dashboard/collection-exercise/24fb3e68-4dca-46db-bf49-04b84e07e77c/')
         self.assertEqual(response.status_code, 302)
+
+    @responses.activate
+    def test_dashboard_still_shows_survey_short_name_when_description_is_missing(self):
+        collex_response_missing_description = self.collex_response.copy()
+        collex_response_missing_description[0]['userDescription'] = None
+        pprint(collex_response_missing_description)
+        with self.app.app_context():
+
+            responses.add(
+                responses.GET,
+                self.app.config['SURVEY_URL'] + 'surveys',
+                json=self.surveys_response,
+                status=200)
+
+            responses.add(
+                responses.GET,
+                self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
+                json=collex_response_missing_description,
+                status=200)
+
+        response = self.test_client.get('/dashboard/collection-exercise/24fb3e68-4dca-46db-bf49-04b84e07e77c')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'BRES', response.data)
+
+    @responses.activate
+    def test_dashboard_still_shows_survey_short_name_when_description_is_empty(self):
+        collex_response_missing_description = self.collex_response.copy()
+        collex_response_missing_description[1]['userDescription'] = ''
+        with self.app.app_context():
+            responses.add(
+                responses.GET,
+                self.app.config['SURVEY_URL'] + 'surveys',
+                json=self.surveys_response,
+                status=200)
+
+            responses.add(
+                responses.GET,
+                self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
+                json=collex_response_missing_description,
+                status=200)
+
+        response = self.test_client.get('/dashboard/collection-exercise/24fb3e68-4dca-46db-bf49-04b84e07e77c')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'BRES', response.data)
+
