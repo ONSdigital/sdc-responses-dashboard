@@ -1,15 +1,13 @@
 <section class="content-header">
-    {% if survey_short_name and collection_exercise %}
-        <h1 id="survey-short-name">
-            {{ survey_short_name ~ " | " ~ collection_exercise }}
-        </h1>
-    {% endif %}
+    <h1 id="survey-short-name">
+        {{ survey_short_name }} {{ " | " ~  collection_exercise_description if collection_exercise_description }}
+    </h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ url_for('dashboard.get_surveys') }}">
             <i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
-        {% if survey_long_name and collection_exercise %}
+        {% if survey_long_name %}
             <li>
                 <a href="#">Survey</a>
             </li>
