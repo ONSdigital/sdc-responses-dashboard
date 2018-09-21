@@ -43,13 +43,13 @@ function initialiseDataTables() {
             "width": "300px"
         },
         {
-            "data": "startDate",
+            "data": "periodStartDateTime",
             "defaultContent": "No start date provided",
             "title": "Start Date",
             "width": "300px"
         },
         {
-            "data": "endDate",
+            "data": "periodEndDateTime",
             "defaultContent": "No end date provided",
             "title": "End Date",
             "width": "300px"
