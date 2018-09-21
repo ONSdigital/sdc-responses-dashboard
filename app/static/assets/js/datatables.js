@@ -1,4 +1,4 @@
-function initiliseDataTables() {
+function initialiseDataTables() {
 
     /* eslint-disable */
     const surveyTable = $("#survey-datatable").DataTable({
@@ -85,7 +85,7 @@ function loadCollexTableData(collexTable, id) {
 
     $("#collex-datatable tbody").on("click", "tr", function() {
         let id = collexTable.row(this).id();
-        let collexID = $("#collex-id").data("collex")
+        let collexID = $("#collex-id").data("collex");
 
         if (typeof id !== "undefined") {
             if (typeof collexID == "undefined") {
@@ -106,11 +106,10 @@ function getCollexFromSurveyId(surveys, survey_id) {
     for (let i = 0; i < surveys.length; i++) {
         if (surveys[i].surveyId === survey_id) {
             let collectionExercises = surveys[i].collectionExercises;
-            let surveyShortName = surveys[i].shortName;
 
             for (let collex in collectionExercises) {
                 if (collectionExercises[collex].userDescription === "" ) {
-                    collectionExercises[collex].userDescription = 'No description provided'
+                    collectionExercises[collex].userDescription = "No description provided"
                 }
             }
 
@@ -120,5 +119,5 @@ function getCollexFromSurveyId(surveys, survey_id) {
 }
 
 $(document).ready(function() {
-    initiliseDataTables();
+    initialiseDataTables();
 });
