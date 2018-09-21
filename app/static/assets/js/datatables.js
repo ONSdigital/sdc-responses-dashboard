@@ -40,7 +40,19 @@ function initialiseDataTables() {
             "data": "userDescription",
             "defaultContent": "No description provided",
             "title": "Collection Exercise Period",
-            "width": "600px"
+            "width": "300px"
+        },
+        {
+            "data": "startDate",
+            "defaultContent": "No start date provided",
+            "title": "Start Date",
+            "width": "300px"
+        },
+        {
+            "data": "endDate",
+            "defaultContent": "No end date provided",
+            "title": "End Date",
+            "width": "300px"
         }],
         rowId: 'collectionExerciseId'
     });
