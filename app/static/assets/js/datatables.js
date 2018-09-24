@@ -24,7 +24,7 @@ function initialiseDataTables() {
         if (type === "sort" || type === 'type') {
             return data;
         } else {
-            return moment(new Date(data)).format("DD-MM-YYYY");
+            return moment(data).format("DD-MM-YYYY");
         }
         return ThisDate;
     }
@@ -45,7 +45,7 @@ function initialiseDataTables() {
         },
         data: [],
         order: [
-            [1, 'desc']
+            [1, 'desc'], [2, 'desc']
         ],
         columns: [{
                 "data": "userDescription",
@@ -105,8 +105,7 @@ function loadCollexTableData(collexTable, id) {
     const surveys = JSON.parse($('#collex-id').data('surveys'));
 
     collexTable.clear()
-    collexTable.rows.add(getCollexFromSurveyId(surveys, id))
-    collexTable.draw()
+    collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw()
 
 
     $("#modal-collex").modal("toggle");
