@@ -35,29 +35,10 @@
 		<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 		<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap.min.js"></script>
 		<script src="https://cdn.datatables.net/scroller/1.4.4/js/dataTables.scroller.min.js"></script>
-		<script src="//cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script>
-		<script src="//cdn.datatables.net/plug-ins/1.10.19/dataRender/datetime.js"></script>
-
 		<!-- App -->
 		<script>
 			$('#collex-id').data('surveys', '{{ all_surveys|tojson|safe }}');
 			$(document).ready(function() {
-				<!--$.fn.dataTable.moment("DD/MM/YYYY");-->
-				$.fn.dataTable.moment = function ( format, locale ) {
-					var types = $.fn.dataTable.ext.type;
-
-					// Add type detection
-					types.detect.unshift( function ( d ) {
-						return moment( d, format, locale, true ).isValid() ?
-							'moment-'+format :
-							null;
-					} );
-
-					// Add sorting method - use an integer for the sorting
-					types.order[ 'moment-'+format+'-pre' ] = function ( d ) {
-						return moment( d, format, locale, true ).unix();
-					};
-				};
 				$("#modal-survey").modal({
 					backdrop: 'static',
 					keyboard: false
