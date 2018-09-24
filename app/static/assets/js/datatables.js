@@ -106,7 +106,6 @@ function loadCollexTableData(collexTable, id) {
     collexTable.clear().draw();
     collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw();
 
-
     $("#modal-collex").modal("toggle");
 
     $("#collex-datatable tbody").on("click", "tr", function() {
