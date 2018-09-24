@@ -103,7 +103,7 @@ function loadCollexTableData(collexTable, id) {
 
     const surveys = JSON.parse($('#collex-id').data('surveys'));
 
-    collexTable.clear();
+    collexTable.clear().draw();
     collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw();
 
 
