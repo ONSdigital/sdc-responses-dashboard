@@ -21,10 +21,10 @@ function initialiseDataTables() {
     });
 
     let dateRender = function(data, type, row, meta) {
-        if (type === "sort" || type === 'type') {
+        if (type === "sort" || type === "type") {
             return data;
         } else {
-            return moment(data).format("DD-MM-YYYY");
+            return moment(data).format("DD-MM-YYYY");  // eslint-disable-line no-undef
         }
     };
 
@@ -134,7 +134,7 @@ function getCollexFromSurveyId(surveys, survey_id) {
 
             for (let collex in collectionExercises) {
                 if (collectionExercises[collex].userDescription === "") {
-                    collectionExercises[collex].userDescription = "No description provided";
+                    collectionExercises[collex].userDescription = "No description provided";  // eslint-disable-line
                 }
             }
 
