@@ -20,14 +20,13 @@ function initialiseDataTables() {
         surveyTable.search($(this).val()).draw();
     });
 
-    dateRender = function(data, type, row, meta) {
+    let dateRender = function(data, type, row, meta) {
         if (type === "sort" || type === 'type') {
             return data;
         } else {
             return moment(data).format("DD-MM-YYYY");
         }
-        return ThisDate;
-    }
+    };
 
     /* eslint-disable */
     const collexTable = $("#collex-datatable").DataTable({
@@ -104,8 +103,8 @@ function loadCollexTableData(collexTable, id) {
 
     const surveys = JSON.parse($('#collex-id').data('surveys'));
 
-    collexTable.clear()
-    collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw()
+    collexTable.clear();
+    collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw();
 
 
     $("#modal-collex").modal("toggle");
@@ -136,7 +135,7 @@ function getCollexFromSurveyId(surveys, survey_id) {
 
             for (let collex in collectionExercises) {
                 if (collectionExercises[collex].userDescription === "") {
-                    collectionExercises[collex].userDescription = "No description provided"
+                    collectionExercises[collex].userDescription = "No description provided";
                 }
             }
 
