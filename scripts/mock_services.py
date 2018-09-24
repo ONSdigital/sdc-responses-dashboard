@@ -1,3 +1,4 @@
+import time
 from datetime import datetime
 import json
 from random import SystemRandom
@@ -50,7 +51,7 @@ def get_report(collection_instrument_type, collection_exercise_id):
                 'sampleSize': sample_size
             }
         }
-
+    time.sleep(5)
     return Response(json.dumps(response), content_type='application/json')
 
 
