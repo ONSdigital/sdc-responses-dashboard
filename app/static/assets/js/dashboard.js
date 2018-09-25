@@ -127,6 +127,7 @@ function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true
 
         $("#error-reporting").hide();
         $(".content").show();
+        $("#time-updated-label").show();
 
         displayCollectionInstrumentData(collectionInstrumentType, result);
 
