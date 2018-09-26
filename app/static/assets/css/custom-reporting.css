@@ -1,7 +1,8 @@
+-
 /*
- * Custom CSS
- * -----------
- */
+- * Custom CSS
+- * -----------
+- */
 
 .small-box .icon .fa-color-white {
 	color: rgba(255, 255, 255, 0.42);
@@ -39,7 +40,7 @@ div.dataTables_wrapper div.dataTables_paginate {
 }
 
 #long-name {
-    font-size: 11px;
+	font-size: 11px;
 }
 
 #collex-datatable_filter {
@@ -47,44 +48,44 @@ div.dataTables_wrapper div.dataTables_paginate {
 }
 
 #survey-datatable_info {
-    font-style: italic;
-    font-weight: 700;
-    font-size: 12px;
-    padding-left: 7px;
+	font-style: italic;
+	font-weight: 700;
+	font-size: 12px;
+	padding-left: 7px;
 }
 
 #collex-datatable_info {
-    font-style: italic;
-    font-weight: 700;
-    font-size: 12px;
-    padding-left: 7px;
+	font-style: italic;
+	font-weight: 700;
+	font-size: 12px;
+	padding-left: 7px;
 }
 
 .table-datatable-hover>tbody>tr:hover {
-    color: white;
-    background-color: #38484f;
+	color: white;
+	background-color: #38484f;
 }
 
 .table tr {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 #main-content {
-    display: none;
+	display: none;
 }
 
 #alert-reporting-error {
-    display: none;
+	display: none;
 }
 
 #error-reporting {
-    display: none;
-    min-height: 250px;
-    padding: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+	display: none;
+	min-height: 250px;
+	padding: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 @media (max-width: 767px) {
@@ -92,29 +93,44 @@ div.dataTables_wrapper div.dataTables_paginate {
 		display: none;
 	}
 }
-
 .content-wrapper,
 .main-footer {
 	margin-left: 0px;
 }
 
 .sidebar-toggle {
-    font-weight: bold;
-    font-color:
+	font-weight: bold;
+	font-color:
 }
-
 #choose-survey {
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .progress {
-    height: 25px;
-    background-color: #d4d4d4;
+	height: 25px;
+	background-color: #d4d4d4;
 }
 
 .progress-bar {
-    font-size: 12px;
-    line-height: 25px;
-    color: #fff;
-    background-color: #00374f;
+	font-size: 12px;
+	line-height: 25px;
+	color: #fff;
+	background-color: #00374f;
+}
+
+#divLoading {
+	margin: 0px;
+	padding: 0px;
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+#divLoadingText {
+	position: absolute;
+	color: black;
+	top: 50%;
+	left: 45%
 }

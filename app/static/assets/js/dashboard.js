@@ -126,11 +126,13 @@ function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true
     }).done((result) => {
 
         $("#error-reporting").hide();
+        $("#divLoading").hide();
         $(".content").show();
 
         displayCollectionInstrumentData(collectionInstrumentType, result);
 
     }).fail((result) => {
+        $("#divLoading").hide();
         $("#error-reporting").show();
         $(".content").hide();
     }).always(function() {
