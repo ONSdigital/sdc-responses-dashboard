@@ -125,15 +125,19 @@ function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true
         url: "/dashboard/reporting/" + collectionInstrumentType + "/collection-exercise/" + collexID
     }).done((result) => {
 
-        $("#error-reporting").hide();
+        $(".content-header").show();
         $(".content").show();
+        $("#error-reporting").hide();
+        $("#loading").hide();
         $("#time-updated-label").show();
 
         displayCollectionInstrumentData(collectionInstrumentType, result);
 
     }).fail((result) => {
-        $("#error-reporting").show();
+        $("#loading").hide();
+        $(".content-header").hide();
         $(".content").hide();
+        $("#error-reporting").show();
     }).always(function() {
         if (enableTimeout) {
             setTimeout(callAPI, reportingRefreshCycle);
