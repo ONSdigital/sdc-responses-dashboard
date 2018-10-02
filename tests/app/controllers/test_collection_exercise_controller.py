@@ -19,7 +19,7 @@ class TestSurveyController(AppContextTestCase):
         with self.app.app_context():
             responses.add(
                 responses.GET,
-                self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
+                self.app.config['COLLECTION_EXERCISE_URL'] + '/collectionexercises',
                 json=self.collection_exercises_response,
                 status=200)
 
@@ -32,7 +32,7 @@ class TestSurveyController(AppContextTestCase):
         with self.app.app_context():
             responses.add(
                 responses.GET,
-                self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
+                self.app.config['COLLECTION_EXERCISE_URL'] + '/collectionexercises',
                 status=401)
 
             with self.assertRaises(HTTPError):

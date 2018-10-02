@@ -11,7 +11,7 @@ def get_reporting_details(collection_instrument_type, collex_id):
     logger.debug('Fetching report for collection exercise',
                  collex_id=collex_id,
                  collection_instrument_type=collection_instrument_type)
-    url = f'{current_app.config["REPORTING_URL"]}reporting-api/v1/response-dashboard' \
+    url = f'{current_app.config["REPORTING_URL"]}/reporting-api/v1/response-dashboard' \
           f'/{collection_instrument_type}/collection-exercise/{collex_id}'
     try:
         response = requests.get(url)

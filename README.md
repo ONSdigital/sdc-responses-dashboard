@@ -54,9 +54,9 @@ make mock_services
 
 And set these environment variables for the dashboard app:
 ```.dotenv
-COLLECTION_EXERCISE_URL=http://localhost:5001/
-SURVEY_URL=http://localhost:5001/
-REPORTING_URL=http://localhost:5001/
+COLLECTION_EXERCISE_URL=http://localhost:5001
+SURVEY_URL=http://localhost:5001
+REPORTING_URL=http://localhost:5001
 ```
 
 ## Testing and Linting
