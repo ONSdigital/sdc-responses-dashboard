@@ -22,13 +22,15 @@ def wait_on_collection_exercise(_):
 
 
 @given('The user has selected a survey')
+@given('the user as chosen a survey')
 def clicking_on_survey(_):
     WebDriverWait(browser, 10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, '[data-id="survey_table"]')))
-    browser.find_elements_by_css_selector('[data-id="survey_table"] tr')[0].click()
+    browser.find_elements_by_css_selector('[data-id="survey_table"] tr')[1].click()
 
 
 @then('They are shown at least one collection exercise')
+@given('The user can see a live collection exercise')
 def get_first_row_on_collex_modal(_):
     rows = browser.find_elements_by_css_selector('[data-id="survey_table"] tr')
     assert rows[0].text != 'No data available'
