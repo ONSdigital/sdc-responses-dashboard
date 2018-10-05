@@ -16,3 +16,6 @@ test: check lint
 
 mock_services:
 	pipenv run python scripts/mock_services.py
+
+smoke_test:
+	pipenv run behave tests/smoke_tests/features
