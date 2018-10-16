@@ -238,11 +238,11 @@ class TestSurveyMetadata(AppContextTestCase):
             # Mock the survey and collection exercise services
             responses.add(
                 responses.GET,
-                self.app.config['SURVEY_URL'] + 'surveys',
+                self.app.config['SURVEY_URL'] + '/surveys',
                 json=self.surveys_response)
             responses.add(
                 responses.GET,
-                self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
+                self.app.config['COLLECTION_EXERCISE_URL'] + '/collectionexercises',
                 json=self.collection_exercises_response)
 
             surveys, collection_exercises = fetch_survey_and_collection_exercise_metadata()

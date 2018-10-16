@@ -19,7 +19,7 @@ class TestSurveyController(AppContextTestCase):
         with self.app.app_context():
             responses.add(
                 responses.GET,
-                self.app.config['SURVEY_URL'] + 'surveys',
+                self.app.config['SURVEY_URL'] + '/surveys',
                 json=self.surveys_response,
                 status=200)
 
@@ -32,7 +32,7 @@ class TestSurveyController(AppContextTestCase):
         with self.app.app_context():
             responses.add(
                 responses.GET,
-                self.app.config['SURVEY_URL'] + 'surveys',
+                self.app.config['SURVEY_URL'] + '/surveys',
                 status=401)
 
             with self.assertRaises(HTTPError):

@@ -32,9 +32,9 @@ class DevelopmentConfig(Config):
     PORT = os.getenv('PORT', '5000')
     HOST = os.getenv('HOST', 'localhost')
     ENV = os.getenv('FLASK_ENV', 'development')
-    COLLECTION_EXERCISE_URL = os.getenv('COLLECTION_EXERCISE_URL', 'http://localhost:8145/')
-    SURVEY_URL = os.getenv('SURVEY_URL', 'http://localhost:8080/')
-    REPORTING_URL = os.getenv('REPORTING_URL', 'http://localhost:8084/')
+    COLLECTION_EXERCISE_URL = os.getenv('COLLECTION_EXERCISE_URL', 'http://localhost:8145')
+    SURVEY_URL = os.getenv('SURVEY_URL', 'http://localhost:8080')
+    REPORTING_URL = os.getenv('REPORTING_URL', 'http://localhost:8084')
     REPORTING_REFRESH_CYCLE = os.getenv('REPORTING_REFRESH_CYCLE', '10000')
     AUTH_USERNAME = os.getenv('AUTH_USERNAME', 'admin')
     AUTH_PASSWORD = os.getenv('AUTH_PASSWORD', 'secret')
@@ -43,7 +43,7 @@ class DevelopmentConfig(Config):
 
 
 class TestingConfig(Config):
-    testing_url = 'http://test/'
+    testing_url = 'http://test'
     COLLECTION_EXERCISE_URL = testing_url
     SURVEY_URL = testing_url
     REPORTING_URL = testing_url

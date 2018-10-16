@@ -10,7 +10,7 @@ logger = get_logger()
 
 
 def get_collection_exercise_list():
-    url = f'{current_app.config["COLLECTION_EXERCISE_URL"]}collectionexercises'
+    url = f'{current_app.config["COLLECTION_EXERCISE_URL"]}/collectionexercises'
     logger.debug('Attempting to retrieve collection exercises')
     try:
         response = requests.get(

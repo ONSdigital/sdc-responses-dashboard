@@ -21,13 +21,13 @@ class TestSurveyController(AppContextTestCase):
 
             responses.add(
                 responses.GET,
-                self.app.config['SURVEY_URL'] + 'surveys',
+                self.app.config['SURVEY_URL'] + '/surveys',
                 json=self.surveys_response,
                 status=200)
 
             responses.add(
                 responses.GET,
-                self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
+                self.app.config['COLLECTION_EXERCISE_URL'] + '/collectionexercises',
                 json=self.collex_response,
                 status=200)
 
@@ -79,13 +79,13 @@ class TestSurveyController(AppContextTestCase):
 
             responses.add(
                 responses.GET,
-                self.app.config['SURVEY_URL'] + 'surveys',
+                self.app.config['SURVEY_URL'] + '/surveys',
                 json=self.surveys_response,
                 status=200)
 
             responses.add(
                 responses.GET,
-                self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
+                self.app.config['COLLECTION_EXERCISE_URL'] + '/collectionexercises',
                 json=collex_response_missing_description,
                 status=200)
 
@@ -100,13 +100,13 @@ class TestSurveyController(AppContextTestCase):
         with self.app.app_context():
             responses.add(
                 responses.GET,
-                self.app.config['SURVEY_URL'] + 'surveys',
+                self.app.config['SURVEY_URL'] + '/surveys',
                 json=self.surveys_response,
                 status=200)
 
             responses.add(
                 responses.GET,
-                self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
+                self.app.config['COLLECTION_EXERCISE_URL'] + '/collectionexercises',
                 json=collex_response_missing_description,
                 status=200)
 

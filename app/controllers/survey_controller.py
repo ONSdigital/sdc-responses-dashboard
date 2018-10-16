@@ -10,7 +10,7 @@ logger = get_logger()
 
 
 def get_survey_list():
-    url = f'{app.config["SURVEY_URL"]}surveys'
+    url = f'{app.config["SURVEY_URL"]}/surveys'
     logger.debug('Attempting to retrieve surveys')
     try:
         response = requests.get(
