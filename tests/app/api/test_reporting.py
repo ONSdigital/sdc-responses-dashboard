@@ -18,13 +18,13 @@ class TestReporting(AppContextTestCase):
     def test_reporting_details_success(self):
         with self.app.app_context():
             responses.add(responses.GET, self.app.config['REPORTING_URL'] + '/reporting-api/v1/response-dashboard'
-                                                                            '/seft/'
+                                                                            '/eq/'
                                                                             'collection-exercise'
                                                                             '/14fb3e68-4dca-46db-bf49'
                                                                             '-04b84e07e999',
                                                                             json=self.reporting_response, status=200)
 
-            report = reporting_details('seft', '14fb3e68-4dca-46db-bf49-04b84e07e999')
+            report = reporting_details('eq', '14fb3e68-4dca-46db-bf49-04b84e07e999')
             decoded_report = json.loads(report)
 
         self.assertEqual(decoded_report, self.reporting_response)

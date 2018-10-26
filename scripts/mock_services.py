@@ -31,6 +31,7 @@ def get_report(collection_instrument_type, collection_exercise_id):
             'report': {
                 'downloads': downloads,
                 'uploads': uploads,
+                'accountsPending': accounts_pending,
                 'accountsEnrolled': accounts_pending,
                 'sampleSize': sample_size
             }

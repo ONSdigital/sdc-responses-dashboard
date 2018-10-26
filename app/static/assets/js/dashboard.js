@@ -13,6 +13,12 @@ function getReportSEFT(response) {
             "value": response.report.uploads,
             "class": "fa fa-upload"
         },
+         "accountsPending": {
+            "id": "accounts-pending",
+            "title": "Accounts Pending",
+            "value": response.report.accountsPending,
+            "class": "fa fa-user-plus"
+        },
         "accountsEnrolled": {
             "id": "accounts-enrolled",
             "title": "Accounts Enrolled",
@@ -87,8 +93,11 @@ function displayCollectionInstrumentData(collectionInstrumentType, response) {
     /* eslint-disable */
     for (let figure in report) {
         if (report.hasOwnProperty(figure)) {
+
+            layoutClass = Object.keys(report).length % 2 && figure === "sampleSize" ? "col-lg-12 col-xs-12" : "col-lg-6 col-xs-12";
+
             $("#counters").append($("<div>", {
-                "class": "col-lg-6 col-xs-6"
+                "class": layoutClass
             }).append($("<div>", {
                 "class": "small-box bg-ons-light-blue",
                 "id": report[figure].id + "-box"
