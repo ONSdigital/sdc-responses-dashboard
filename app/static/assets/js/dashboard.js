@@ -32,10 +32,10 @@ function getReportSEFT(response) {
 
 function getReportEQ(response) {
     const report = {
-        "accountsCreated": {
-            "id": "accounts-created",
-            "title": "Accounts Created",
-            "value": response.report.accountsCreated,
+        "accountsPending": {
+            "id": "accounts-pending",
+            "title": "Accounts Pending",
+            "value": response.report.accountsPending,
             "class": "fa fa-user-plus"
         },
         "accountsEnrolled": {

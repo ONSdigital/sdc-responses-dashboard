@@ -17,10 +17,10 @@ def get_report(collection_instrument_type, collection_exercise_id):
     rand_gen = SystemRandom()
 
     sample_size = rand_gen.randint(100, 1000)
-    accounts_created = rand_gen.randint(0, sample_size)
-    downloads = rand_gen.randint(0, accounts_created)
+    accounts_pending = rand_gen.randint(0, sample_size)
+    downloads = rand_gen.randint(0, accounts_pending)
     uploads = rand_gen.randint(0, downloads)
-    accounts_enrolled = rand_gen.randint(uploads, accounts_created)
+    accounts_enrolled = rand_gen.randint(uploads, accounts_pending)
 
     if collection_instrument_type.lower() == 'seft':
         response = {
@@ -31,7 +31,7 @@ def get_report(collection_instrument_type, collection_exercise_id):
             'report': {
                 'downloads': downloads,
                 'uploads': uploads,
-                'accountsEnrolled': accounts_created,
+                'accountsEnrolled': accounts_pending,
                 'sampleSize': sample_size
             }
         }
@@ -43,7 +43,7 @@ def get_report(collection_instrument_type, collection_exercise_id):
             },
             'report': {
                 'inProgress': downloads - uploads,
-                'accountsCreated': accounts_created,
+                'accountsPending': accounts_pending,
                 'accountsEnrolled': accounts_enrolled,
                 'notStarted': sample_size - downloads,
                 'completed': uploads,
