@@ -94,7 +94,7 @@ function displayCollectionInstrumentData(collectionInstrumentType, response) {
     for (let figure in report) {
         if (report.hasOwnProperty(figure)) {
 
-            layoutClass = Object.keys(report).length % 2 && figure === "sampleSize" ? "col-lg-12 col-xs-12" : "col-lg-6 col-xs-12";
+            layoutClass = Object.keys(report).length % 2 && figure === "sampleSize" ? "col-lg-12 col-xs-12" : "col-lg-6 col-sm-6 col-xs-12";
 
             $("#counters").append($("<div>", {
                 "class": layoutClass
