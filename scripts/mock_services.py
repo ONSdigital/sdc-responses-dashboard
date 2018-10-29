@@ -32,7 +32,7 @@ def get_report(collection_instrument_type, collection_exercise_id):
                 'downloads': downloads,
                 'uploads': uploads,
                 'accountsPending': accounts_pending,
-                'accountsEnrolled': accounts_pending,
+                'accountsEnrolled': accounts_enrolled,
                 'sampleSize': sample_size
             }
         }
