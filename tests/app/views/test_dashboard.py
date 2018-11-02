@@ -1,13 +1,12 @@
 import json
 import os
-from pprint import pprint
 
 import responses
 
 from tests.app import AppContextTestCase
 
 
-class TestSurveyController(AppContextTestCase):
+class TestDashboardView(AppContextTestCase):
     current_file_path = os.path.dirname(__file__)
 
     with open(os.path.join(current_file_path, '../../test_data/get_surveys_response.json')) as fp:
@@ -74,7 +73,6 @@ class TestSurveyController(AppContextTestCase):
     def test_dashboard_still_shows_survey_short_name_when_description_is_missing(self):
         collex_response_missing_description = self.collex_response.copy()
         collex_response_missing_description[0]['userDescription'] = None
-        pprint(collex_response_missing_description)
         with self.app.app_context():
 
             responses.add(

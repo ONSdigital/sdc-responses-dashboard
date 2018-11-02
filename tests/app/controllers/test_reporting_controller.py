@@ -10,7 +10,7 @@ class TestReportingController(AppContextTestCase):
 
     reporting_response = {'metadata': {'collectionExerciseId': '14fb3e68-4dca-46db-bf49-04b84e07e999',
                                        'timeUpdated': 1533895381.534031},
-                          'report': {'inProgress': 99, 'accountsCreated': 402, 'accountsEnrolled': 259,
+                          'report': {'inProgress': 99, 'accountsPending': 402, 'accountsEnrolled': 259,
                                      'notStarted': 457, 'completed': 160, 'sampleSize': 716}}
 
     @responses.activate
