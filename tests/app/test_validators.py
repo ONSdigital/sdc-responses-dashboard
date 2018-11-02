@@ -1,4 +1,4 @@
-from app.common.validators import parse_uuid
+from app.validators import parse_uuid
 from tests.app import AppContextTestCase
 
 class TestValidators(AppContextTestCase):

@@ -4,7 +4,7 @@ from behave import given, then
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
-from app.common.survey_metadata import _filter_ready_collection_exercises
+from app.survey_metadata import _filter_ready_collection_exercises
 from tests.collection_exercise_controller import get_collection_exercise_list
 from selenium.webdriver.support import expected_conditions as EC
 from tests.functional.setup import browser

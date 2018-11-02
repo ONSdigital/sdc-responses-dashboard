@@ -13,6 +13,12 @@ function getReportSEFT(response) {
             "value": response.report.uploads,
             "class": "fa fa-upload"
         },
+         "accountsPending": {
+            "id": "accounts-pending",
+            "title": "Accounts Pending",
+            "value": response.report.accountsPending,
+            "class": "fa fa-user-plus"
+        },
         "accountsEnrolled": {
             "id": "accounts-enrolled",
             "title": "Accounts Enrolled",
@@ -32,10 +38,10 @@ function getReportSEFT(response) {
 
 function getReportEQ(response) {
     const report = {
-        "accountsCreated": {
-            "id": "accounts-created",
-            "title": "Accounts Created",
-            "value": response.report.accountsCreated,
+        "accountsPending": {
+            "id": "accounts-pending",
+            "title": "Accounts Pending",
+            "value": response.report.accountsPending,
             "class": "fa fa-user-plus"
         },
         "accountsEnrolled": {
@@ -87,8 +93,11 @@ function displayCollectionInstrumentData(collectionInstrumentType, response) {
     /* eslint-disable */
     for (let figure in report) {
         if (report.hasOwnProperty(figure)) {
+
+            layoutClass = Object.keys(report).length % 2 && figure === "sampleSize" ? "col-lg-12 col-xs-12" : "col-lg-6 col-sm-6 col-xs-12";
+
             $("#counters").append($("<div>", {
-                "class": "col-lg-6 col-xs-6"
+                "class": layoutClass
             }).append($("<div>", {
                 "class": "small-box bg-ons-light-blue",
                 "id": report[figure].id + "-box"
@@ -122,17 +131,22 @@ function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true
 
     $.ajax({
         dataType: "json",
-        url: "/reporting/" + collectionInstrumentType + "/collection-exercise/" + collexID
+        url: "/dashboard/reporting/" + collectionInstrumentType + "/collection-exercise/" + collexID
     }).done((result) => {
 
-        $("#error-reporting").hide();
+        $(".content-header").show();
         $(".content").show();
+        $("#error-reporting").hide();
+        $("#loading").hide();
+        $("#time-updated-label").show();
 
         displayCollectionInstrumentData(collectionInstrumentType, result);
 
     }).fail((result) => {
-        $("#error-reporting").show();
+        $("#loading").hide();
+        $(".content-header").hide();
         $(".content").hide();
+        $("#error-reporting").show();
     }).always(function() {
         if (enableTimeout) {
             setTimeout(callAPI, reportingRefreshCycle);

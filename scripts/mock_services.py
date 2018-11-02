@@ -17,10 +17,10 @@ def get_report(collection_instrument_type, collection_exercise_id):
     rand_gen = SystemRandom()
 
     sample_size = rand_gen.randint(100, 1000)
-    accounts_created = rand_gen.randint(0, sample_size)
-    downloads = rand_gen.randint(0, accounts_created)
+    accounts_pending = rand_gen.randint(0, sample_size)
+    downloads = rand_gen.randint(0, accounts_pending)
     uploads = rand_gen.randint(0, downloads)
-    accounts_enrolled = rand_gen.randint(uploads, accounts_created)
+    accounts_enrolled = rand_gen.randint(uploads, accounts_pending)
 
     if collection_instrument_type.lower() == 'seft':
         response = {
@@ -31,7 +31,8 @@ def get_report(collection_instrument_type, collection_exercise_id):
             'report': {
                 'downloads': downloads,
                 'uploads': uploads,
-                'accountsEnrolled': accounts_created,
+                'accountsPending': accounts_pending,
+                'accountsEnrolled': accounts_enrolled,
                 'sampleSize': sample_size
             }
         }
@@ -43,7 +44,7 @@ def get_report(collection_instrument_type, collection_exercise_id):
             },
             'report': {
                 'inProgress': downloads - uploads,
-                'accountsCreated': accounts_created,
+                'accountsPending': accounts_pending,
                 'accountsEnrolled': accounts_enrolled,
                 'notStarted': sample_size - downloads,
                 'completed': uploads,
@@ -113,8 +114,8 @@ def get_collection_exercises():
                     "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
                     "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
                     "actualPublishDateTime": None,
-                    "periodStartDateTime": "2017-09-14T23:00:00.000Z",
-                    "periodEndDateTime": "2017-09-15T22:59:59.000Z",
+                    "periodStartDateTime": "2017-05-14T23:00:00.000Z",
+                    "periodEndDateTime": "2017-11-17T22:59:59.000Z",
                     "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
                     "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
                     "executedBy": None,
@@ -144,8 +145,8 @@ def get_collection_exercises():
                     "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
                     "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
                     "actualPublishDateTime": None,
-                    "periodStartDateTime": "2017-09-14T23:00:00.000Z",
-                    "periodEndDateTime": "2017-09-15T22:59:59.000Z",
+                    "periodStartDateTime": "2017-05-14T23:00:00.000Z",
+                    "periodEndDateTime": "2017-11-19T22:59:59.000Z",
                     "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
                     "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
                     "executedBy": None,
@@ -175,8 +176,8 @@ def get_collection_exercises():
                     "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
                     "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
                     "actualPublishDateTime": None,
-                    "periodStartDateTime": "2017-09-14T23:00:00.000Z",
-                    "periodEndDateTime": "2017-09-15T22:59:59.000Z",
+                    "periodStartDateTime": "2018-01-03T23:00:00.000Z",
+                    "periodEndDateTime": "2018-03-17T22:59:59.000Z",
                     "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
                     "scheduledEndDateTime": "2018-06-29T23:00:00.000Z",
                     "executedBy": None,

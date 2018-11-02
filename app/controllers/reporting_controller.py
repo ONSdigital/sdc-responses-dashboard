@@ -7,12 +7,12 @@ from app.exceptions import APIConnectionError
 logger = get_logger()
 
 
-def get_reporting_details(collectioninstrumenttype, collex_id):
+def get_reporting_details(collection_instrument_type, collex_id):
     logger.debug('Fetching report for collection exercise',
                  collex_id=collex_id,
-                 collection_instrument_type=collectioninstrumenttype)
-    url = f'{current_app.config["REPORTING_URL"]}reporting-api/v1/response-dashboard' \
-          f'/{collectioninstrumenttype}/collection-exercise/{collex_id}'
+                 collection_instrument_type=collection_instrument_type)
+    url = f'{current_app.config["REPORTING_URL"]}/reporting-api/v1/response-dashboard' \
+          f'/{collection_instrument_type}/collection-exercise/{collex_id}'
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
@@ -22,5 +22,5 @@ def get_reporting_details(collectioninstrumenttype, collex_id):
 
     logger.debug('Successfully fetched report for collection exercise',
                  collex_id=collex_id,
-                 collection_instrument_type=collectioninstrumenttype)
+                 collection_instrument_type=collection_instrument_type)
     return response.text

@@ -1,7 +1,7 @@
 /*
- * Custom CSS
- * -----------
- */
+- * Custom CSS
+- * -----------
+- */
 
 .small-box .icon .fa-color-white {
 	color: rgba(255, 255, 255, 0.42);
@@ -13,12 +13,12 @@
 
 .bg-ons-light-blue {
 	background-color: #3398c5;
-	color: #fff
+	color: #fff;
 }
 
 .bg-ons-blue {
 	background-color: #00364F;
-	color: #fff
+	color: #fff;
 }
 
 #survey-datatable_filter {
@@ -39,7 +39,7 @@ div.dataTables_wrapper div.dataTables_paginate {
 }
 
 #long-name {
-    font-size: 11px;
+	font-size: 11px;
 }
 
 #collex-datatable_filter {
@@ -47,44 +47,44 @@ div.dataTables_wrapper div.dataTables_paginate {
 }
 
 #survey-datatable_info {
-    font-style: italic;
-    font-weight: 700;
-    font-size: 12px;
-    padding-left: 7px;
+	font-style: italic;
+	font-weight: 700;
+	font-size: 12px;
+	padding-left: 7px;
 }
 
 #collex-datatable_info {
-    font-style: italic;
-    font-weight: 700;
-    font-size: 12px;
-    padding-left: 7px;
+	font-style: italic;
+	font-weight: 700;
+	font-size: 12px;
+	padding-left: 7px;
 }
 
 .table-datatable-hover>tbody>tr:hover {
-    color: white;
-    background-color: #38484f;
+	color: white;
+	background-color: #38484f;
 }
 
 .table tr {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 #main-content {
-    display: none;
+	display: none;
 }
 
 #alert-reporting-error {
-    display: none;
+	display: none;
 }
 
 #error-reporting {
-    display: none;
-    min-height: 250px;
-    padding: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+	display: none;
+	min-height: 250px;
+	padding: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 @media (max-width: 767px) {
@@ -100,21 +100,103 @@ div.dataTables_wrapper div.dataTables_paginate {
 
 .sidebar-toggle {
     font-weight: bold;
-    font-color:
 }
 
 #choose-survey {
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .progress {
-    height: 25px;
-    background-color: #d4d4d4;
+	height: 25px;
+	background-color: #d4d4d4;
 }
 
 .progress-bar {
-    font-size: 12px;
-    line-height: 25px;
-    color: #fff;
-    background-color: #00374f;
+	font-size: 12px;
+	line-height: 25px;
+	color: #fff;
+	background-color: #00374f;
+}
+
+.content-header {
+	display: none;
+}
+
+#loading {
+	margin: 0px;
+	padding: 0px;
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.loading-content {
+	position: absolute;
+	text-align: center;
+	color: black;
+	height: 100px;
+	width: 200px;
+	top: 40%;
+	left: 46%;
+}
+
+.loading-text {
+	font-size: 1em;
+}
+
+.inner-div {
+	position: absolute;
+	text-align: center;
+	color: black;
+}
+
+.spinner {
+	width: 135px;
+	text-align: center;
+	position: absolute;
+	top: 35%;
+}
+
+.spinner > div {
+	width: 18px;
+	height: 18px;
+	background-color: #333;
+	border-radius: 100%;
+	display: inline-block;
+	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+	0%, 80%, 100% {
+		-webkit-transform: scale(0);
+	}
+
+	40% {
+		-webkit-transform: scale(1.0);
+	}
+}
+
+@keyframes sk-bouncedelay {
+	0%, 80%, 100% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+
+	40% {
+		-webkit-transform: scale(1.0);
+		transform: scale(1.0);
+	}
 }

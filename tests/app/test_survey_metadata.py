@@ -3,19 +3,19 @@ import os
 
 import responses
 
-from app.common.survey_metadata import map_surveys_to_collection_exercises, map_collection_exercise_id_to_survey_id, \
-    fetch_survey_and_collection_exercise_metadata
 from app.exceptions import UnknownSurveyError
+from app.survey_metadata import map_surveys_to_collection_exercises, map_collection_exercise_id_to_survey_id, \
+    fetch_survey_and_collection_exercise_metadata
 from tests.app import AppContextTestCase
 
 
 class TestSurveyMetadata(AppContextTestCase):
     this_file_path = os.path.dirname(__file__)
 
-    with open(os.path.join(this_file_path, '../../test_data/get_surveys_response.json')) as fp:
+    with open(os.path.join(this_file_path, '../test_data/get_surveys_response.json')) as fp:
         surveys_response = json.load(fp)
 
-    with open(os.path.join(this_file_path, '../../test_data/get_collection_exercises_response.json')) as fp:
+    with open(os.path.join(this_file_path, '../test_data/get_collection_exercises_response.json')) as fp:
         collection_exercises_response = json.load(fp)
 
     def test_map_surveys_to_collection_exercises(self):
@@ -31,12 +31,16 @@ class TestSurveyMetadata(AppContextTestCase):
                     {
                         'collectionExerciseId': '14fb3e68-4dca-46db-bf49-04b84e07e77c',
                         'userDescription': 'December 2017',
-                        'exerciseRef': '201712'
+                        'exerciseRef': '201712',
+                        'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                        'periodEndDateTime': '2017-09-15T22:59:59.000Z',
                     },
                     {
                         'collectionExerciseId': '24fb3e68-4dca-46db-bf49-04b84e07e77c',
                         'userDescription': 'January 2018',
-                        'exerciseRef': '201801'
+                        'exerciseRef': '201801',
+                        'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                        'periodEndDateTime': '2017-09-15T22:59:59.000Z',
                     }
                 ]
             },
@@ -60,7 +64,9 @@ class TestSurveyMetadata(AppContextTestCase):
                     {
                         'collectionExerciseId': '14fb3e68-4dca-46db-bf49-04b84e07e777',
                         'userDescription': 'Quarterly Business Survey',
-                        'exerciseRef': '201812'
+                        'exerciseRef': '201812',
+                        'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                        'periodEndDateTime': '2017-09-15T22:59:59.000Z',
                     }
                 ]
             },
@@ -91,6 +97,8 @@ class TestSurveyMetadata(AppContextTestCase):
                  'shortName': 'QBS',
                  'surveyType': 'Business',
                  'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
+                 'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
                  'userDescription': 'Quarterly '
                                     'Business Survey'},
             '14fb3e68-4dca-46db-bf49-04b84e07e77c':
@@ -102,6 +110,8 @@ class TestSurveyMetadata(AppContextTestCase):
                  'shortName': 'BRES',
                  'surveyType': 'Business',
                  'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                 'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
                  'userDescription': 'December 2017'},
             '24fb3e68-4dca-46db-bf49-04b84e07e77c':
                 {'collectionInstrumentType': 'seft',
@@ -111,6 +121,8 @@ class TestSurveyMetadata(AppContextTestCase):
                  'shortName': 'BRES',
                  'surveyType': 'Business',
                  'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                 'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
                  'userDescription': 'January 2018'}
         }
 
@@ -140,7 +152,9 @@ class TestSurveyMetadata(AppContextTestCase):
                     {
                         'collectionExerciseId': '24fb3e68-4dca-46db-bf49-04b84e07e77c',
                         'userDescription': 'January 2018',
-                        'exerciseRef': '201801'
+                        'exerciseRef': '201801',
+                            'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                        'periodEndDateTime': '2017-09-15T22:59:59.000Z'
                     }
                 ]
             },
@@ -164,7 +178,9 @@ class TestSurveyMetadata(AppContextTestCase):
                     {
                         'collectionExerciseId': '14fb3e68-4dca-46db-bf49-04b84e07e777',
                         'userDescription': 'Quarterly Business Survey',
-                        'exerciseRef': '201812'
+                        'exerciseRef': '201812',
+                        'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                        'periodEndDateTime': '2017-09-15T22:59:59.000Z'
                     }
                 ]
             }
@@ -179,6 +195,8 @@ class TestSurveyMetadata(AppContextTestCase):
                  'shortName': 'QBS',
                  'surveyType': 'Business',
                  'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
+                 'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
                  'userDescription': 'Quarterly Business Survey'},
             '24fb3e68-4dca-46db-bf49-04b84e07e77c':
                 {'collectionInstrumentType': 'seft',
@@ -188,6 +206,8 @@ class TestSurveyMetadata(AppContextTestCase):
                  'shortName': 'BRES',
                  'surveyType': 'Business',
                  'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                 'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
                  'userDescription': 'January 2018'}}
 
         self.assertEqual(expected_surveys,
@@ -218,11 +238,11 @@ class TestSurveyMetadata(AppContextTestCase):
             # Mock the survey and collection exercise services
             responses.add(
                 responses.GET,
-                self.app.config['SURVEY_URL'] + 'surveys',
+                self.app.config['SURVEY_URL'] + '/surveys',
                 json=self.surveys_response)
             responses.add(
                 responses.GET,
-                self.app.config['COLLECTION_EXERCISE_URL'] + 'collectionexercises',
+                self.app.config['COLLECTION_EXERCISE_URL'] + '/collectionexercises',
                 json=self.collection_exercises_response)
 
             surveys, collection_exercises = fetch_survey_and_collection_exercise_metadata()
