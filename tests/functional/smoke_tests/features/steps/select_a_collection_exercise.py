@@ -25,7 +25,7 @@ def wait_on_collection_exercise(_):
 def clicking_on_survey(context):
     WebDriverWait(context.browser, 10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, '[data-id="survey_table"]')))
-    context.browser.find_elements_by_css_selector('[data-id="survey_table"] tr')[1].click()
+    context.browser.find_elements_by_css_selector('[data-id="survey_table"] tr')[0].click()
 
 
 @then('They are shown at least one collection exercise')
