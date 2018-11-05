@@ -2,11 +2,11 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 from app.exceptions import APIConnectionError
-from tests.test_config import TestConfig
+from tests.functional.test_config import TestConfig
 
 
 def get_collection_exercise_list():
-    url = f'{TestConfig.COLLECTION_EXERCISE_URL}collectionexercises'
+    url = f'{TestConfig.COLLECTION_EXERCISE_URL}/collectionexercises'
     try:
         response = requests.get(
             url,
