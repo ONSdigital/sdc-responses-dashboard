@@ -1,8 +1,9 @@
 import logging
 import os
 import sys
+import time
 
-from flask import Flask
+from flask import Flask, url_for
 from flask_cors import CORS
 import structlog
 from structlog import wrap_logger
@@ -36,6 +37,10 @@ def create_app():
     add_blueprints(app)
     add_error_handlers(app)
 
+    @app.context_processor
+    def override_url_for():  # pylint: disable=unused-variable
+        return dict(url_for=versioned_url_for)
+
     return app
 
 
@@ -57,6 +62,17 @@ def add_error_handlers(app):
     app.register_error_handler(404, not_found_error)
     app.register_error_handler(500, internal_server_error)
     app.register_error_handler(APIConnectionError, api_connection_error)
+
+
+def versioned_url_for(endpoint, **values):
+
+    if endpoint == 'static':
+        filename = values.get('filename', None)
+        if filename:
+            values['filename'] = filename
+            values['q'] = int(time.time()) if os.getenv('APP_SETTINGS') == 'DevelopmentConfig' else '1.0.0'
+
+    return url_for(endpoint, **values)
 
 
 def _configure_logger(level='INFO', indent=None):

@@ -1,4 +1,3 @@
-from distutils.util import strtobool
 import os
 
 REQUIRED_ENVIRONMENT_VARIABLES = {
