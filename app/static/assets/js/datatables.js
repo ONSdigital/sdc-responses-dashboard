@@ -8,7 +8,7 @@ function initialiseDataTables() {
         info: true,
         autoWidth: false,
         autoHeight: false,
-        scrollY: "30vh",
+        scrollY: "35vh",
         scrollCollapse: true,
         scroller: {
             loadingIndicator: false
@@ -24,7 +24,7 @@ function initialiseDataTables() {
         if (type === "sort" || type === "type") {
             return data;
         } else {
-            return moment(data).format("DD-MM-YYYY");  // eslint-disable-line no-undef
+            return moment(data).format("DD-MM-YYYY"); // eslint-disable-line no-undef
         }
     };
 
@@ -37,33 +37,35 @@ function initialiseDataTables() {
         info: true,
         autoWidth: false,
         autoHeight: false,
-        scrollY: "30vh",
+        scrollY: "35vh",
         scrollCollapse: true,
         scroller: {
-            loadingIndicator: false
+            loadingIndicator: false,
+            rowHeight: 40
         },
         data: [],
         order: [
-            [1, 'desc'], [2, 'desc']
+            [1, 'desc'],
+            [2, 'desc']
         ],
         columns: [{
                 "data": "userDescription",
                 "defaultContent": "No description provided",
                 "title": "Collection Exercise Period",
-                "width": "300px"
+                "width": "50%"
             },
             {
                 "data": "periodStartDateTime",
                 "defaultContent": "No start date provided",
                 "title": "Start Date",
-                "width": "300px",
+                "width": "25%",
                 "render": dateRender
             },
             {
                 "data": "periodEndDateTime",
                 "defaultContent": "No end date provided",
                 "title": "End Date",
-                "width": "300px",
+                "width": "25%",
                 "render": dateRender
             }
         ],
@@ -108,6 +110,19 @@ function loadCollexTableData(collexTable, id) {
 
     $("#modal-collex").modal("toggle");
 
+    // Dynamically set scroller rowHeight
+    let checkCollexTableExist = setInterval(function() {
+        let height = $("#collex-datatable tbody").height();
+        if (height) {
+            // sets the height of next div which follows the collex-datatable element
+            $("#collex-datatable + div").height(height + 1);
+            // sets the width of the headers to 100%
+            $(".dataTables_scrollHeadInner table").css("width", "100%");
+            clearInterval(checkCollexTableExist);
+        }
+    }, 100);
+
+
     $("#collex-datatable tbody").on("click", "tr", function() {
         let id = collexTable.row(this).id();
         let collexID = $("#collex-id").data("collex");
@@ -134,7 +149,7 @@ function getCollexFromSurveyId(surveys, survey_id) {
 
             for (let collex in collectionExercises) {
                 if (collectionExercises[collex].userDescription === "") {
-                    collectionExercises[collex].userDescription = "No description provided";  // eslint-disable-line
+                    collectionExercises[collex].userDescription = "No description provided"; // eslint-disable-line
                 }
             }
 

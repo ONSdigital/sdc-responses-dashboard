@@ -200,3 +200,8 @@ div.dataTables_wrapper div.dataTables_paginate {
 		transform: scale(1.0);
 	}
 }
+
+#collex-datatable td {
+    max-width: 70px;
+    overflow: hidden;
+}
