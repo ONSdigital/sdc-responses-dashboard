@@ -57,3 +57,4 @@ class TestingConfig(Config):
     REPORTING_REFRESH_CYCLE = '10000'
     AUTH_USERNAME = 'admin'
     AUTH_PASSWORD = 'secret'
+    STATIC_ASSETS_VERSION = 'test'

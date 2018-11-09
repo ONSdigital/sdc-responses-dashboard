@@ -1,7 +1,6 @@
 import logging
 import os
 import sys
-import time
 
 from flask import Flask, url_for, current_app
 from flask_cors import CORS
