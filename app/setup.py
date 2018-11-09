@@ -3,7 +3,7 @@ import os
 import sys
 import time
 
-from flask import Flask, url_for
+from flask import Flask, url_for, current_app
 from flask_cors import CORS
 import structlog
 from structlog import wrap_logger
@@ -70,7 +70,7 @@ def versioned_url_for(endpoint, **values):
         filename = values.get('filename', None)
         if filename:
             values['filename'] = filename
-            values['q'] = int(time.time()) if os.getenv('APP_SETTINGS') == 'DevelopmentConfig' else '1.0.0'
+            values['q'] = current_app.config['STATIC_ASSETS_VERSION']
 
     return url_for(endpoint, **values)
 
