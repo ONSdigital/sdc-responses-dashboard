@@ -126,7 +126,7 @@ function displayCollectionInstrumentData(collectionInstrumentType, response) {
 
 function callAPI() {
     const collexID = $("#collex-id").data("collex");
-    const reportingRefreshCycle = $("#collex-id").data("reporting-refresh-cycle");
+    const reportingRefreshCycleInSeconds = $("#collex-id").data("reporting-refresh-cycle");
     const collectionInstrumentType = $("#collex-id").data("collection-instrument-type");
 
     $.ajax({
@@ -147,8 +147,8 @@ function callAPI() {
         $(".content").hide();
         $("#error-reporting").show();
     }).always(() => {
-        if (reportingRefreshCycle > 1000) {
-            setTimeout(callAPI, reportingRefreshCycle);
+        if (reportingRefreshCycleInSeconds > 1) {
+            setTimeout(callAPI, reportingRefreshCycleInSeconds * 1000);
         }
     });
 }
