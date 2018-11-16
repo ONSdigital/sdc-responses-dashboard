@@ -126,7 +126,7 @@ function displayCollectionInstrumentData(collectionInstrumentType, response) {
 }
 
 function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true) {
-    const reportingRefreshCycle = $("#collex-id").data("reporting-refresh-cycle");
+    const reportingRefreshCycleInSeconds = $("#collex-id").data("reporting-refresh-cycle");
     const collectionInstrumentType = $("#collex-id").data("collection-instrument-type");
 
     $.ajax({
@@ -149,7 +149,7 @@ function callAPI(collexID = $("#collex-id").data("collex"), enableTimeout = true
         $("#error-reporting").show();
     }).always(function() {
         if (enableTimeout) {
-            setTimeout(callAPI, reportingRefreshCycle);
+            setTimeout(callAPI, reportingRefreshCycleInSeconds * 1000);
         }
     });
 }
