@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, current_app, abort
+from flask import Blueprint, abort, current_app, render_template
 
 from app.survey_metadata import fetch_survey_and_collection_exercise_metadata
 
@@ -39,6 +39,7 @@ def get_survey_details(collection_exercise_id):
         collection_instrument_type=collection_exercise['collectionInstrumentType'],
         survey_short_name=collection_exercise['shortName'],
         survey_long_name=collection_exercise['longName'],
+        survey_id=collection_exercise['surveyId'],
         collection_exercise_description=collection_exercise['userDescription'],
         reporting_refresh_cycle=int(current_app.config['REPORTING_REFRESH_CYCLE_IN_SECONDS'])
     )
