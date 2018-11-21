@@ -1,6 +1,9 @@
 start:
 	pipenv run python run.py
 
+compile:
+	yarn compile
+
 build:
 	pipenv install --dev
 

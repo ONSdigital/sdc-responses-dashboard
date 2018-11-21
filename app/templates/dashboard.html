@@ -10,8 +10,8 @@
 		<!-- DataTables -->
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
 		<!-- Custom CSS -->
-		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom-reporting.css') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/custom-dashboard.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/custom-reporting.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/custom-dashboard.min.css') }}">
 	</head>
 	<body id="collex-id" class="no-sidebar skin-black">
 		<!-- sidebar-collapse -->
@@ -29,22 +29,10 @@
 		</div>
 		<!-- ./wrapper -->
 		{% include 'partials/_scripts.html' %}
-		<!-- Moment JS -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
-		<!-- DataTables -->
-		<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-		<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-		<script src="https://cdn.datatables.net/scroller/1.5.1/js/dataTables.scroller.min.js"></script>
-		<!-- App -->
-		<script src="{{ url_for('static', filename='assets/js/datatables.js') }}"></script>
+		{% include 'partials/_plugins.html' %}
+		<script src="{{ url_for('static', filename='dist/js/dashboard.min.js') }}"></script>
 		<script>
 			$('#collex-id').data('surveys', '{{ all_surveys|tojson|safe }}');
-			$(document).ready(function() {
-				$("#modal-survey").modal({
-					backdrop: 'static',
-					keyboard: false
-				});
-			});
 		</script>
 	</body>
 </html>

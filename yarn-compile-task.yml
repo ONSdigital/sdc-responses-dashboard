@@ -1,0 +1,22 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: onsdigital/eq-python-build
+
+inputs:
+- name: sdc-responses-dashboard-source
+
+outputs:
+- name: compiled-sdc-responses-dashboard-source
+
+run:
+  path: sh
+  args:
+    - -exc
+    - |
+      cd sdc-responses-dashboard-source
+      yarn compile
+      cp -R ../sdc-responses-dashboard-source/. ../compiled-sdc-responses-dashboard-source
