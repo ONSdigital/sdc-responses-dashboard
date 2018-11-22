@@ -6,9 +6,9 @@ Feature: Viewing figures for Survey/Collection exercise
   Background:
     Given there is at least one live collection exercise
     And the user is on the dashboard homepage
-    And the user as chosen a survey
+    And the user has chosen a survey
 
   Scenario: The user can view figures for a collection exercise period
-    Given The user can see a live collection exercise
-    When They click on an collection exercise period
-    Then They can view report figures on that collection exercise
+    Given the user can see a live collection exercise
+    When they click on an collection exercise period
+    Then they can view report figures on that collection exercise

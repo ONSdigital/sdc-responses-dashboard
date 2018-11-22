@@ -1,148 +1,190 @@
+function setDataTableHeaderWidth() {
+	// sets the width of the data table headers to 100%
+	$(".dataTables_scrollHeadInner table").css("width", "100%");
+}
+
+
+function setCollexTableHeight() {
+    // Dynamically set scroller rowHeight
+	let checkCollexTableExist = setInterval(function () {
+		let height = $("#collex-datatable tbody").height();
+		if (height) {
+			// sets the height of next div which follows the collex-datatable element
+			$("#collex-datatable + div").height(height + 1);
+			// sets the width of the headers to 100%
+			setDataTableHeaderWidth();
+			clearInterval(checkCollexTableExist);
+		}
+	}, 100);
+}
+
+function setDataTableDimension() {
+
+    setCollexTableHeight();
+    setDataTableHeaderWidth();
+
+}
+
 function initialiseDataTables() {
-    /* eslint-disable */
-    const surveyTable = $("#survey-datatable").DataTable({
-        paging: true,
-        lengthChange: false,
-        searching: true,
-        ordering: true,
-        info: true,
-        autoWidth: false,
-        autoHeight: false,
-        scrollY: "30vh",
-        scrollCollapse: true,
-        scroller: {
-            loadingIndicator: false
-        }
-    });
-    /* eslint-enable */
+	/* eslint-disable */
+	const surveyTable = $("#survey-datatable").DataTable({
+		paging: true,
+		lengthChange: false,
+		searching: true,
+		ordering: true,
+		info: true,
+		autoWidth: false,
+		autoHeight: false,
+		scrollY: "35vh",
+		scrollCollapse: true,
+		scroller: {
+			loadingIndicator: false
+		}
+	});
+	/* eslint-enable */
 
-    $("#survey-search").keyup(function() {
-        surveyTable.search($(this).val()).draw();
-    });
+	setDataTableHeaderWidth();
 
-    let dateRender = function(data, type, row, meta) {
-        if (type === "sort" || type === "type") {
-            return data;
-        } else {
-            return moment(data).format("DD-MM-YYYY");  // eslint-disable-line no-undef
-        }
-    };
+	$("#survey-search").keyup(function () {
+		surveyTable.search($(this).val()).draw();
+	});
 
-    /* eslint-disable */
-    const collexTable = $("#collex-datatable").DataTable({
-        paging: true,
-        lengthChange: false,
-        searching: true,
-        ordering: true,
-        info: true,
-        autoWidth: false,
-        autoHeight: false,
-        scrollY: "30vh",
-        scrollCollapse: true,
-        scroller: {
-            loadingIndicator: false
-        },
-        data: [],
-        order: [
-            [1, 'desc'], [2, 'desc']
-        ],
-        columns: [{
-                "data": "userDescription",
-                "defaultContent": "No description provided",
-                "title": "Collection Exercise Period",
-                "width": "300px"
-            },
-            {
-                "data": "periodStartDateTime",
-                "defaultContent": "No start date provided",
-                "title": "Start Date",
-                "width": "300px",
-                "render": dateRender
-            },
-            {
-                "data": "periodEndDateTime",
-                "defaultContent": "No end date provided",
-                "title": "End Date",
-                "width": "300px",
-                "render": dateRender
-            }
-        ],
-        rowId: 'collectionExerciseId'
-    });
-    /* eslint-enable */
+	let dateRender = (data, type, row, meta) => {
+		if (type === "sort" || type === "type") {
+			return data;
+		} else {
+			return moment(data).format("DD-MM-YYYY"); // eslint-disable-line no-undef
+		}
+	};
 
-    $("#collex-search").keyup(function() {
-        collexTable.search($(this).val()).draw();
-    });
+	/* eslint-disable */
+	const collexTable = $("#collex-datatable").DataTable({
+		paging: true,
+		lengthChange: false,
+		searching: true,
+		ordering: true,
+		info: true,
+		autoWidth: false,
+		autoHeight: false,
+		scrollY: "35vh",
+		scrollCollapse: true,
+		scroller: {
+			loadingIndicator: false,
+			rowHeight: 40
+		},
+		data: [],
+		order: [
+			[1, 'desc'],
+			[2, 'desc']
+		],
+		columns: [{
+				"data": "userDescription",
+				"defaultContent": "No description provided",
+				"title": "Collection Exercise Period",
+				"width": "50%"
+			},
+			{
+				"data": "periodStartDateTime",
+				"defaultContent": "No start date provided",
+				"title": "Start Date",
+				"width": "25%",
+				"render": dateRender
+			},
+			{
+				"data": "periodEndDateTime",
+				"defaultContent": "No end date provided",
+				"title": "End Date",
+				"width": "25%",
+				"render": dateRender
+			}
+		],
+		rowId: 'collectionExerciseId'
+	});
+	/* eslint-enable */
 
-    $("#survey-datatable tbody").on("click", "tr", function() {
-        const id = surveyTable.row(this).id();
+	$("#collex-search").keyup(function () {
+		collexTable.search($(this).val()).draw();
+	});
 
-        if (typeof id !== "undefined") {
-            const surveyShortName = $(this).data("survey-short-name");
+	$("#survey-datatable tbody").on("click", "tr", function () {
+		const id = surveyTable.row(this).id();
 
-            $("#chosen-survey").text(surveyShortName);
-            $("#modal-survey").modal("toggle");
+		if (typeof id !== "undefined") {
+			const surveyShortName = $(this).data("survey-short-name");
 
-            if (typeof reporting_url == "undefined") {
-                $("#modal-collex").attr('data-backdrop', 'static');
-                $("#modal-collex").attr('data-keyboard', 'false');
-            }
+			$("#chosen-survey").text(surveyShortName);
+			$("#modal-survey").modal("toggle");
 
-            loadCollexTableData(collexTable, id);
-        }
+			if (typeof reporting_url == "undefined") {
+				$("#modal-collex").attr('data-backdrop', 'static');
+				$("#modal-collex").attr('data-keyboard', 'false');
+			}
 
-    });
+			loadCollexTableData(collexTable, id);
+		}
+
+	});
 
 }
 
 function loadCollexTableData(collexTable, id) {
-    /**
-     *  Load the collection exercise data into the data table
-     */
+	/**
+	 *  Load the collection exercise data into the data table
+	 */
 
-    const surveys = JSON.parse($('#collex-id').data('surveys'));
+	const surveys = JSON.parse($('#collex-id').data('surveys'));
 
-    collexTable.clear().draw();
-    collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw();
+	collexTable.clear().draw();
+	collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw();
 
-    $("#modal-collex").modal("toggle");
+	$("#modal-collex").modal("toggle");
+	// Dynamically set scroller rowHeight
+	let checkCollexTableExist = setInterval(function () {
+		let height = $("#collex-datatable tbody").height();
+		if (height) {
+			// sets the height of next div which follows the collex-datatable element
+			$("#collex-datatable + div").height(height + 1);
+			// sets the width of the headers to 100%
+			setDataTableHeaderWidth();
+			clearInterval(checkCollexTableExist);
+		}
+	}, 100);
 
-    $("#collex-datatable tbody").on("click", "tr", function() {
-        let id = collexTable.row(this).id();
-        let collexID = $("#collex-id").data("collex");
+	$("#collex-datatable tbody").on("click", "tr", function () {
+		let id = collexTable.row(this).id();
+		let collexID = $("#collex-id").data("collex");
 
-        if (typeof id !== "undefined") {
-            if (typeof collexID == "undefined") {
-                window.location.href = '/dashboard/collection-exercise/' + id;
-            } else {
-                window.location.href = id;
-            }
+		if (typeof id !== "undefined") {
+			if (typeof collexID == "undefined") {
+				window.location.href = `/dashboard/collection-exercise/${id}`;
+			} else {
+				window.location.href = id;
+			}
 
-        }
-    });
+		}
+	});
 }
 
 function getCollexFromSurveyId(surveys, survey_id) {
-    /**
-     *  Returns an array of collection exercises for a given survey id
-     */
+	/**
+	 *  Returns an array of collection exercises for a given survey id
+	 */
 
-    for (let i = 0; i < surveys.length; i++) {
-        if (surveys[i].surveyId === survey_id) {
-            let collectionExercises = surveys[i].collectionExercises;
+	for (let i = 0; i < surveys.length; i++) {
+		if (surveys[i].surveyId === survey_id) {
+			let collectionExercises = surveys[i].collectionExercises;
 
-            for (let collex in collectionExercises) {
-                if (collectionExercises[collex].userDescription === "") {
-                    collectionExercises[collex].userDescription = "No description provided";  // eslint-disable-line
-                }
-            }
+			for (let collex in collectionExercises) {
+				if (collectionExercises[collex].userDescription === "") {
+					collectionExercises[collex].userDescription = "No description provided"; // eslint-disable-line
+				}
+			}
 
-            return collectionExercises;
-        }
-    }
+			return collectionExercises;
+		}
+	}
 }
 
-$(document).ready(function() {
-    initialiseDataTables();
+$(document).ready(() => {
+	initialiseDataTables();
 });

@@ -1,6 +1,9 @@
 start:
 	pipenv run python run.py
 
+compile:
+	yarn compile
+
 build:
 	pipenv install --dev
 
@@ -18,4 +21,4 @@ mock_services:
 	pipenv run python scripts/mock_services.py
 
 smoke_test:
-	pipenv run behave tests/smoke_tests/features
+	pipenv run behave tests/functional/smoke_tests/features

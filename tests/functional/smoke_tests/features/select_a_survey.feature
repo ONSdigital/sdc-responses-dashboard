@@ -1,8 +1,8 @@
 Feature: Select a survey
-  As an business representative
+  As a business representative
   I need to view all available surveys
   So that I can select relevant surveys
 
   Scenario: The user is able to select a survey
-    Given The user has navigated to the dashboard homepage
-    Then They can see a list containing at least one survey
+    Given the user has navigated to the dashboard homepage
+    Then they can see a list containing at least one survey

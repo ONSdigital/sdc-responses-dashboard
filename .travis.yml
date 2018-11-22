@@ -1,16 +1,33 @@
-language: python
-sudo: true
-python:
-  - "3.6"
-# command to install dependencies
-install:
-    - pip install pipenv
-    - pipenv install --dev
+cache:
+    - yarn
+    - pip
+    - directories:
+        - /opt/python/
+        - /home/travis/.local/share/
 
-script:
-  - make test
+matrix:
+  include:
+    - language: python
+      sudo: true
+      python:
+        - 3.6
+      # command to install dependencies
+      install:
+      - pip install -U pip pipenv
+      - pipenv install --dev
+      script:
+      - make test
+      branches:
+        only:
+        - master
 
-branches:
-  only:
-    - master
-    - frontend-bootstrap-feature-branch
+    - language: node_js
+      dist: trusty
+      sudo: true
+      node_js:
+        - 11
+      script:
+      - yarn compile
+      branches:
+        only:
+        - master

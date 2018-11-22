@@ -23,3 +23,5 @@ venv
 
 .DS_Store
 .cache
+node_modules/
+/app/static/dist/

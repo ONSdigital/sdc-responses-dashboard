@@ -20,16 +20,22 @@ def wait_on_collection_exercise(_):
     raise TimeoutError
 
 
-@given('The user has selected a survey')
-@given('the user as chosen a survey')
+@given('the user has selected a survey')
+@given('the user has chosen a survey')
 def clicking_on_survey(context):
-    WebDriverWait(context.browser, 10).until(
+
+    # Wait for surveys menu to load
+    WebDriverWait(context.browser, timeout=10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, '[data-id="survey_table"]')))
+
+    # Click the first survey on the list
     context.browser.find_elements_by_css_selector('[data-id="survey_table"] tr')[0].click()
 
 
-@then('They are shown at least one collection exercise')
-@given('The user can see a live collection exercise')
+@then('they are shown at least one collection exercise')
+@given('the user can see a live collection exercise')
 def get_first_row_on_collex_modal(context):
+
+    # Check there is at least one collection exercise displayed in the menu
     rows = context.browser.find_elements_by_css_selector('[data-id="survey_table"] tr')
     assert rows[0].text != 'No data available'

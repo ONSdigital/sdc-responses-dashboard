@@ -1,0 +1,33 @@
+{
+  "name": "sdc-responses-dashboard",
+  "version": "1.0.0",
+  "description": "ONS Digital SDC Responses Dashboard App",
+  "author": {
+    "name": "ONS Digital",
+    "url": "http://onsdigital.github.io/"
+  },
+  "main": "gulpfile.babel.js",
+  "scripts": {
+    "compile": "yarn && gulp compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ONSdigital/sdc-responses-dashboard"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ONSdigital/sdc-responses-dashboard/issues"
+  },
+  "homepage": "https://github.com/ONSdigital/sdc-responses-dashboard#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/register": "^7.0.0",
+    "del": "^3.0.0",
+    "gulp": "4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.1"
+  }
+}

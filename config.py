@@ -1,5 +1,5 @@
-from distutils.util import strtobool
 import os
+import time
 
 REQUIRED_ENVIRONMENT_VARIABLES = {
     'PORT',
@@ -7,9 +7,10 @@ REQUIRED_ENVIRONMENT_VARIABLES = {
     'COLLECTION_EXERCISE_URL',
     'SURVEY_URL',
     'REPORTING_URL',
-    'REPORTING_REFRESH_CYCLE',
+    'REPORTING_REFRESH_CYCLE_IN_SECONDS',
     'AUTH_USERNAME',
-    'AUTH_PASSWORD'
+    'AUTH_PASSWORD',
+    'STATIC_ASSETS_VERSION'
 }
 
 
@@ -20,11 +21,12 @@ class Config:
     COLLECTION_EXERCISE_URL = os.getenv('COLLECTION_EXERCISE_URL')
     SURVEY_URL = os.getenv('SURVEY_URL')
     REPORTING_URL = os.getenv('REPORTING_URL')
-    REPORTING_REFRESH_CYCLE = os.getenv('REPORTING_REFRESH_CYCLE')
+    REPORTING_REFRESH_CYCLE_IN_SECONDS = os.getenv('REPORTING_REFRESH_CYCLE_IN_SECONDS')
     AUTH_USERNAME = os.getenv('AUTH_USERNAME')
     AUTH_PASSWORD = os.getenv('AUTH_PASSWORD')
     LOGGING_LEVEL = os.getenv('LOGGING_LEVEL', 'INFO')
     LOGGING_JSON_INDENT = os.getenv('LOGGING_JSON_INDENT')
+    STATIC_ASSETS_VERSION = os.getenv('STATIC_ASSETS_VERSION', '1.0.0')  # Defaulted until releases
 
 
 class DevelopmentConfig(Config):
@@ -35,11 +37,12 @@ class DevelopmentConfig(Config):
     COLLECTION_EXERCISE_URL = os.getenv('COLLECTION_EXERCISE_URL', 'http://localhost:8145')
     SURVEY_URL = os.getenv('SURVEY_URL', 'http://localhost:8080')
     REPORTING_URL = os.getenv('REPORTING_URL', 'http://localhost:8084')
-    REPORTING_REFRESH_CYCLE = os.getenv('REPORTING_REFRESH_CYCLE', '10000')
+    REPORTING_REFRESH_CYCLE_IN_SECONDS = os.getenv('REPORTING_REFRESH_CYCLE_IN_SECONDS', '10')
     AUTH_USERNAME = os.getenv('AUTH_USERNAME', 'admin')
     AUTH_PASSWORD = os.getenv('AUTH_PASSWORD', 'secret')
     LOGGING_LEVEL = os.getenv('LOGGING_LEVEL', 'DEBUG')
     LOGGING_JSON_INDENT = os.getenv('LOGGING_JSON_INDENT', '4')
+    STATIC_ASSETS_VERSION = os.getenv('STATIC_ASSETS_VERSION', str(int(time.time())))
 
 
 class TestingConfig(Config):
@@ -51,6 +54,7 @@ class TestingConfig(Config):
     HOST = 'localhost'
     TESTING = True
     ENV = 'testing'
-    REPORTING_REFRESH_CYCLE = '10000'
+    REPORTING_REFRESH_CYCLE_IN_SECONDS = '10'
     AUTH_USERNAME = 'admin'
     AUTH_PASSWORD = 'secret'
+    STATIC_ASSETS_VERSION = 'test'
