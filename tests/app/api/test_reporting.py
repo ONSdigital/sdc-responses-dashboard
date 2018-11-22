@@ -50,15 +50,20 @@ class TestReporting(AppContextTestCase):
 
         self.assertEqual(decoded_report, seft_reporting_response)
 
-    @responses.activate
-    def test_reporting_details_malformed_collex(self):
+    def test_reporting_details_malformed_collex_id(self):
         response = self.test_client.get('/dashboard/reporting/eq'
                                         '/survey/57586798-74e3-49fd-93da-a782ec5f5129'
-                                        '/collection-exercise/0002133304032532504')
+                                        '/collection-exercise/not-a-valid-uuid-format')
         self.assertEqual(response.status_code, 404)
         self.assertIn(b'Sorry, we could not find the page you were looking for.', response.data)
 
-    @responses.activate
+    def test_reporting_details_malformed_survey_id(self):
+        response = self.test_client.get('/dashboard/reporting/eq'
+                                        '/survey/not-a-valid-uuid-format'
+                                        '/collection-exercise/14fb3e68-4dca-46db-bf49-04b84e07e999')
+        self.assertEqual(response.status_code, 404)
+        self.assertIn(b'Sorry, we could not find the page you were looking for.', response.data)
+
     def test_reporting_details_invalid_CI_type(self):
         response = self.test_client.get('/dashboard/reporting/SAFT'
                                         '/survey/57586798-74e3-49fd-93da-a782ec5f5129'

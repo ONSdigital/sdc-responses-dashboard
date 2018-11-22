@@ -25,7 +25,7 @@ def get_surveys():
 
 
 @dashboard_blueprint.route('/collection-exercise/<collection_exercise_id>', methods=['GET'])
-def get_survey_details(collection_exercise_id):
+def get_dashboard_for_collection_exercise(collection_exercise_id):
     surveys_metadata, collection_exercise_metadata = fetch_survey_and_collection_exercise_metadata()
     try:
         collection_exercise = collection_exercise_metadata[collection_exercise_id]

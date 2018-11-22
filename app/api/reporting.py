@@ -18,10 +18,14 @@ logger = get_logger()
 def reporting_details(collection_instrument_type, survey_id, collex_id):
     ci_types = {'eq', 'seft'}
 
-    collex_id = parse_uuid(collex_id)
+    parsed_survey_id = parse_uuid(survey_id)
+    if not parsed_survey_id:
+        logger.debug('Malformed collection exercise ID', invalid_survey_id=survey_id)
+        abort(404, 'Malformed collection exercise ID')
 
-    if not collex_id:
-        logger.debug('Malformed collection exercise ID', invalid_id=collex_id)
+    parsed_collex_id = parse_uuid(collex_id)
+    if not parsed_collex_id:
+        logger.debug('Malformed collection exercise ID', invalid_collex_id=collex_id)
         abort(404, 'Malformed collection exercise ID')
 
     if not collection_instrument_type.lower() in ci_types:
@@ -29,9 +33,9 @@ def reporting_details(collection_instrument_type, survey_id, collex_id):
         abort(404, 'Invalid CI type')
 
     try:
-        report = get_reporting_details(survey_id, collex_id)
+        report = get_reporting_details(parsed_survey_id, parsed_collex_id)
     except HTTPError:
-        logger.debug('Invalid Collection exercise id')
+        logger.debug('Invalid collection exercise or survey id')
         abort(404)
 
     if collection_instrument_type == 'seft':
