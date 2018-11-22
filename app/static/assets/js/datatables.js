@@ -3,6 +3,28 @@ function setDataTableHeaderWidth() {
 	$(".dataTables_scrollHeadInner table").css("width", "100%");
 }
 
+
+function setCollexTableHeight() {
+    // Dynamically set scroller rowHeight
+	let checkCollexTableExist = setInterval(function () {
+		let height = $("#collex-datatable tbody").height();
+		if (height) {
+			// sets the height of next div which follows the collex-datatable element
+			$("#collex-datatable + div").height(height + 1);
+			// sets the width of the headers to 100%
+			setDataTableHeaderWidth();
+			clearInterval(checkCollexTableExist);
+		}
+	}, 100);
+}
+
+function setDataTableDimension() {
+
+    setCollexTableHeight();
+    setDataTableHeaderWidth();
+
+}
+
 function initialiseDataTables() {
 	/* eslint-disable */
 	const surveyTable = $("#survey-datatable").DataTable({
@@ -116,7 +138,6 @@ function loadCollexTableData(collexTable, id) {
 	collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw();
 
 	$("#modal-collex").modal("toggle");
-
 	// Dynamically set scroller rowHeight
 	let checkCollexTableExist = setInterval(function () {
 		let height = $("#collex-datatable tbody").height();
@@ -128,7 +149,6 @@ function loadCollexTableData(collexTable, id) {
 			clearInterval(checkCollexTableExist);
 		}
 	}, 100);
-
 
 	$("#collex-datatable tbody").on("click", "tr", function () {
 		let id = collexTable.row(this).id();

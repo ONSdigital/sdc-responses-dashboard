@@ -1,8 +1,8 @@
-from datetime import datetime
 import json
+from datetime import datetime
 from random import SystemRandom
 
-from flask import Response, Flask
+from flask import Flask, Response
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -11,9 +11,9 @@ CORS(app)
 
 
 @app.route(
-    '/reporting-api/v1/response-dashboard/<collection_instrument_type>/collection-exercise/<collection_exercise_id>',
+    '/reporting-api/v1/response-dashboard/survey/<survey_id>/collection-exercise/<collection_exercise_id>',
     methods=['GET'])
-def get_report(collection_instrument_type, collection_exercise_id):
+def get_report(survey_id, collection_exercise_id):
     rand_gen = SystemRandom()
 
     sample_size = rand_gen.randint(100, 1000)
@@ -22,35 +22,20 @@ def get_report(collection_instrument_type, collection_exercise_id):
     uploads = rand_gen.randint(0, downloads)
     accounts_enrolled = rand_gen.randint(uploads, accounts_pending)
 
-    if collection_instrument_type.lower() == 'seft':
-        response = {
-            'metadata': {
-                'collectionExerciseId': collection_exercise_id,
-                'timeUpdated': datetime.now().timestamp()
-            },
-            'report': {
-                'downloads': downloads,
-                'uploads': uploads,
-                'accountsPending': accounts_pending,
-                'accountsEnrolled': accounts_enrolled,
-                'sampleSize': sample_size
-            }
+    response = {
+        'metadata': {
+            'collectionExerciseId': collection_exercise_id,
+            'timeUpdated': datetime.now().timestamp()
+        },
+        'report': {
+            'inProgress': downloads - uploads,
+            'accountsPending': accounts_pending,
+            'accountsEnrolled': accounts_enrolled,
+            'notStarted': sample_size - downloads,
+            'completed': uploads,
+            'sampleSize': sample_size
         }
-    else:
-        response = {
-            'metadata': {
-                'collectionExerciseId': collection_exercise_id,
-                'timeUpdated': datetime.now().timestamp()
-            },
-            'report': {
-                'inProgress': downloads - uploads,
-                'accountsPending': accounts_pending,
-                'accountsEnrolled': accounts_enrolled,
-                'notStarted': sample_size - downloads,
-                'completed': uploads,
-                'sampleSize': sample_size
-            }
-        }
+    }
 
     return Response(json.dumps(response), content_type='application/json')
 

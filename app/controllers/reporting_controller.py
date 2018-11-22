@@ -1,5 +1,5 @@
-from flask import current_app
 import requests
+from flask import current_app
 from structlog import get_logger
 
 from app.exceptions import APIConnectionError
@@ -7,12 +7,12 @@ from app.exceptions import APIConnectionError
 logger = get_logger()
 
 
-def get_reporting_details(collection_instrument_type, collex_id):
+def get_reporting_details(survey_id, collex_id):
     logger.debug('Fetching report for collection exercise',
                  collex_id=collex_id,
-                 collection_instrument_type=collection_instrument_type)
+                 survey_id=survey_id)
     url = f'{current_app.config["REPORTING_URL"]}/reporting-api/v1/response-dashboard' \
-          f'/{collection_instrument_type}/collection-exercise/{collex_id}'
+          f'/survey/{survey_id}/collection-exercise/{collex_id}'
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
@@ -22,5 +22,5 @@ def get_reporting_details(collection_instrument_type, collex_id):
 
     logger.debug('Successfully fetched report for collection exercise',
                  collex_id=collex_id,
-                 collection_instrument_type=collection_instrument_type)
-    return response.text
+                 survey_id=survey_id)
+    return response.json()

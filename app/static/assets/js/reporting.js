@@ -126,12 +126,13 @@ function displayCollectionInstrumentData(collectionInstrumentType, response) {
 
 function callAPI() {
     const collexID = $("#collex-id").data("collex");
+    const surveyID = $("#collex-id").data("survey");
     const reportingRefreshCycleInSeconds = $("#collex-id").data("reporting-refresh-cycle");
     const collectionInstrumentType = $("#collex-id").data("collection-instrument-type");
 
     $.ajax({
         dataType: "json",
-        url: `/dashboard/reporting/${collectionInstrumentType}/collection-exercise/${collexID}`
+        url: `/dashboard/reporting/${collectionInstrumentType}/survey/${surveyID}/collection-exercise/${collexID}`
     }).done((result) => {
 
         $(".content-header").show();
