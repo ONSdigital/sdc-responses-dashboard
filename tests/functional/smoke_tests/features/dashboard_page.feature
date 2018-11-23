@@ -4,8 +4,7 @@ Feature: Viewing figures for Survey/Collection exercise
   So that I can view the figures for that period
 
   Background:
-    Given there is at least one live collection exercise
-    And the user is on the dashboard homepage
+    Given the user is on the dashboard homepage
     And the user has chosen a survey
 
   Scenario: The user can view figures for a collection exercise period

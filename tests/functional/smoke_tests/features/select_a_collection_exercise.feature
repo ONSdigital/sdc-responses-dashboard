@@ -4,8 +4,7 @@ Feature: Select a collection exercise
   So that I can view relevant data for that collection exercise
 
   Background:
-    Given there is at least one live collection exercise
-    And the user is on the dashboard homepage
+    Given the user is on the dashboard homepage
 
   Scenario: The user is able to select a collection exercise
     Given the user has selected a survey
