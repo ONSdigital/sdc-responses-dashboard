@@ -33,7 +33,7 @@ def clicking_on_survey(context):
 
 
 @then('they are shown at least one collection exercise')
-@given('the user can see a live collection exercise')
+@given("the user can see at least one live collection exercise")
 def get_first_row_on_collex_modal(context):
 
     # Check there is at least one collection exercise displayed in the menu

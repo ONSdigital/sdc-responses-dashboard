@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-@when('they click on an collection exercise period')
+@when("they click on that collection exercise period")
 def click_on_collex(context):
 
     # Wait for collex menu to load
