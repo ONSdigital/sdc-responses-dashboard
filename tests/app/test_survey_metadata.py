@@ -33,14 +33,14 @@ class TestSurveyMetadata(AppContextTestCase):
                         'userDescription': 'December 2017',
                         'exerciseRef': '201712',
                         'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                        'periodEndDateTime': '2017-09-15T22:59:59.000Z',
+                        'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                     },
                     {
                         'collectionExerciseId': '24fb3e68-4dca-46db-bf49-04b84e07e77c',
                         'userDescription': 'January 2018',
                         'exerciseRef': '201801',
                         'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                        'periodEndDateTime': '2017-09-15T22:59:59.000Z',
+                        'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                     }
                 ]
             },
@@ -66,7 +66,7 @@ class TestSurveyMetadata(AppContextTestCase):
                         'userDescription': 'Quarterly Business Survey',
                         'exerciseRef': '201812',
                         'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                        'periodEndDateTime': '2017-09-15T22:59:59.000Z',
+                        'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                     }
                 ]
             },
@@ -98,7 +98,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'surveyType': 'Business',
                  'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
                  'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
+                 'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                  'userDescription': 'Quarterly '
                                     'Business Survey'},
             '14fb3e68-4dca-46db-bf49-04b84e07e77c':
@@ -111,7 +111,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'surveyType': 'Business',
                  'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                  'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
+                 'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                  'userDescription': 'December 2017'},
             '24fb3e68-4dca-46db-bf49-04b84e07e77c':
                 {'collectionInstrumentType': 'seft',
@@ -122,7 +122,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'surveyType': 'Business',
                  'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                  'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
+                 'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                  'userDescription': 'January 2018'}
         }
 
@@ -154,7 +154,7 @@ class TestSurveyMetadata(AppContextTestCase):
                         'userDescription': 'January 2018',
                         'exerciseRef': '201801',
                             'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                        'periodEndDateTime': '2017-09-15T22:59:59.000Z'
+                        'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z'
                     }
                 ]
             },
@@ -180,7 +180,7 @@ class TestSurveyMetadata(AppContextTestCase):
                         'userDescription': 'Quarterly Business Survey',
                         'exerciseRef': '201812',
                         'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                        'periodEndDateTime': '2017-09-15T22:59:59.000Z'
+                        'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z'
                     }
                 ]
             }
@@ -196,7 +196,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'surveyType': 'Business',
                  'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
                  'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
+                 'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                  'userDescription': 'Quarterly Business Survey'},
             '24fb3e68-4dca-46db-bf49-04b84e07e77c':
                 {'collectionInstrumentType': 'seft',
@@ -207,7 +207,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'surveyType': 'Business',
                  'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                  'periodStartDateTime': '2017-09-14T23:00:00.000Z',
-                 'periodEndDateTime': '2017-09-15T22:59:59.000Z',
+                 'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                  'userDescription': 'January 2018'}}
 
         self.assertEqual(expected_surveys,

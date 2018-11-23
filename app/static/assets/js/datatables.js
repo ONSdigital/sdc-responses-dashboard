@@ -91,9 +91,9 @@ function initialiseDataTables() {
 				"render": dateRender
 			},
 			{
-				"data": "periodEndDateTime",
-				"defaultContent": "No end date provided",
-				"title": "End Date",
+				"data": "scheduledReturnDateTime",
+				"defaultContent": "No return by date provided",
+				"title": "Return By Date",
 				"width": "25%",
 				"render": dateRender
 			}
