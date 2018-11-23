@@ -13,7 +13,6 @@ __pycache__
 # Virtualenvs
 .env
 env
-env*
 venv
 
 ## OS X
