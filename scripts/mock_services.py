@@ -17,10 +17,10 @@ def get_report(survey_id, collection_exercise_id):
     rand_gen = SystemRandom()
 
     sample_size = rand_gen.randint(100, 1000)
-    accounts_pending = rand_gen.randint(0, sample_size)
-    downloads = rand_gen.randint(0, accounts_pending)
+    accounts_enrolled = rand_gen.randint(0, sample_size)
+    accounts_pending = rand_gen.randint(0, sample_size - accounts_enrolled)
+    downloads = rand_gen.randint(0, accounts_enrolled)
     uploads = rand_gen.randint(0, downloads)
-    accounts_enrolled = rand_gen.randint(uploads, accounts_pending)
 
     response = {
         'metadata': {

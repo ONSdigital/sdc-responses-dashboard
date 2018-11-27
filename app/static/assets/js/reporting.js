@@ -1,18 +1,6 @@
 /*jshint esversion: 6 */
 function getReportSEFT(response) {
     const report = {
-        "downloads": {
-            "id": "downloads",
-            "title": "Downloads",
-            "value": response.report.downloads,
-            "class": "fa fa-download"
-        },
-        "uploads": {
-            "id": "uploads",
-            "title": "Uploads",
-            "value": response.report.uploads,
-            "class": "fa fa-upload"
-        },
         "accountsPending": {
             "id": "accounts-pending",
             "title": "Accounts Pending",
@@ -24,6 +12,18 @@ function getReportSEFT(response) {
             "title": "Accounts Enrolled",
             "value": response.report.accountsEnrolled,
             "class": "fa fa-users"
+        },
+        "downloads": {
+            "id": "downloads",
+            "title": "Downloads",
+            "value": response.report.downloads,
+            "class": "fa fa-download"
+        },
+        "uploads": {
+            "id": "uploads",
+            "title": "Uploads",
+            "value": response.report.uploads,
+            "class": "fa fa-upload"
         },
         "sampleSize": {
             "id": "sample-size",
