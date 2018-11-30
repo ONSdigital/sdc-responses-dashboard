@@ -1,33 +1,25 @@
+language: node_js
+dist: trusty
+sudo: true
+node_js:
+  - 11
+before_install:
+  - pyenv versions
+  - pyenv install 3.6.3 --skip-existing
+  - pyenv rehash
+  - pyenv global 3.6.3
+  - pip install -U pip pipenv wheel
+  - pipenv install --dev --deploy
+  - pipenv check
 cache:
-    - yarn
-    - pip
-    - directories:
-        - /opt/python/
-        - /home/travis/.local/share/
-
-matrix:
-  include:
-    - language: python
-      sudo: true
-      python:
-        - 3.6
-      # command to install dependencies
-      install:
-      - pip install -U pip pipenv
-      - pipenv install --dev
-      script:
-      - make test
-      branches:
-        only:
-        - master
-
-    - language: node_js
-      dist: trusty
-      sudo: true
-      node_js:
-        - 11
-      script:
-      - yarn compile
-      branches:
-        only:
-        - master
+  - yarn
+  - pip
+  - directories:
+      - /opt/python/
+      - /home/travis/.local/share/
+script:
+  - yarn compile
+  - make test
+branches:
+  only:
+      - master
