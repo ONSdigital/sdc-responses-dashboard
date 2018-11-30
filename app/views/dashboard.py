@@ -36,7 +36,6 @@ def get_dashboard_for_collection_exercise(collection_exercise_id):
         'reporting.html',
         collex_id=collection_exercise_id,
         all_surveys=surveys_metadata,
-        collection_instrument_type=collection_exercise['collectionInstrumentType'],
         survey_short_name=collection_exercise['shortName'],
         survey_long_name=collection_exercise['longName'],
         survey_id=collection_exercise['surveyId'],
