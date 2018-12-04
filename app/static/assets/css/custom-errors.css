@@ -2,6 +2,9 @@
  * Custom CSS
  * -----------
  */
+.error-page {
+    margin: 100px auto 0 auto;
+}
 
 @media (max-width: 767px) {
 	.main-header .navbar {

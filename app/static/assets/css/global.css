@@ -1,0 +1,37 @@
+/*
+ * Global Custom CSS
+ * -----------
+ */
+
+.main-header .sidebar-toggle:before {
+	content: "";
+}
+
+.small-box>.inner {
+	padding: 20px;
+}
+
+.btn-primary {
+	background-color: #3445963;
+	background-color: #041d2b;
+}
+
+.table-bordered {
+	border: 1px solid #969696;
+}
+
+.skin-black .sidebar-form {
+	border-radius: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+.skin-black .sidebar-form input[type="text"],
+.skin-black .sidebar-form .btn {
+	border: 1px solid #374850;
+	height: 50px;
+}
+
+.skin-black .sidebar-form input[type="text"] {
+	color: #dedede;
+}
