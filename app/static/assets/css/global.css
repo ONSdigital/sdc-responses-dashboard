@@ -12,8 +12,8 @@
 }
 
 .btn-primary {
-	background-color: #3445963;
-	background-color: #041d2b;
+    background-color: #445963;
+    border-color: #041d2b;
 }
 
 .table-bordered {
@@ -22,7 +22,7 @@
 
 .skin-black .sidebar-form {
 	border-radius: 0px;
-	margin: 0px;
+	margin: 0 0 10px 0;
 	border: 0px;
 }
 
