@@ -45,9 +45,7 @@ function getReport(response) {
 function displayCollectionExerciseData(response) {
 
     const timeUpdated = moment.unix(response.metadata.timeUpdated).calendar(); // eslint-disable-line
-    let report = {};
-
-    report = getReport(response);
+    let report = getReport(response);
 
     $("#counters").empty();
     /* eslint-disable */

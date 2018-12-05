@@ -29,14 +29,14 @@ class TestReporting(AppContextTestCase):
         self.assertEqual(decoded_report, self.reporting_response)
 
     def test_reporting_details_malformed_collex_id(self):
-        response = self.test_client.get('/dashboard/reporting/eq'
+        response = self.test_client.get('/dashboard/reporting'
                                         '/survey/57586798-74e3-49fd-93da-a782ec5f5129'
                                         '/collection-exercise/not-a-valid-uuid-format')
         self.assertEqual(response.status_code, 404)
         self.assertIn(b'Sorry, we could not find the page you were looking for.', response.data)
 
     def test_reporting_details_malformed_survey_id(self):
-        response = self.test_client.get('/dashboard/reporting/eq'
+        response = self.test_client.get('/dashboard/reporting'
                                         '/survey/not-a-valid-uuid-format'
                                         '/collection-exercise/14fb3e68-4dca-46db-bf49-04b84e07e999')
         self.assertEqual(response.status_code, 404)
@@ -52,7 +52,7 @@ class TestReporting(AppContextTestCase):
                                                                             '/00000000-0000-0000-0000'
                                                                             '-0000000000000',
                           status=404)
-        response = self.test_client.get('/dashboard/reporting/seft'
+        response = self.test_client.get('/dashboard/reporting'
                                         '/survey/57586798-74e3-49fd-93da-a782ec5f5129'
                                         '/collection-exercise/00000000-0000-0000-0000-0000000000000')
         self.assertEqual(response.status_code, 404)
