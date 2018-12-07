@@ -3,6 +3,10 @@
  * -----------
  */
 
+.error-page {
+    margin: 100px auto 0 auto;
+}
+
 .main-header .sidebar-toggle:before {
 	content: "";
 }
