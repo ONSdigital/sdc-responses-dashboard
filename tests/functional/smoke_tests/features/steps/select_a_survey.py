@@ -12,5 +12,5 @@ def navigating_to_homepage(context):
 @then('they can see a list containing at least one survey')
 def get_first_row_on_survey_modal(context):
     # Check there is at least one survey displayed in the menu
-    rows = context.browser.find_elements_by_css_selector('[data-id="survey_table"] tr')
+    rows = context.browser.find_elements_by_css_selector('[data-id="survey-table"] tr')
     assert rows[0].text != 'No data available'

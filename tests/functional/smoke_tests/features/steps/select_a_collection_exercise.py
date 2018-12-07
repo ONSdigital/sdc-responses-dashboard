@@ -9,15 +9,15 @@ from selenium.webdriver.support.wait import WebDriverWait
 def clicking_on_survey(context):
     # Wait for surveys menu to load
     WebDriverWait(context.browser, timeout=10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, '[data-id="survey_table"]')))
+        EC.visibility_of_element_located((By.CSS_SELECTOR, '[data-id="survey-table"]')))
 
     # Click the first survey on the list
-    context.browser.find_elements_by_css_selector('[data-id="survey_table"] tr')[0].click()
+    context.browser.find_elements_by_css_selector('[data-id="survey-table"] tr')[0].click()
 
 
 @then('they are shown at least one collection exercise')
 @given("the user can see at least one live collection exercise")
 def get_first_row_on_collex_modal(context):
     # Check there is at least one collection exercise displayed in the menu
-    rows = context.browser.find_elements_by_css_selector('[data-id="survey_table"] tr')
+    rows = context.browser.find_elements_by_css_selector('[data-id="survey-table"] tr')
     assert rows[0].text != 'No data available'
