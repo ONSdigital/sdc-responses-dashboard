@@ -121,7 +121,7 @@ function displayCollectionInstrumentData(collectionInstrumentType, response) {
     $("#progress-uploaded").text(report.uploads.value);
     $("#time-updated").text(timeUpdated);
     $("#progress-size").text(report.sampleSize.value);
-    $("#collex-progress").text(`${progress}%`).css("width", `${progress}%`);
+    $("#collex-progress").text(`${progress.toFixed()}%`).css("width", `${progress}%`);
 }
 
 function callAPI() {
