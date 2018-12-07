@@ -25,7 +25,6 @@ class TestSurveyMetadata(AppContextTestCase):
                 'shortName': 'BRES',
                 'surveyType': 'Business',
                 'longName': 'Business Register and Employment Survey',
-                'collectionInstrumentType': 'seft',
                 'surveyRef': '221',
                 'collectionExercises': [
                     {
@@ -48,14 +47,12 @@ class TestSurveyMetadata(AppContextTestCase):
                 'surveyId': '04dbb407-4438-4f89-acc4-53445d75330c',
                 'shortName': 'AOFDI',
                 'surveyType': 'Business',
-                'collectionInstrumentType': 'seft',
                 'longName': 'Annual Outward Foreign Direct Investment Survey',
                 'surveyRef': '063',
                 'collectionExercises': []
             },
             {
                 'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
-                'collectionInstrumentType': 'eq',
                 'shortName': 'QBS',
                 'surveyType': 'Business',
                 'longName': 'Quarterly Business Survey',
@@ -72,7 +69,6 @@ class TestSurveyMetadata(AppContextTestCase):
             },
             {
                 'surveyId': '56dbb407-4438-4f89-acc4-53445d753111',
-                'collectionInstrumentType': 'eq',
                 'shortName': 'LMS',
                 'longName': 'Labour Market Survey',
                 'surveyRef': '999',
@@ -90,8 +86,7 @@ class TestSurveyMetadata(AppContextTestCase):
     def test_map_collection_exercise_id_to_survey_id(self):
         expected_result = {
             '14fb3e68-4dca-46db-bf49-04b84e07e777':
-                {'collectionInstrumentType': 'eq',
-                 'exerciseRef': '201812',
+                {'exerciseRef': '201812',
                  'longName': 'Quarterly Business '
                              'Survey',
                  'shortName': 'QBS',
@@ -102,9 +97,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'userDescription': 'Quarterly '
                                     'Business Survey'},
             '14fb3e68-4dca-46db-bf49-04b84e07e77c':
-                {'collectionInstrumentType': 'seft',
-
-                 'exerciseRef': '201712',
+                {'exerciseRef': '201712',
                  'longName': 'Business Register and '
                              'Employment Survey',
                  'shortName': 'BRES',
@@ -114,8 +107,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                  'userDescription': 'December 2017'},
             '24fb3e68-4dca-46db-bf49-04b84e07e77c':
-                {'collectionInstrumentType': 'seft',
-                 'exerciseRef': '201801',
+                {'exerciseRef': '201801',
                  'longName': 'Business Register and '
                              'Employment Survey',
                  'shortName': 'BRES',
@@ -144,7 +136,6 @@ class TestSurveyMetadata(AppContextTestCase):
             {
                 'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                 'shortName': 'BRES',
-                'collectionInstrumentType': 'seft',
                 'longName': 'Business Register and Employment Survey',
                 'surveyRef': '221',
                 'surveyType': 'Business',
@@ -161,7 +152,6 @@ class TestSurveyMetadata(AppContextTestCase):
             {
                 'surveyId': '04dbb407-4438-4f89-acc4-53445d75330c',
                 'shortName': 'AOFDI',
-                'collectionInstrumentType': 'seft',
                 'longName': 'Annual Outward Foreign Direct Investment Survey',
                 'surveyRef': '063',
                 'surveyType': 'Business',
@@ -169,7 +159,6 @@ class TestSurveyMetadata(AppContextTestCase):
             },
             {
                 'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
-                'collectionInstrumentType': 'eq',
                 'shortName': 'QBS',
                 'longName': 'Quarterly Business Survey',
                 'surveyRef': '064',
@@ -188,8 +177,7 @@ class TestSurveyMetadata(AppContextTestCase):
 
         expected_collection_exercises = {
             '14fb3e68-4dca-46db-bf49-04b84e07e777':
-                {'collectionInstrumentType': 'eq',
-                 'exerciseRef': '201812',
+                {'exerciseRef': '201812',
                  'longName': 'Quarterly Business '
                              'Survey',
                  'shortName': 'QBS',
@@ -199,8 +187,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                  'userDescription': 'Quarterly Business Survey'},
             '24fb3e68-4dca-46db-bf49-04b84e07e77c':
-                {'collectionInstrumentType': 'seft',
-                 'exerciseRef': '201801',
+                {'exerciseRef': '201801',
                  'longName': 'Business Register and '
                              'Employment Survey',
                  'shortName': 'BRES',

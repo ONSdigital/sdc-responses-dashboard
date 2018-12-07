@@ -1,42 +1,5 @@
 /*jshint esversion: 6 */
-function getReportSEFT(response) {
-    const report = {
-        "accountsPending": {
-            "id": "accounts-pending",
-            "title": "Accounts Pending",
-            "value": response.report.accountsPending,
-            "class": "fa fa-user-plus"
-        },
-        "accountsEnrolled": {
-            "id": "accounts-enrolled",
-            "title": "Accounts Enrolled",
-            "value": response.report.accountsEnrolled,
-            "class": "fa fa-users"
-        },
-        "downloads": {
-            "id": "downloads",
-            "title": "Downloads",
-            "value": response.report.downloads,
-            "class": "fa fa-download"
-        },
-        "uploads": {
-            "id": "uploads",
-            "title": "Uploads",
-            "value": response.report.uploads,
-            "class": "fa fa-upload"
-        },
-        "sampleSize": {
-            "id": "sample-size",
-            "title": "Sample Size",
-            "value": response.report.sampleSize,
-            "class": "fa fa-sitemap fa-color-white"
-        }
-    };
-
-    return report;
-}
-
-function getReportEQ(response) {
+function getReport(response) {
     const report = {
         "accountsPending": {
             "id": "accounts-pending",
@@ -79,16 +42,11 @@ function getReportEQ(response) {
     return report;
 }
 
-function displayCollectionInstrumentData(collectionInstrumentType, response) {
+function displayCollectionExerciseData(response) {
 
     const timeUpdated = moment.unix(response.metadata.timeUpdated).calendar(); // eslint-disable-line
-    let report = {};
+    let report = getReport(response);
 
-    if (collectionInstrumentType.toLowerCase() === "eq") {
-        report = getReportEQ(response);
-    } else {
-        report = getReportSEFT(response);
-    }
     $("#counters").empty();
     /* eslint-disable */
     for (const figure in report) {
@@ -115,24 +73,23 @@ function displayCollectionInstrumentData(collectionInstrumentType, response) {
     }
     /* eslint-enable */
 
-    const progress = (report.uploads.value / report.sampleSize.value * 100).toFixed(2);
+    const progress = (report.uploads.value / report.sampleSize.value * 100) || 0
 
     $("#sample-size-box").removeClass("bg-ons-light-blue").addClass("bg-ons-blue");
     $("#progress-uploaded").text(report.uploads.value);
     $("#time-updated").text(timeUpdated);
     $("#progress-size").text(report.sampleSize.value);
-    $("#collex-progress").text(`${progress}%`).css("width", `${progress}%`);
+    $("#collex-progress").text(`${progress.toFixed()}%`).css("width", `${progress}%`);
 }
 
 function callAPI() {
     const collexID = $("#collex-id").data("collex");
     const surveyID = $("#collex-id").data("survey");
     const reportingRefreshCycleInSeconds = $("#collex-id").data("reporting-refresh-cycle");
-    const collectionInstrumentType = $("#collex-id").data("collection-instrument-type");
 
     $.ajax({
         dataType: "json",
-        url: `/dashboard/reporting/${collectionInstrumentType}/survey/${surveyID}/collection-exercise/${collexID}`
+        url: `/dashboard/reporting/survey/${surveyID}/collection-exercise/${collexID}`
     }).done((result) => {
 
         $(".content-header").show();
@@ -141,7 +98,7 @@ function callAPI() {
         $("#loading").hide();
         $("#time-updated-label").show();
 
-        displayCollectionInstrumentData(collectionInstrumentType, result);
+        displayCollectionExerciseData(result);
     }).fail((result) => {
         $("#loading").hide();
         $(".content-header").hide();
