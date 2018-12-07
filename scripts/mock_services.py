@@ -18,7 +18,7 @@ def get_report(survey_id, collection_exercise_id):
 
     sample_size = rand_gen.randint(100, 1000)
     accounts_enrolled = rand_gen.randint(0, sample_size)
-    accounts_pending = rand_gen.randint(0, (sample_size - accounts_enrolled)//10)
+    accounts_pending = rand_gen.randint(0, (sample_size - accounts_enrolled) // 10)
     downloads = rand_gen.randint(0, accounts_enrolled)
     uploads = rand_gen.randint(0, downloads)
 
