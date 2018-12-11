@@ -5,37 +5,61 @@ function getReport(response) {
             "id": "accounts-pending",
             "title": "Accounts Pending",
             "value": response.report.accountsPending,
-            "class": "fa fa-user-plus"
+            "class": "fa fa-user-plus",
+            "tooltip": {
+                "placement": "bottom",
+                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+            }
         },
         "accountsEnrolled": {
             "id": "accounts-enrolled",
             "title": "Accounts Enrolled",
             "value": response.report.accountsEnrolled,
-            "class": "fa fa-users"
+            "class": "fa fa-users",
+            "tooltip": {
+                "placement": "bottom",
+                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+            }
         },
         "notStarted": {
             "id": "not-started",
             "title": "Not Started",
             "value": response.report.notStarted,
-            "class": "fa fa-times"
+            "class": "fa fa-times",
+            "tooltip": {
+                "placement": "bottom",
+                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+            }
         },
         "inProgress": {
             "id": "in-progress",
             "title": "In Progress",
             "value": response.report.inProgress,
-            "class": "fa fa-spinner"
+            "class": "fa fa-spinner",
+            "tooltip": {
+                "placement": "bottom",
+                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+            }
         },
-        "uploads": {
+        "completed": {
             "id": "completed",
             "title": "Completed",
             "value": response.report.completed,
-            "class": "fa fa-check"
+            "class": "fa fa-check",
+            "tooltip": {
+                "placement": "bottom",
+                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+            }
         },
         "sampleSize": {
             "id": "sample-size",
             "title": "Sample Size",
             "value": response.report.sampleSize,
-            "class": "fa fa-sitemap fa-color-white"
+            "class": "fa fa-sitemap fa-color-white",
+            "tooltip": {
+                "placement": "bottom",
+                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+            }
         }
     };
 
@@ -68,18 +92,32 @@ function displayCollectionExerciseData(response) {
             }).append($("<i>", {
                 "class": report[figure].class
             }))])));
+
+            // Adds a minimal bounce animation to each counter
             $(`#${report[figure].id}-counter`).effect("bounce", "slow");
+
+            // Adds a tooltip to each counter
+            $(`#${report[figure].id}-box`).tooltip({
+                "title": report[figure].tooltip.title,
+                "placement": report[figure].tooltip.placement,
+                "html": true
+            });
         }
     }
+
     /* eslint-enable */
 
-    const progress = (report.uploads.value / report.sampleSize.value * 100) || 0
+    const progress = ((report.completed.value / report.sampleSize.value * 100) || 0).toFixed()
 
     $("#sample-size-box").removeClass("bg-ons-light-blue").addClass("bg-ons-blue");
-    $("#progress-uploaded").text(report.uploads.value);
+    $("#progress-uploaded").text(report.completed.value);
     $("#time-updated").text(timeUpdated);
     $("#progress-size").text(report.sampleSize.value);
-    $("#collex-progress").text(`${progress.toFixed()}%`).css("width", `${progress}%`);
+
+    if (progress > 1) {
+        $("#collex-progress").text(`${progress}%`).css("width", `${progress}%`);
+    }
+
 }
 
 function callAPI() {

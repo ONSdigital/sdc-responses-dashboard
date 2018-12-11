@@ -39,3 +39,13 @@
 .skin-black .sidebar-form input[type="text"] {
 	color: #dedede;
 }
+
+.main-header {
+    max-height: 50px;
+}
+
+.skin-black .main-header .navbar > .sidebar-toggle {
+    width: 135px;
+    max-height: 50px;
+    text-align: center;
+}
