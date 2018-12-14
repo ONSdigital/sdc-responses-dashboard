@@ -107,15 +107,16 @@ function displayCollectionExerciseData(response) {
 
     /* eslint-enable */
 
-    const progress = ((report.completed.value / report.sampleSize.value * 100) || 0).toFixed()
+    const progress = (report.completed.value / report.sampleSize.value * 100) || 0
 
     $("#sample-size-box").removeClass("bg-ons-light-blue").addClass("bg-ons-blue");
     $("#progress-uploaded").text(report.completed.value);
     $("#time-updated").text(timeUpdated);
     $("#progress-size").text(report.sampleSize.value);
+    $("#collex-progress").css("width", `${progress}%`);
 
-    if (progress > 1) {
-        $("#collex-progress").text(`${progress}%`).css("width", `${progress}%`);
+    if (progress >= 2) {
+        $("#collex-progress").text(`${progress.toFixed()}%`);
     }
 
 }
