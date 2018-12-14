@@ -58,7 +58,7 @@ function getReport(response) {
             "class": "fa fa-sitemap fa-color-white",
             "tooltip": {
                 "placement": "bottom",
-                "title": "The total number of cases for this collection exercise (excluding dummies sample units)"
+                "title": "The total number of cases for this collection exercise (excluding dummies sample units)."
             }
         }
     };
