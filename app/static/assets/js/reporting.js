@@ -117,6 +117,8 @@ function displayCollectionExerciseData(response) {
 
     if (progress >= 2) {
         $("#collex-progress").text(`${progress.toFixed()}%`);
+    } else {
+        $("#collex-progress").empty();
     }
 
 }
