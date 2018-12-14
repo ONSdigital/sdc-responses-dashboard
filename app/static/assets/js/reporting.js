@@ -146,7 +146,7 @@ function callAPI() {
         $(".content").hide();
         $("#error-reporting").show();
     }).always(() => {
-        if (reportingRefreshCycleInSeconds > 1) {
+        if (reportingRefreshCycleInSeconds >= 5 && reportingRefreshCycleInSeconds <= 604800) {
             setTimeout(callAPI, reportingRefreshCycleInSeconds * 1000);
         }
     });
