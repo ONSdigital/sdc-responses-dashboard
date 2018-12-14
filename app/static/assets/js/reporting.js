@@ -58,7 +58,7 @@ function getReport(response) {
             "class": "fa fa-sitemap fa-color-white",
             "tooltip": {
                 "placement": "bottom",
-                "title": "The total number of cases for this collection exercise (excluding dummies sample units)"
+                "title": "The total number of cases for this collection exercise (excluding dummies sample units)."
             }
         }
     };
@@ -146,7 +146,7 @@ function callAPI() {
         $(".content").hide();
         $("#error-reporting").show();
     }).always(() => {
-        if (reportingRefreshCycleInSeconds > 1) {
+        if (reportingRefreshCycleInSeconds >= 5 && reportingRefreshCycleInSeconds <= 604800) {
             setTimeout(callAPI, reportingRefreshCycleInSeconds * 1000);
         }
     });
