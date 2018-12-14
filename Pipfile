@@ -15,14 +15,14 @@ responses = "*"
 python-dotenv = "*"
 structlog = "*"
 gunicorn = "*"
-behave = "*"
-selenium = "*"
-chromedriver-installer = "*"
 
 [dev-packages]
 pylint = "*"
 pylint-mccabe = "*"
 pylint-quotes = "*"
+selenium = "*"
+behave = "*"
+chromedriver-installer = "*"
 
 [requires]
 python_version = "3.6"
