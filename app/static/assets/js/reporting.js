@@ -8,7 +8,7 @@ function getReport(response) {
             "class": "fa fa-user-plus",
             "tooltip": {
                 "placement": "bottom",
-                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+                "title": "The number of accounts that have been created but not yet verified for this collection exercise."
             }
         },
         "accountsEnrolled": {
@@ -18,7 +18,7 @@ function getReport(response) {
             "class": "fa fa-users",
             "tooltip": {
                 "placement": "bottom",
-                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+                "title": "The number of verified accounts for this collection exercise."
             }
         },
         "notStarted": {
@@ -28,7 +28,7 @@ function getReport(response) {
             "class": "fa fa-times",
             "tooltip": {
                 "placement": "bottom",
-                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+                "title": "<strong>eQ</strong>: The number of cases where a questionnaire has not yet been launched. <p /><strong>SEFT</strong>: The number of cases where a collection instrument has not been downloaded."
             }
         },
         "inProgress": {
@@ -38,7 +38,7 @@ function getReport(response) {
             "class": "fa fa-spinner",
             "tooltip": {
                 "placement": "bottom",
-                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+                "title": "<strong>eQ</strong>: The number of cases where a questionnaire has been launched. <p /><strong>SEFT</strong>: The number of cases where a respondent has downloaded a collection instrument but not successfully uploaded the response.."
             }
         },
         "completed": {
@@ -48,7 +48,7 @@ function getReport(response) {
             "class": "fa fa-check",
             "tooltip": {
                 "placement": "bottom",
-                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+                "title": "<strong>eQ</strong>: The number of cases where a questionnaire has been successfully submitted and receipted. <p /><strong>SEFT</strong>: The number of cases where a respondent has successfully uploaded a collection instrument."
             }
         },
         "sampleSize": {
@@ -58,7 +58,7 @@ function getReport(response) {
             "class": "fa fa-sitemap fa-color-white",
             "tooltip": {
                 "placement": "bottom",
-                "title": "For an <strong>eQ</strong>; This is a total number of cases where a questionnaire has been successfully submitted and receipted. <p />For a <strong>SEFT</strong>; This is the total number of cases where a collection instrument has been successfully uploaded."
+                "title": "The total number of cases for this collection exercise (excluding dummies sample units)"
             }
         }
     };
