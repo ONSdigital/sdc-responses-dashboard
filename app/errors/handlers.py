@@ -1,5 +1,5 @@
-from structlog import get_logger
 from flask import render_template
+from structlog import get_logger
 
 ERROR_MESSAGE_NOT_FOUND = 'Sorry, we could not find the page you were looking for.'
 ERROR_MESSAGE_UNEXPECTED = 'Sorry, something has gone wrong.'

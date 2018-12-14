@@ -144,7 +144,7 @@ class TestSurveyMetadata(AppContextTestCase):
                         'collectionExerciseId': '24fb3e68-4dca-46db-bf49-04b84e07e77c',
                         'userDescription': 'January 2018',
                         'exerciseRef': '201801',
-                            'periodStartDateTime': '2017-09-14T23:00:00.000Z',
+                        'periodStartDateTime': '2017-09-14T23:00:00.000Z',
                         'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z'
                     }
                 ]

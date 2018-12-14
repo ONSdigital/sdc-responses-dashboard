@@ -47,22 +47,22 @@ make start
 
 **Alternatively, run manually:**
 
-Compile static assets:
+Compile static assets with
 ```bash
 yarn compile
 ```
 
-Install dependencies to run:
+Install dependencies to run with
 ```bash
 pipenv install
 ```
 
-Install dependencies to develop:
+Install dependencies to develop with
 ```bash
 pipenv install --dev
 ```
 
-Run the server inside the virtual env created by Pipenv with:
+Run the server inside the virtual env created by Pipenv with
 
 ```bash
 pipenv run python run.py
@@ -72,7 +72,7 @@ pipenv run python run.py
 To run the dashboard without any of the external services it calls, this repo includes a basic flask app which mocks
 the external services.
 
-Bring it up with :
+Bring it up with
 ```bash
 make mock_services
 ```
@@ -86,7 +86,31 @@ REPORTING_URL=http://localhost:5001
 
 ## Testing and Linting
 
+### Linting
+
 Run linting with
 ```bash
 make lint
 ```
+
+### Unit tests
+
+Run the python unit tests with
+```bash
+make test
+```
+
+This will also run linting and a pipenv dependency check
+
+### Feature smoke tests
+
+To run the behave UI smoke tests, have the dashboard running with at least one live collection exercise and set `DASHBOARD_URL` to the url for the dashboard in the test environment (defaults to the dev config url).
+
+Then run the tests with
+```bash
+make smoke_test
+```
+
+This will test the basic functionality of the dashboard UI in a chrome browser, headless by default.
+
+To the run these tests in a non headless browser set `HEADLESS=False` in the test environment.

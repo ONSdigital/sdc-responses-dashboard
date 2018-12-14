@@ -5,14 +5,9 @@ name = "pypi"
 
 [packages]
 flask = "*"
-flask-script = "*"
-"flake8" = "*"
 flask-cors = "*"
-pytest = "*"
-pytest-cov = "*"
 requests = "*"
 responses = "*"
-python-dotenv = "*"
 structlog = "*"
 gunicorn = "*"
 
@@ -20,6 +15,13 @@ gunicorn = "*"
 pylint = "*"
 pylint-mccabe = "*"
 pylint-quotes = "*"
+selenium = "*"
+behave = "*"
+chromedriver-installer = "*"
+pytest = "*"
+pytest-cov = "*"
+flake8 = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.6"
