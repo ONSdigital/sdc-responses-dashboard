@@ -26,7 +26,7 @@ class Config:
     AUTH_PASSWORD = os.getenv('AUTH_PASSWORD')
     LOGGING_LEVEL = os.getenv('LOGGING_LEVEL', 'INFO')
     LOGGING_JSON_INDENT = os.getenv('LOGGING_JSON_INDENT')
-    STATIC_ASSETS_VERSION = os.getenv('STATIC_ASSETS_VERSION', '1.1.0')  # Defaulted until releases
+    STATIC_ASSETS_VERSION = os.getenv('STATIC_ASSETS_VERSION', '1.1.1')  # Defaulted until releases
 
 
 class DevelopmentConfig(Config):

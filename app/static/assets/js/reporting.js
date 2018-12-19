@@ -38,7 +38,7 @@ function getReport(response) {
             "class": "fa fa-spinner",
             "tooltip": {
                 "placement": "bottom",
-                "title": "<strong>eQ</strong>: The number of cases where a questionnaire has been launched. <p /><strong>SEFT</strong>: The number of cases where a respondent has downloaded a collection instrument but not successfully uploaded the response."
+                "title": "<strong>eQ</strong>: The number of cases where a questionnaire has been launched but not yet completed. <p /><strong>SEFT</strong>: The number of cases where a respondent has downloaded a collection instrument but not successfully uploaded the response."
             }
         },
         "completed": {
