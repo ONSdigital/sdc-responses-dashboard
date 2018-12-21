@@ -1,0 +1,22 @@
+version: '3'
+services:
+    sdc-responses-dashboard:
+        ports:
+            - '8078:8078'
+        container_name: sdc-responses-dashboard
+        environment:
+            - APP_SETTINGS=DevelopmentConfig
+            - AUTH_PASSWORD=secret
+            - AUTH_USERNAME=admin
+            - PORT=8078
+            - HOST=0.0.0.0
+            - COLLECTION_EXERCISE_URL=http://collex:8145
+            - SURVEY_URL=http://survey:8080
+            - REPORTING_URL=http://host.docker.internal:8084
+            - REPORTING_REFRESH_CYCLE_IN_SECONDS=10
+        image: 'sdc-responses-dashboard:latest'
+        networks:
+            - rasrmdockerdev_default
+networks:
+   rasrmdockerdev_default:
+     external: true
