@@ -74,11 +74,12 @@ To run with ras-rm docker-dev:
 docker build -t sdcplatform/sdc-responses-dashboard .
 docker-compose up -d
 ```
-If you want to run with mock services, change urls to:
+If you want to run with mock services, you need to change the host to `host.docker.internal` to allow it to connect to
+localhost connection.
 ```
-REPORTING_URL=http://localhost:5001
-COLLECTION_EXERCISE_URL=http://localhost:5001
-SURVEY_URL=http://localhost:5001
+REPORTING_URL=http://host.docker.internal:5001
+COLLECTION_EXERCISE_URL=http://host.docker.internal:5001
+SURVEY_URL=http://host.docker.internal:5001
 ```
 and run `mock_services.py`
 ## Running in Isolation
