@@ -44,14 +44,6 @@ class TestSurveyMetadata(AppContextTestCase):
                 ]
             },
             {
-                'surveyId': '04dbb407-4438-4f89-acc4-53445d75330c',
-                'shortName': 'AOFDI',
-                'surveyType': 'Business',
-                'longName': 'Annual Outward Foreign Direct Investment Survey',
-                'surveyRef': '063',
-                'collectionExercises': []
-            },
-            {
                 'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
                 'shortName': 'QBS',
                 'surveyType': 'Business',
@@ -66,14 +58,6 @@ class TestSurveyMetadata(AppContextTestCase):
                         'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                     }
                 ]
-            },
-            {
-                'surveyId': '56dbb407-4438-4f89-acc4-53445d753111',
-                'shortName': 'LMS',
-                'longName': 'Labour Market Survey',
-                'surveyRef': '999',
-                'surveyType': 'Social',
-                'collectionExercises': []
             }
         ]
 
@@ -148,14 +132,6 @@ class TestSurveyMetadata(AppContextTestCase):
                         'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z'
                     }
                 ]
-            },
-            {
-                'surveyId': '04dbb407-4438-4f89-acc4-53445d75330c',
-                'shortName': 'AOFDI',
-                'longName': 'Annual Outward Foreign Direct Investment Survey',
-                'surveyRef': '063',
-                'surveyType': 'Business',
-                'collectionExercises': []
             },
             {
                 'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
