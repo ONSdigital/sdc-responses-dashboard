@@ -88,8 +88,7 @@ class TestSurveyMetadata(AppContextTestCase):
             '14fb3e68-4dca-46db-bf49-04b84e07e777':
                 {
                     'exerciseRef': '201812',
-                    'longName': 'Quarterly Business '
-                                'Survey',
+                    'longName': 'Quarterly Business Survey',
                     'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                     'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                     'shortName': 'QBS',
@@ -100,8 +99,7 @@ class TestSurveyMetadata(AppContextTestCase):
             '14fb3e68-4dca-46db-bf49-04b84e07e77c':
                 {
                     'exerciseRef': '201712',
-                    'longName': 'Business Register and '
-                                'Employment Survey',
+                    'longName': 'Business Register and Employment Survey',
                     'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                     'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                     'shortName': 'BRES',
@@ -111,8 +109,7 @@ class TestSurveyMetadata(AppContextTestCase):
             '24fb3e68-4dca-46db-bf49-04b84e07e77c':
                 {
                     'exerciseRef': '201801',
-                    'longName': 'Business Register and '
-                                'Employment Survey',
+                    'longName': 'Business Register and Employment Survey',
                     'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                     'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
                     'shortName': 'BRES',
