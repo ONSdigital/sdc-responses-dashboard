@@ -14,7 +14,7 @@ services:
             - SURVEY_URL=http://survey:8080
             - REPORTING_URL=http://host.docker.internal:8084
             - REPORTING_REFRESH_CYCLE_IN_SECONDS=10
-        image: 'sdc-responses-dashboard:latest'
+        image: 'sdcplatform/sdc-responses-dashboard:latest'
         networks:
             - rasrmdockerdev_default
 networks:
