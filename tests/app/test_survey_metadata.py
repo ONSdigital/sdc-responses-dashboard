@@ -85,34 +85,40 @@ class TestSurveyMetadata(AppContextTestCase):
 
     def test_map_collection_exercise_id_to_survey_id(self):
         expected_result = {
-            '14fb3e68-4dca-46db-bf49-04b84e07e777': {'exerciseRef': '201812',
-                                                     'longName': 'Quarterly Business '
-                                                                 'Survey',
-                                                     'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
-                                                     'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
-                                                     'shortName': 'QBS',
-                                                     'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
-                                                     'surveyType': 'Business',
-                                                     'userDescription': 'Quarterly '
-                                                                        'Business Survey'},
-            '14fb3e68-4dca-46db-bf49-04b84e07e77c': {'exerciseRef': '201712',
-                                                     'longName': 'Business Register and '
-                                                                 'Employment Survey',
-                                                     'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
-                                                     'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
-                                                     'shortName': 'BRES',
-                                                     'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
-                                                     'surveyType': 'Business',
-                                                     'userDescription': 'December 2017'},
-            '24fb3e68-4dca-46db-bf49-04b84e07e77c': {'exerciseRef': '201801',
-                                                     'longName': 'Business Register and '
-                                                                 'Employment Survey',
-                                                     'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
-                                                     'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
-                                                     'shortName': 'BRES',
-                                                     'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
-                                                     'surveyType': 'Business',
-                                                     'userDescription': 'January 2018'}}
+            '14fb3e68-4dca-46db-bf49-04b84e07e777':
+                {
+                    'exerciseRef': '201812',
+                    'longName': 'Quarterly Business '
+                                'Survey',
+                    'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
+                    'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                    'shortName': 'QBS',
+                    'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
+                    'surveyType': 'Business',
+                    'userDescription': 'Quarterly '
+                                       'Business Survey'},
+            '14fb3e68-4dca-46db-bf49-04b84e07e77c':
+                {
+                    'exerciseRef': '201712',
+                    'longName': 'Business Register and '
+                                'Employment Survey',
+                    'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
+                    'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                    'shortName': 'BRES',
+                    'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                    'surveyType': 'Business',
+                    'userDescription': 'December 2017'},
+            '24fb3e68-4dca-46db-bf49-04b84e07e77c':
+                {
+                    'exerciseRef': '201801',
+                    'longName': 'Business Register and '
+                                'Employment Survey',
+                    'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
+                    'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                    'shortName': 'BRES',
+                    'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
+                    'surveyType': 'Business',
+                    'userDescription': 'January 2018'}}
 
         actual_result = map_collection_exercise_id_to_survey_id(
             map_surveys_to_collection_exercises(self.surveys_response, self.collection_exercises_response))
