@@ -84,9 +84,9 @@ function initialiseDataTables() {
 				"width": "50%"
 			},
 			{
-				"data": "periodStartDateTime",
-				"defaultContent": "No start date provided",
-				"title": "Start Date",
+				"data": "scheduledExecutionDateTime",
+				"defaultContent": "No go live provided",
+				"title": "Go Live Date",
 				"width": "25%",
 				"render": dateRender
 			},
