@@ -31,7 +31,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = os.getenv('DEBUG', True)
-    PORT = os.getenv('PORT', '5000')
+    PORT = os.getenv('PORT', '8078')
     HOST = os.getenv('HOST', 'localhost')
     ENV = os.getenv('FLASK_ENV', 'development')
     COLLECTION_EXERCISE_URL = os.getenv('COLLECTION_EXERCISE_URL', 'http://localhost:8145')
@@ -50,7 +50,7 @@ class TestingConfig(Config):
     COLLECTION_EXERCISE_URL = testing_url
     SURVEY_URL = testing_url
     REPORTING_URL = testing_url
-    PORT = '5000'
+    PORT = '8078'
     HOST = 'localhost'
     TESTING = True
     ENV = 'testing'
