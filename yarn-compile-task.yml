@@ -19,4 +19,5 @@ run:
     - |
       cd sdc-responses-dashboard-source
       yarn compile
+      yarn check
       cp -R ../sdc-responses-dashboard-source/. ../compiled-sdc-responses-dashboard-source

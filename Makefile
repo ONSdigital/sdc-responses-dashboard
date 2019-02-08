@@ -15,7 +15,6 @@ lint:
 
 check:
 	pipenv check
-	yarn check
 
 test: check lint
 	pipenv run pytest tests --cov-report term-missing --cov app --capture no
