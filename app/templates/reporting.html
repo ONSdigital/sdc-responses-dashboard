@@ -9,8 +9,7 @@
 		{% include 'partials/_styles.html' %}
 		<!-- DataTables -->
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" integrity="sha384-VEpVDzPR2x8NbTDZ8NFW4AWbtT2g/ollEzX/daZdW/YvUBlbgVtsxMftnJ84k0Cn" crossorigin="anonymous">
-		<!-- Pace Loading -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js" integrity="sha384-5DyzDgtTHw1bbnR1u2aQPxi5+e1KVPsygV5Pioo5W+5ua3sN5AHF05kzM0QfXXqm" crossorigin="anonymous"></script>
+		<!-- Pace Loading --><!--<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js" integrity="sha384-5DyzDgtTHw1bbnR1u2aQPxi5+e1KVPsygV5Pioo5W+5ua3sN5AHF05kzM0QfXXqm" crossorigin="anonymous"></script>-->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-flash.min.css" integrity="sha384-u5ZxR/zvAHNu3bPO6a6eBt1WI/JWYPegIcObBqgpNp/SLmnt+GJUh7dBd5+NEF/h" crossorigin="anonymous">
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/custom-reporting.min.css') }}" />
@@ -69,10 +68,10 @@
 											<div class="progress-group">
 												<span class="progress-text">Samples Completed</span>
 												<span class="progress-number">
-												<b>
-												<span id="progress-uploaded">0</span>
-												</b>/
-												<span id="progress-size">0</span>
+													<b>
+													<span id="progress-uploaded">0</span>
+													</b>/
+													<span id="progress-sample-size">0</span>
 												</span>
 												<div class="progress md">
 													<div class="progress-bar progress-bar-black" id="collex-progress"></div>
@@ -96,9 +95,8 @@
 			{% include 'partials/_footer.html' %}
 		</div>
 		<!-- ./wrapper -->
-		{% include 'partials/_scripts.html' %}
-		{% include 'partials/_plugins.html' %}
 		<!-- App -->
+        <script src="{{ url_for('static', filename='dist/js/datatables.min.js') }}"></script>
 		<script src="{{ url_for('static', filename='dist/js/reporting.min.js') }}"></script>
 		<script>
 			$('#collex-id').data('surveys', '{{ all_surveys|tojson|safe }}');

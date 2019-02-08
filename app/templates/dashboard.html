@@ -28,9 +28,7 @@
 			<!-- /.content-wrapper -->
 		</div>
 		<!-- ./wrapper -->
-		{% include 'partials/_scripts.html' %}
-		{% include 'partials/_plugins.html' %}
-		<script src="{{ url_for('static', filename='dist/js/dashboard.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='dist/js/datatables.min.js') }}"></script>
 		<script>
 			$('#collex-id').data('surveys', '{{ all_surveys|tojson|safe }}');
 		</script>

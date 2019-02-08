@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "google",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier"],
+  "parser": "babel-eslint",
+  "env": {
+    "amd": true,
+    "browser": true,
+    "es6": true,
+    "jquery": true
+  },
+  "rules": {
+    "require-jsdoc": "off",
+    "max-len": [2, 160],
+    "new-cap": [2, {
+      "capIsNewExceptions": ["DataTable"]
+    }]
+  }
+}

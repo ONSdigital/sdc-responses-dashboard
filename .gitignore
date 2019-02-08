@@ -10,10 +10,17 @@ __pycache__
 *.iml
 *.iws
 
+# vscode
+.vscode
+
 # Virtualenvs
 .env
 env
 venv
+
+
+# Yarn
+yarn-error.log
 
 ## OS X
 ._*

@@ -1,4 +1,5 @@
 start:
+	yarn compile
 	pipenv run python run.py
 
 compile:
@@ -10,9 +11,11 @@ build:
 lint:
 	pipenv run flake8 ./app
 	pipenv run pylint --output-format=colorized -j 0 --reports=n ./app
+	yarn lint
 
 check:
 	pipenv check
+	yarn check
 
 test: check lint
 	pipenv run pytest tests --cov-report term-missing --cov app --capture no
