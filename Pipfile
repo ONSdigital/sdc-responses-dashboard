@@ -17,11 +17,11 @@ pylint-mccabe = "*"
 pylint-quotes = "*"
 selenium = "*"
 behave = "*"
-chromedriver-installer = "*"
 pytest = "*"
 pytest-cov = "*"
 flake8 = "*"
 python-dotenv = "*"
+chromedriver-binary = "*"
 
 [requires]
 python_version = "3.6"
