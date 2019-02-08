@@ -106,7 +106,7 @@ div.dataTables_wrapper div.dataTables_paginate {
     font-weight: bold;
 }
 
-#choose-survey {
+.top-bar-button strong {
 	font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -212,4 +212,8 @@ div.dataTables_wrapper div.dataTables_paginate {
 
 .tooltip-inner {
     max-width: 275px;
+}
+
+.content-wrapper {
+    min-height: 100%;
 }

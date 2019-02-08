@@ -67,7 +67,21 @@ Run the server inside the virtual env created by Pipenv with
 ```bash
 pipenv run python run.py
 ```
+## Docker
 
+To run with ras-rm docker-dev:
+```
+docker build -t sdcplatform/sdc-responses-dashboard .
+docker-compose up -d
+```
+If you want to run with mock services, you need to change the host to `host.docker.internal` to allow it to connect to
+localhost connection.
+```
+REPORTING_URL=http://host.docker.internal:5001
+COLLECTION_EXERCISE_URL=http://host.docker.internal:5001
+SURVEY_URL=http://host.docker.internal:5001
+```
+and run `mock_services.py`
 ## Running in Isolation
 To run the dashboard without any of the external services it calls, this repo includes a basic flask app which mocks
 the external services.
@@ -88,9 +102,19 @@ REPORTING_URL=http://localhost:5001
 
 ### Linting
 
-Run linting with
+Run all linting with
 ```bash
 make lint
+```
+
+Run JS linting with
+```bash
+yarn lint
+```
+
+Reformat JS and fix minor JS linting errors with
+```bash
+yarn fix-lint
 ```
 
 ### Unit tests

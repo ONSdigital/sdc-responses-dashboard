@@ -26,12 +26,12 @@ class Config:
     AUTH_PASSWORD = os.getenv('AUTH_PASSWORD')
     LOGGING_LEVEL = os.getenv('LOGGING_LEVEL', 'INFO')
     LOGGING_JSON_INDENT = os.getenv('LOGGING_JSON_INDENT')
-    STATIC_ASSETS_VERSION = os.getenv('STATIC_ASSETS_VERSION', '1.1.1')  # Defaulted until releases
+    STATIC_ASSETS_VERSION = os.getenv('STATIC_ASSETS_VERSION', '1.1.3')  # Defaulted until releases
 
 
 class DevelopmentConfig(Config):
     DEBUG = os.getenv('DEBUG', True)
-    PORT = os.getenv('PORT', '5000')
+    PORT = os.getenv('PORT', '8078')
     HOST = os.getenv('HOST', 'localhost')
     ENV = os.getenv('FLASK_ENV', 'development')
     COLLECTION_EXERCISE_URL = os.getenv('COLLECTION_EXERCISE_URL', 'http://localhost:8145')
@@ -50,7 +50,7 @@ class TestingConfig(Config):
     COLLECTION_EXERCISE_URL = testing_url
     SURVEY_URL = testing_url
     REPORTING_URL = testing_url
-    PORT = '5000'
+    PORT = '8078'
     HOST = 'localhost'
     TESTING = True
     ENV = 'testing'

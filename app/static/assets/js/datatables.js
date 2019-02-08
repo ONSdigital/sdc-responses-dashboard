@@ -1,190 +1,200 @@
-function setDataTableHeaderWidth() {
-	// sets the width of the data table headers to 100%
-	$(".dataTables_scrollHeadInner table").css("width", "100%");
+import domready from "domready";
+import moment from "moment";
+import $ from "jquery";
+
+if (!window.$ || !window.jQuery) {
+  window.$ = window.jQuery = $;
 }
 
+require("datatables.net")(window, $);
+require("datatables.net-scroller")(window, $);
+require("bootstrap/dist/js/bootstrap");
 
-function setCollexTableHeight() {
-    // Dynamically set scroller rowHeight
-	let checkCollexTableExist = setInterval(function () {
-		let height = $("#collex-datatable tbody").height();
-		if (height) {
-			// sets the height of next div which follows the collex-datatable element
-			$("#collex-datatable + div").height(height + 1);
-			// sets the width of the headers to 100%
-			setDataTableHeaderWidth();
-			clearInterval(checkCollexTableExist);
-		}
-	}, 100);
-}
+const setDataTableHeaderWidth = () => {
+  // sets the width of the data table headers to 100%
+  $(".dataTables_scrollHeadInner table").css("width", "100%");
+};
 
-function setDataTableDimension() {
+const enableSearch = (searchElement, dataTable) => {
+  searchElement.keyup(() => {
+    dataTable.search(searchElement.val()).draw();
+  });
+};
 
-    setCollexTableHeight();
-    setDataTableHeaderWidth();
+const enableModalToggle = () => {
+  const collexID = $("#collex-id").data("collex");
 
-}
+  if (!collexID) {
+    $("#modal-survey").modal({
+      backdrop: "static",
+      keyboard: false
+    });
 
-function initialiseDataTables() {
-	/* eslint-disable */
-	const surveyTable = $("#survey-datatable").DataTable({
-		paging: true,
-		lengthChange: false,
-		searching: true,
-		ordering: true,
-		info: true,
-		autoWidth: false,
-		autoHeight: false,
-		scrollY: "35vh",
-		scrollCollapse: true,
-		scroller: {
-			loadingIndicator: false
-		}
-	});
-	/* eslint-enable */
+    $("#modal-collex").attr({
+      "data-backdrop": "static",
+      "data-keyboard": "false"
+    });
+  }
+};
 
-	setDataTableHeaderWidth();
+const setCollexTableHeight = () => {
+  // Dynamically set scroller rowHeight
+  const checkCollexTableExist = setInterval(function() {
+    const height = $("#collex-datatable tbody").height();
+    if (height) {
+      // sets the height of next div which follows the collex-datatable element
+      $("#collex-datatable + div").height(height + 1);
+      // sets the width of the headers to 100%
+      setDataTableHeaderWidth();
+      clearInterval(checkCollexTableExist);
+    }
+  }, 100);
+};
 
-	$("#survey-search").keyup(function () {
-		surveyTable.search($(this).val()).draw();
-	});
+const getCollexFromSurveyId = (surveys, surveyID) => {
+  /**
+   *  Returns an array of collection exercises for a given survey id
+   */
+  const collectionExercises = [];
+  surveys.forEach(function(survey) {
+    if (survey.surveyId === surveyID) {
+      survey.collectionExercises.forEach(function(collex) {
+        if (collex.userDescription === "") {
+          collex.userDescription = "No description provided";
+        }
+        collectionExercises.push(collex);
+      });
+    }
+  });
+  return collectionExercises;
+};
 
-	let dateRender = (data, type, row, meta) => {
-		if (type === "sort" || type === "type") {
-			return data;
-		} else {
-			return moment(data).format("DD-MM-YYYY"); // eslint-disable-line no-undef
-		}
-	};
+const customDateRenderer = (data, type, row, meta) => {
+  if (type === "sort" || type === "type") {
+    return data;
+  } else {
+    return moment(data).format("DD-MM-YYYY");
+  }
+};
 
-	/* eslint-disable */
-	const collexTable = $("#collex-datatable").DataTable({
-		paging: true,
-		lengthChange: false,
-		searching: true,
-		ordering: true,
-		info: true,
-		autoWidth: false,
-		autoHeight: false,
-		scrollY: "35vh",
-		scrollCollapse: true,
-		scroller: {
-			loadingIndicator: false,
-			rowHeight: 40
-		},
-		data: [],
-		order: [
-			[1, 'desc'],
-			[2, 'desc']
-		],
-		columns: [{
-				"data": "userDescription",
-				"defaultContent": "No description provided",
-				"title": "Collection Exercise Period",
-				"width": "50%"
-			},
-			{
-				"data": "periodStartDateTime",
-				"defaultContent": "No start date provided",
-				"title": "Start Date",
-				"width": "25%",
-				"render": dateRender
-			},
-			{
-				"data": "scheduledReturnDateTime",
-				"defaultContent": "No return by date provided",
-				"title": "Return By Date",
-				"width": "25%",
-				"render": dateRender
-			}
-		],
-		rowId: 'collectionExerciseId'
-	});
-	/* eslint-enable */
+const initialiseSurveyDataTable = () =>
+  $("#survey-datatable").DataTable({
+    paging: true,
+    lengthChange: false,
+    searching: true,
+    ordering: true,
+    info: true,
+    autoWidth: false,
+    autoHeight: false,
+    scrollY: "35vh",
+    scrollCollapse: true,
+    scroller: {
+      loadingIndicator: false
+    }
+  });
 
-	$("#collex-search").keyup(function () {
-		collexTable.search($(this).val()).draw();
-	});
+const initialiseCollexDataTable = () =>
+  $("#collex-datatable").DataTable({
+    paging: true,
+    lengthChange: false,
+    searching: true,
+    ordering: true,
+    info: true,
+    autoWidth: false,
+    autoHeight: false,
+    scrollY: "35vh",
+    scrollCollapse: true,
+    scroller: {
+      loadingIndicator: false,
+      rowHeight: 40
+    },
+    data: [],
+    order: [[1, "desc"], [2, "desc"]],
+    columns: [
+      {
+        data: "userDescription",
+        defaultContent: "No description provided",
+        title: "Collection Exercise Period",
+        width: "50%"
+      },
+      {
+        data: "scheduledExecutionDateTime",
+        defaultContent: "No go live provided",
+        title: "Go Live",
+        width: "25%",
+        render: customDateRenderer
+      },
+      {
+        data: "scheduledReturnDateTime",
+        defaultContent: "No return by date provided",
+        title: "Return By Date",
+        width: "25%",
+        render: customDateRenderer
+      }
+    ],
+    rowId: "collectionExerciseId"
+  });
 
-	$("#survey-datatable tbody").on("click", "tr", function () {
-		const id = surveyTable.row(this).id();
+const populateCollexTable = (collexTable, surveyID) => {
+  /*
+   *  Load the collection exercise data into the data table
+   */
+  const surveys = JSON.parse($("#collex-id").data("surveys"));
 
-		if (typeof id !== "undefined") {
-			const surveyShortName = $(this).data("survey-short-name");
+  collexTable.clear().draw();
 
-			$("#chosen-survey").text(surveyShortName);
-			$("#modal-survey").modal("toggle");
+  const collectionExercises = getCollexFromSurveyId(surveys, surveyID);
+  collexTable.rows.add(collectionExercises).draw();
 
-			if (typeof reporting_url == "undefined") {
-				$("#modal-collex").attr('data-backdrop', 'static');
-				$("#modal-collex").attr('data-keyboard', 'false');
-			}
+  $("#modal-collex").modal("toggle");
 
-			loadCollexTableData(collexTable, id);
-		}
+  // Dynamically set scroller rowHeight
+  setCollexTableHeight();
+};
 
-	});
+const surveyTableClickEvent = (surveyTable, collexTable) =>
+  $("#survey-datatable tbody").on("click", "tr", function() {
+    const surveyID = surveyTable.row(this).id(); // eslint-disable-line no-invalid-this
 
-}
+    if (surveyID) {
+      const surveyShortName = $(this).data("survey-short-name"); // eslint-disable-line no-invalid-this
 
-function loadCollexTableData(collexTable, id) {
-	/**
-	 *  Load the collection exercise data into the data table
-	 */
+      $("#chosen-survey").text(surveyShortName);
+      $("#modal-survey").modal("toggle");
 
-	const surveys = JSON.parse($('#collex-id').data('surveys'));
+      populateCollexTable(collexTable, surveyID);
+    }
+  });
 
-	collexTable.clear().draw();
-	collexTable.rows.add(getCollexFromSurveyId(surveys, id)).draw();
+const collexTableClickEvent = collexTable =>
+  $("#collex-datatable tbody").on("click", "tr", function() {
+    const collexID = collexTable.row(this).id(); // eslint-disable-line no-invalid-this
 
-	$("#modal-collex").modal("toggle");
-	// Dynamically set scroller rowHeight
-	let checkCollexTableExist = setInterval(function () {
-		let height = $("#collex-datatable tbody").height();
-		if (height) {
-			// sets the height of next div which follows the collex-datatable element
-			$("#collex-datatable + div").height(height + 1);
-			// sets the width of the headers to 100%
-			setDataTableHeaderWidth();
-			clearInterval(checkCollexTableExist);
-		}
-	}, 100);
+    if (collexID) {
+      const reportingPageCollexID = $("#collex-id").data("collex");
 
-	$("#collex-datatable tbody").on("click", "tr", function () {
-		let id = collexTable.row(this).id();
-		let collexID = $("#collex-id").data("collex");
+      if (!reportingPageCollexID) {
+        window.location.href = `/dashboard/collection-exercise/${collexID}`;
+      } else {
+        window.location.href = collexID;
+      }
+    }
+  });
 
-		if (typeof id !== "undefined") {
-			if (typeof collexID == "undefined") {
-				window.location.href = `/dashboard/collection-exercise/${id}`;
-			} else {
-				window.location.href = id;
-			}
+const initialiseDataTables = () => {
+  const surveyTable = initialiseSurveyDataTable();
+  const collexTable = initialiseCollexDataTable();
 
-		}
-	});
-}
+  setDataTableHeaderWidth();
 
-function getCollexFromSurveyId(surveys, survey_id) {
-	/**
-	 *  Returns an array of collection exercises for a given survey id
-	 */
+  enableSearch($("#survey-search"), surveyTable);
+  enableSearch($("#collex-search"), collexTable);
 
-	for (let i = 0; i < surveys.length; i++) {
-		if (surveys[i].surveyId === survey_id) {
-			let collectionExercises = surveys[i].collectionExercises;
+  surveyTableClickEvent(surveyTable, collexTable);
+  collexTableClickEvent(collexTable);
+};
 
-			for (let collex in collectionExercises) {
-				if (collectionExercises[collex].userDescription === "") {
-					collectionExercises[collex].userDescription = "No description provided"; // eslint-disable-line
-				}
-			}
-
-			return collectionExercises;
-		}
-	}
-}
-
-$(document).ready(() => {
-	initialiseDataTables();
+domready(() => {
+  enableModalToggle();
+  initialiseDataTables();
 });

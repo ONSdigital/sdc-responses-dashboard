@@ -26,7 +26,7 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
                     'collectionExerciseId': collection_exercise['id'],
                     'userDescription': collection_exercise['userDescription'],
                     'exerciseRef': collection_exercise['exerciseRef'],
-                    'periodStartDateTime': collection_exercise['periodStartDateTime'],
+                    'scheduledExecutionDateTime': collection_exercise['scheduledExecutionDateTime'],
                     'scheduledReturnDateTime': collection_exercise['scheduledReturnDateTime']
                 }
             )
@@ -52,7 +52,7 @@ def map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises) -> 
                 'longName': survey['longName'],
                 'surveyType': survey['surveyType'],
                 'userDescription': collection_exercise['userDescription'],
-                'periodStartDateTime': collection_exercise['periodStartDateTime'],
+                'scheduledExecutionDateTime': collection_exercise['scheduledExecutionDateTime'],
                 'scheduledReturnDateTime': collection_exercise['scheduledReturnDateTime'],
                 'exerciseRef': collection_exercise['exerciseRef']
             }
