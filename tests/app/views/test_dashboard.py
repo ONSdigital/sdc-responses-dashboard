@@ -41,8 +41,9 @@ class TestDashboardView(AppContextTestCase):
         self.assertIn(b'Reference', response.data)
         self.assertIn(b'BRES', response.data)
         self.assertIn(b'Business Register and Employment Survey', response.data)
-        self.assertIn(b'AOFDI', response.data)
-        self.assertIn(b'Annual Outward Foreign Direct Investment Survey', response.data)
+        self.assertIn(b'QBS', response.data)
+        self.assertIn(b'Quarterly Business Survey', response.data)
+        self.assertNotIn(b'AOFDI', response.data)
 
     @responses.activate
     def test_dashboard_report_fails_gracefully(self):

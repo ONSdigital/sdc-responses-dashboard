@@ -16,7 +16,7 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
             'surveyRef': survey['surveyRef'],
             'surveyType': survey['surveyType'],
             'collectionExercises': []
-        } for survey in surveys
+        } for survey in surveys if survey['id'] in [ex['surveyId'] for ex in collection_exercises]
     }
 
     for collection_exercise in collection_exercises:
