@@ -102,9 +102,19 @@ REPORTING_URL=http://localhost:5001
 
 ### Linting
 
-Run linting with
+Run all linting with
 ```bash
 make lint
+```
+
+Run JS linting with
+```bash
+yarn lint
+```
+
+Reformat JS and fix minor JS linting errors with
+```bash
+yarn fix-lint
 ```
 
 ### Unit tests

@@ -10,7 +10,6 @@ before_install:
   - pyenv global 3.6.3
   - pip install -U pip pipenv wheel
   - pipenv install --dev --deploy
-  - pipenv check
 cache:
   - yarn
   - pip
@@ -18,8 +17,8 @@ cache:
       - /opt/python/
       - /home/travis/.local/share/
 script:
-  - yarn compile
   - make test
+  - yarn compile
 branches:
   only:
       - master
