@@ -19,6 +19,7 @@ cache:
 script:
   - make test
   - yarn compile
+  - yarn check
 branches:
   only:
       - master
