@@ -36,8 +36,7 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
                 logger.error(message, collection_exercise_id=collection_exercise['id'])
                 raise UnknownSurveyError(
                     message=message, survey_id=['surveyId'])
-            else:
-                raise
+            raise
 
     return list(survey_data.values())
 
