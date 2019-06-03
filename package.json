@@ -44,11 +44,11 @@
     "prettier": "^1.15.3"
   },
   "dependencies": {
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.1",
     "datatables.net": "1.10.19",
     "datatables.net-scroller": "1.5.1",
     "domready": "^1.0.8",
-    "jquery": "3.3.1",
+    "jquery": "3.4.1",
     "jquery-ui": "1.12.1",
     "moment": "^2.23.0",
     "pace-js": "1.0.2"
