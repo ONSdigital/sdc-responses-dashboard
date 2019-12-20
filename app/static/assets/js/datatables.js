@@ -118,7 +118,7 @@ const initialiseCollexDataTable = () =>
         width: "50%"
       },
       {
-        data: "scheduledExecutionDateTime",
+        data: "scheduledStartDateTime",
         defaultContent: "No go live provided",
         title: "Go Live",
         width: "25%",

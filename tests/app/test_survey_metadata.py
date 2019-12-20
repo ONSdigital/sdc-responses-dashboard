@@ -33,6 +33,7 @@ class TestSurveyMetadata(AppContextTestCase):
                         'exerciseRef': '201712',
                         'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                         'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                        'scheduledStartDateTime': '2017-09-11T23:00:00.000Z'
                     },
                     {
                         'collectionExerciseId': '24fb3e68-4dca-46db-bf49-04b84e07e77c',
@@ -40,6 +41,7 @@ class TestSurveyMetadata(AppContextTestCase):
                         'exerciseRef': '201801',
                         'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                         'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                        'scheduledStartDateTime': '2017-09-11T23:00:00.000Z'
                     }
                 ]
             },
@@ -56,6 +58,7 @@ class TestSurveyMetadata(AppContextTestCase):
                         'exerciseRef': '201812',
                         'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                         'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                        'scheduledStartDateTime': '2017-09-11T23:00:00.000Z'
                     }
                 ]
             }
@@ -75,6 +78,7 @@ class TestSurveyMetadata(AppContextTestCase):
                     'longName': 'Quarterly Business Survey',
                     'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                     'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                    'scheduledStartDateTime': '2017-09-11T23:00:00.000Z',
                     'shortName': 'QBS',
                     'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
                     'surveyType': 'Business',
@@ -86,6 +90,7 @@ class TestSurveyMetadata(AppContextTestCase):
                     'longName': 'Business Register and Employment Survey',
                     'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                     'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                    'scheduledStartDateTime': '2017-09-11T23:00:00.000Z',
                     'shortName': 'BRES',
                     'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                     'surveyType': 'Business',
@@ -96,6 +101,7 @@ class TestSurveyMetadata(AppContextTestCase):
                     'longName': 'Business Register and Employment Survey',
                     'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                     'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                    'scheduledStartDateTime': '2017-09-11T23:00:00.000Z',
                     'shortName': 'BRES',
                     'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                     'surveyType': 'Business',
@@ -128,7 +134,8 @@ class TestSurveyMetadata(AppContextTestCase):
                         'userDescription': 'January 2018',
                         'exerciseRef': '201801',
                         'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
-                        'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z'
+                        'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                        'scheduledStartDateTime': '2017-09-11T23:00:00.000Z'
                     }
                 ]
             },
@@ -144,7 +151,8 @@ class TestSurveyMetadata(AppContextTestCase):
                         'userDescription': 'Quarterly Business Survey',
                         'exerciseRef': '201812',
                         'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
-                        'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z'
+                        'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                        'scheduledStartDateTime': '2017-09-11T23:00:00.000Z'
                     }
                 ]
             }
@@ -160,6 +168,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'surveyId': '04dbb407-4438-4f89-acc4-53445d753111',
                  'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                  'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                 'scheduledStartDateTime': '2017-09-11T23:00:00.000Z',
                  'userDescription': 'Quarterly Business Survey'},
             '24fb3e68-4dca-46db-bf49-04b84e07e77c':
                 {'exerciseRef': '201801',
@@ -170,6 +179,7 @@ class TestSurveyMetadata(AppContextTestCase):
                  'surveyId': 'cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87',
                  'scheduledExecutionDateTime': '2017-09-10T23:00:00.000Z',
                  'scheduledReturnDateTime': '2017-10-06T00:00:00.000Z',
+                 'scheduledStartDateTime': '2017-09-11T23:00:00.000Z',
                  'userDescription': 'January 2018'}}
 
         self.assertEqual(expected_surveys,

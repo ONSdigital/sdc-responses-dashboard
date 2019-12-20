@@ -27,7 +27,8 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
                     'userDescription': collection_exercise['userDescription'],
                     'exerciseRef': collection_exercise['exerciseRef'],
                     'scheduledExecutionDateTime': collection_exercise['scheduledExecutionDateTime'],
-                    'scheduledReturnDateTime': collection_exercise['scheduledReturnDateTime']
+                    'scheduledReturnDateTime': collection_exercise['scheduledReturnDateTime'],
+                    'scheduledStartDateTime': collection_exercise['scheduledStartDateTime']
                 }
             )
         except KeyError as e:
@@ -53,6 +54,7 @@ def map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises) -> 
                 'userDescription': collection_exercise['userDescription'],
                 'scheduledExecutionDateTime': collection_exercise['scheduledExecutionDateTime'],
                 'scheduledReturnDateTime': collection_exercise['scheduledReturnDateTime'],
+                'scheduledStartDateTime': collection_exercise['scheduledStartDateTime'],
                 'exerciseRef': collection_exercise['exerciseRef']
             }
 
