@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    run: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicas }}
+  strategy:
+    rollingUpdate:
+      maxSurge: {{ .Values.rollingUpdate.maxSurge }}
+      maxUnavailable: {{ .Values.rollingUpdate.maxUnavailable }}
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+      env: {{ .Values.env }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+        env: {{ .Values.env }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          {{- if eq .Values.image.tag "latest" }}
+          image: "{{ .Values.image.name}}/{{ .Chart.Name }}:{{ .Values.image.version }}"
+          {{- else }}
+          image: "{{ .Values.image.name}}/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
+          {{- end }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http-server
+              containerPort: {{ .Values.container.port }}
+          readinessProbe:
+            httpGet:
+              path: /info
+              port:  {{ .Values.container.port }}
+            initialDelaySeconds: 1
+            periodSeconds: 20
+            failureThreshold: 5
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /info
+              port:  {{ .Values.container.port }}
+            initialDelaySeconds: 1
+            periodSeconds: 20
+            failureThreshold: 5
+            successThreshold: 1
+            timeoutSeconds: 5
+          env:
+          - name: AUTH_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: security-credentials
+                key: security-user
+          - name: AUTH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: security-credentials
+                key: security-password
+          - name: COLLECTION_EXERCISE_URL
+            {{- if .Values.dns.enabled }}
+            value: "http://collection-exercise.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.dns.wellKnownPort }}"
+            {{- else }}
+            value: "http://$(COLLECTION_EXERCISE_SERVICE_HOST):$(COLLECTION_EXERCISE_SERVICE_PORT)"
+            {{- end }}
+          - name: SURVEY_URL
+            {{- if .Values.dns.enabled }}
+            value: "http://survey.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.dns.wellKnownPort }}"
+            {{- else }}
+            value: "http://$(SURVEY_SERVICE_HOST):$(SURVEY_SERVICE_PORT)"
+            {{- end }}
+          - name: REPORTING_URL
+            {{- if .Values.dns.enabled }}
+            value: "http://reporting.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.dns.wellKnownPort }}"
+            {{- else }}
+            value: "http://$(REPORTING_SERVICE_HOST):$(REPORTING_SERVICE_PORT)"
+            {{- end }}
+          - name: HOST
+            value: "{{ .Values.host }}"
+          - name: PORT
+            value: "{{ .Values.container.port }}"
+          - name: REPORTING_REFRESH_CYCLE_IN_SECONDS
+            value: "{{ .Values.reportRefreshSeconds }}"
+          - name: LOGGING_LEVEL
+            value: "{{ .Values.loggingLevel }}"
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
