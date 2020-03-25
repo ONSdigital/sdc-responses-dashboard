@@ -24,9 +24,9 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           {{- if eq .Values.image.tag "latest" }}
-          image: "{{ .Values.image.name}}/{{ .Chart.Name }}:{{ .Values.image.version }}"
-          {{- else }}
           image: "{{ .Values.image.name}}/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
+          {{- else }}
+          image: "{{ .Values.image.name}}/{{ .Chart.Name }}:{{ .Values.image.version }}"
           {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
