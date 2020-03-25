@@ -34,7 +34,7 @@ spec:
               containerPort: {{ .Values.container.port }}
           readinessProbe:
             httpGet:
-              path: /health
+              path: /dashboard/health
               port:  {{ .Values.container.port }}
             initialDelaySeconds: 1
             periodSeconds: 20
@@ -43,7 +43,7 @@ spec:
             timeoutSeconds: 5
           livenessProbe:
             httpGet:
-              path: /health
+              path: /dashboard/health
               port:  {{ .Values.container.port }}
             initialDelaySeconds: 1
             periodSeconds: 20
