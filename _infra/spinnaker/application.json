@@ -1,0 +1,6 @@
+{
+ "cloudProviders": "kubernetes",
+ "email": "warren@warrenbailey.net",
+ "instancePort": 7000,
+ "name": "responses-dashboard"
+}
