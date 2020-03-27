@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: {{ .Chart.Name }}-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: responses-dashboard-ip
+    kubernetes.io/ingress.global-static-ip-name: dashboard-ip
     kubernetes.io/ingress.class: gce
     networking.gke.io/managed-certificates: {{ .Values.ingress.certName }}
     kubernetes.io/ingress.allow-http: "false"
