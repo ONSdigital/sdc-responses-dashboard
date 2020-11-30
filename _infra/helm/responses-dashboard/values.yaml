@@ -2,11 +2,6 @@ env: dev
 namespace: dev
 publicIP: false
 
-replicas: 1
-rollingUpdate:
-  maxSurge: 1
-  maxUnavailable: 1
-
 image:
   name: eu.gcr.io/ons-rasrmbs-management
   tag: latest
@@ -20,7 +15,21 @@ service:
 
 resources:
   requests:
-    memory: "256Mi"
+    memory: "100Mi"
+    cpu: "10m"
+  limits:
+    cpu: "50m"
+    memory: "250Mi"
+
+autoscaling: false
+scaleAt:
+  # These are expressed as a percentage of resources.requests, not resources.limits
+  memoryPercentage: 250
+  cpuPercentage: 250
+replicas: 1
+rollingUpdate:
+  maxSurge: 1
+  maxUnavailable: 1
 
 host: "0.0.0.0"
 reportRefreshSeconds: 10
