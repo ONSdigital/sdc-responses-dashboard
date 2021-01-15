@@ -1,7 +1,6 @@
 from flask import current_app
 import requests
 from requests.auth import HTTPBasicAuth
-import requests.exceptions
 from structlog import get_logger
 
 from app.exceptions import APIConnectionError
