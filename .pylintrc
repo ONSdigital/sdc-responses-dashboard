@@ -66,6 +66,7 @@ confidence=
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
 disable=
+    no-name-in-module,
     inconsistent-return-statements,
     duplicate-code,
     too-many-arguments,
