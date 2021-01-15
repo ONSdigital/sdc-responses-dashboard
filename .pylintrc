@@ -68,9 +68,6 @@ confidence=
 disable=
     no-name-in-module,
     inconsistent-return-statements,
-    duplicate-code,
-    too-many-arguments,
-    too-many-instance-attributes,
     invalid-name,
     import-error,
     missing-docstring,
