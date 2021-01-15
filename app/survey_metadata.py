@@ -35,8 +35,7 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
             if str(e) == f"'{collection_exercise['surveyId']}'":
                 message = 'Reference to unknown survey id in collection exercise'
                 logger.error(message, collection_exercise_id=collection_exercise['id'])
-                raise UnknownSurveyError(
-                    message=message, survey_id=['surveyId'])
+                raise UnknownSurveyError(message=message, survey_id=['surveyId'])
             raise
 
     return list(survey_data.values())

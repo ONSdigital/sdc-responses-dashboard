@@ -11,9 +11,13 @@ from structlog.processors import TimeStamper, format_exc_info
 from structlog.stdlib import add_log_level, add_logger_name, filter_by_level, LoggerFactory
 from structlog.threadlocal import wrap_dict
 
+import config
 from app.errors.handlers import api_connection_error
 from app.exceptions import MissingConfigError, APIConnectionError
-import config
+from app.errors.handlers import not_found_error, internal_server_error
+from app.api.health import health_blueprint
+from app.views.dashboard import dashboard_blueprint
+from app.api.reporting import reporting_blueprint
 
 
 def create_app():
@@ -44,20 +48,12 @@ def create_app():
 
 
 def add_blueprints(app):
-
-    from app.api.health import health_blueprint
-    from app.views.dashboard import dashboard_blueprint
-    from app.api.reporting import reporting_blueprint
-
     app.register_blueprint(health_blueprint)
     app.register_blueprint(dashboard_blueprint)
     app.register_blueprint(reporting_blueprint)
 
 
 def add_error_handlers(app):
-
-    from app.errors.handlers import not_found_error, internal_server_error
-
     app.register_error_handler(404, not_found_error)
     app.register_error_handler(500, internal_server_error)
     app.register_error_handler(APIConnectionError, api_connection_error)
