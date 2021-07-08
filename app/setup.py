@@ -48,7 +48,7 @@ def create_app():
     add_error_handlers(app)
 
     @app.context_processor
-    def override_url_for():  # pylint: disable=unused-variable
+    def override_url_for():
         return dict(url_for=versioned_url_for)
 
     return app
