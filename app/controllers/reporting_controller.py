@@ -8,19 +8,17 @@ logger = get_logger()
 
 
 def get_reporting_details(survey_id, collex_id):
-    logger.debug('Fetching report for collection exercise',
-                 collex_id=collex_id,
-                 survey_id=survey_id)
-    url = f'{current_app.config["REPORTING_URL"]}/reporting-api/v1/response-dashboard' \
-          f'/survey/{survey_id}/collection-exercise/{collex_id}'
+    logger.debug("Fetching report for collection exercise", collex_id=collex_id, survey_id=survey_id)
+    url = (
+        f'{current_app.config["REPORTING_URL"]}/reporting-api/v1/response-dashboard'
+        f"/survey/{survey_id}/collection-exercise/{collex_id}"
+    )
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
-        raise APIConnectionError('Failed to connect to reporting service')
+        raise APIConnectionError("Failed to connect to reporting service")
 
     response.raise_for_status()
 
-    logger.debug('Successfully fetched report for collection exercise',
-                 collex_id=collex_id,
-                 survey_id=survey_id)
+    logger.debug("Successfully fetched report for collection exercise", collex_id=collex_id, survey_id=survey_id)
     return response.json()

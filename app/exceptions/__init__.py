@@ -1,3 +1,7 @@
-from app.exceptions.exceptions import UnknownSurveyError, MissingConfigError, APIConnectionError
+from app.exceptions.exceptions import (
+    APIConnectionError,
+    MissingConfigError,
+    UnknownSurveyError,
+)
 
-__all__ = ['UnknownSurveyError', 'MissingConfigError', 'APIConnectionError']
+__all__ = ["UnknownSurveyError", "MissingConfigError", "APIConnectionError"]

@@ -6,13 +6,14 @@ from flask import Flask, Response
 from flask_cors import CORS
 
 app = Flask(__name__)
-app.env = 'development'
+app.env = "development"
 CORS(app)
 
 
 @app.route(
-    '/reporting-api/v1/response-dashboard/survey/<survey_id>/collection-exercise/<collection_exercise_id>',
-    methods=['GET'])
+    "/reporting-api/v1/response-dashboard/survey/<survey_id>/collection-exercise/<collection_exercise_id>",
+    methods=["GET"],
+)
 def get_report(survey_id, collection_exercise_id):
     rand_gen = SystemRandom()
 
@@ -23,24 +24,21 @@ def get_report(survey_id, collection_exercise_id):
     uploads = rand_gen.randint(0, downloads)
 
     response = {
-        'metadata': {
-            'collectionExerciseId': collection_exercise_id,
-            'timeUpdated': datetime.now().timestamp()
+        "metadata": {"collectionExerciseId": collection_exercise_id, "timeUpdated": datetime.now().timestamp()},
+        "report": {
+            "inProgress": downloads - uploads,
+            "accountsPending": accounts_pending,
+            "accountsEnrolled": accounts_enrolled,
+            "notStarted": sample_size - downloads,
+            "completed": uploads,
+            "sampleSize": sample_size,
         },
-        'report': {
-            'inProgress': downloads - uploads,
-            'accountsPending': accounts_pending,
-            'accountsEnrolled': accounts_enrolled,
-            'notStarted': sample_size - downloads,
-            'completed': uploads,
-            'sampleSize': sample_size
-        }
     }
 
-    return Response(json.dumps(response), content_type='application/json')
+    return Response(json.dumps(response), content_type="application/json")
 
 
-@app.route('/surveys', methods=['GET'])
+@app.route("/surveys", methods=["GET"])
 def get_surveys():
     return Response(
         json.dumps(
@@ -52,7 +50,7 @@ def get_surveys():
                     "surveyRef": "221",
                     "legalBasis": "Statistics of Trade Act 1947",
                     "legalBasisRef": "STA1947",
-                    "surveyType": "Business"
+                    "surveyType": "Business",
                 },
                 {
                     "id": "04dbb407-4438-4f89-acc4-53445d75330c",
@@ -61,7 +59,7 @@ def get_surveys():
                     "surveyRef": "063",
                     "legalBasis": "Statistics of Trade Act 1947",
                     "legalBasisRef": "STA1947",
-                    "surveyType": "Business"
+                    "surveyType": "Business",
                 },
                 {
                     "id": "04dbb407-4438-4f89-acc4-53445d753111",
@@ -70,7 +68,7 @@ def get_surveys():
                     "surveyRef": "064",
                     "legalBasis": "Statistics of Trade Act 1947",
                     "legalBasisRef": "STA1947",
-                    "surveyType": "Business"
+                    "surveyType": "Business",
                 },
                 {
                     "id": "56dbb407-4438-4f89-acc4-53445d753111",
@@ -79,14 +77,14 @@ def get_surveys():
                     "surveyRef": "999",
                     "surveyType": "Social",
                     "legalBasis": "Statistics of Trade Act 1947",
-                    "legalBasisRef": "STA1947"
-                }
+                    "legalBasisRef": "STA1947",
+                },
             ]
         )
     )
 
 
-@app.route('/collectionexercises', methods=['GET'])
+@app.route("/collectionexercises", methods=["GET"])
 def get_collection_exercises():
     return Response(
         json.dumps(
@@ -106,21 +104,15 @@ def get_collection_exercises():
                     "executedBy": None,
                     "state": "READY_FOR_LIVE",
                     "caseTypes": [
-                        {
-                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
-                            "sampleUnitType": "B"
-                        },
-                        {
-                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
-                            "sampleUnitType": "BI"
-                        }
+                        {"actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7", "sampleUnitType": "B"},
+                        {"actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a", "sampleUnitType": "BI"},
                     ],
                     "exerciseRef": "201705",
                     "userDescription": "May 2017",
                     "created": None,
                     "updated": None,
                     "deleted": False,
-                    "validationErrors": None
+                    "validationErrors": None,
                 },
                 {
                     "id": "14fb3e68-4dca-46db-bf49-04b84e07e7cc",
@@ -137,21 +129,15 @@ def get_collection_exercises():
                     "executedBy": None,
                     "state": "LIVE",
                     "caseTypes": [
-                        {
-                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
-                            "sampleUnitType": "B"
-                        },
-                        {
-                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
-                            "sampleUnitType": "BI"
-                        }
+                        {"actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7", "sampleUnitType": "B"},
+                        {"actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a", "sampleUnitType": "BI"},
                     ],
                     "exerciseRef": "201709",
                     "userDescription": "September 2017",
                     "created": None,
                     "updated": None,
                     "deleted": False,
-                    "validationErrors": None
+                    "validationErrors": None,
                 },
                 {
                     "id": "14fb3e68-4dca-46db-bf49-04b84e07e777",
@@ -168,21 +154,15 @@ def get_collection_exercises():
                     "executedBy": None,
                     "state": "LIVE",
                     "caseTypes": [
-                        {
-                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
-                            "sampleUnitType": "B"
-                        },
-                        {
-                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
-                            "sampleUnitType": "BI"
-                        }
+                        {"actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7", "sampleUnitType": "B"},
+                        {"actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a", "sampleUnitType": "BI"},
                     ],
                     "exerciseRef": "201801",
                     "userDescription": "January 2018",
                     "created": None,
                     "updated": None,
                     "deleted": False,
-                    "validationErrors": None
+                    "validationErrors": None,
                 },
                 {
                     "id": "14fb3e68-4dca-46db-bf49-04b84e07e799",
@@ -199,21 +179,15 @@ def get_collection_exercises():
                     "executedBy": None,
                     "state": "READY_FOR_LIVE",
                     "caseTypes": [
-                        {
-                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
-                            "sampleUnitType": "B"
-                        },
-                        {
-                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
-                            "sampleUnitType": "BI"
-                        }
+                        {"actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7", "sampleUnitType": "B"},
+                        {"actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a", "sampleUnitType": "BI"},
                     ],
                     "exerciseRef": "201712",
                     "userDescription": "March 2017",
                     "created": None,
                     "updated": None,
                     "deleted": False,
-                    "validationErrors": None
+                    "validationErrors": None,
                 },
                 {
                     "id": "14fb3e68-4dca-46db-bf49-04b84e07e77c",
@@ -230,21 +204,15 @@ def get_collection_exercises():
                     "executedBy": None,
                     "state": "CREATED",
                     "caseTypes": [
-                        {
-                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
-                            "sampleUnitType": "B"
-                        },
-                        {
-                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
-                            "sampleUnitType": "BI"
-                        }
+                        {"actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7", "sampleUnitType": "B"},
+                        {"actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a", "sampleUnitType": "BI"},
                     ],
                     "exerciseRef": "201812",
                     "userDescription": "You Can't See Me",
                     "created": None,
                     "updated": None,
                     "deleted": False,
-                    "validationErrors": None
+                    "validationErrors": None,
                 },
                 {
                     "id": "14fb3e68-4dca-46db-bf49-04b84e07e999",
@@ -261,22 +229,16 @@ def get_collection_exercises():
                     "executedBy": None,
                     "state": "LIVE",
                     "caseTypes": [
-                        {
-                            "actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7",
-                            "sampleUnitType": "B"
-                        },
-                        {
-                            "actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a",
-                            "sampleUnitType": "BI"
-                        }
+                        {"actionPlanId": "e71002ac-3575-47eb-b87f-cd9db92bf9a7", "sampleUnitType": "B"},
+                        {"actionPlanId": "0009e978-0932-463b-a2a1-b45cb3ffcb2a", "sampleUnitType": "BI"},
                     ],
                     "exerciseRef": "201712",
                     "userDescription": "December 2017",
                     "created": None,
                     "updated": None,
                     "deleted": False,
-                    "validationErrors": None
-                }
+                    "validationErrors": None,
+                },
             ]
         )
     )
