@@ -25,10 +25,8 @@ class TestReporting(AppContextTestCase):
             responses.add(
                 responses.GET,
                 self.app.config["REPORTING_URL"] + "/reporting-api/v1/response-dashboard"
-                "/survey"
-                "/57586798-74e3-49fd-93da-a782ec5f5129"
-                "/collection-exercise"
-                "/14fb3e68-4dca-46db-bf49-04b84e07e999",
+                "/survey/57586798-74e3-49fd-93da-a782ec5f5129"
+                "/collection-exercise/14fb3e68-4dca-46db-bf49-04b84e07e999",
                 json=self.reporting_response,
                 status=200,
             )
@@ -62,11 +60,8 @@ class TestReporting(AppContextTestCase):
             responses.add(
                 responses.GET,
                 self.app.config["REPORTING_URL"] + "/reporting-api/v1/response-dashboard"
-                "/survey"
-                "/57586798-74e3-49fd-93da-a782ec5f5129"
-                "/collection-exercise"
-                "/00000000-0000-0000-0000"
-                "-0000000000000",
+                "/survey/57586798-74e3-49fd-93da-a782ec5f5129"
+                "/collection-exercise/00000000-0000-0000-0000-0000000000000",
                 status=404,
             )
         response = self.test_client.get(
