@@ -16,8 +16,8 @@ logger = get_logger()
 def reporting_details(survey_id, collex_id):
     parsed_survey_id = parse_uuid(survey_id)
     if not parsed_survey_id:
-        logger.debug("Malformed collection exercise ID", invalid_survey_id=survey_id)
-        abort(404, "Malformed collection exercise ID")
+        logger.debug("Malformed survey ID", invalid_survey_id=survey_id)
+        abort(404, "Malformed survey ID")
 
     parsed_collex_id = parse_uuid(collex_id)
     if not parsed_collex_id:
