@@ -9,13 +9,18 @@ build:
 	pipenv install --dev
 
 lint:
-	pipenv run flake8 ./app
-	pipenv run pylint --output-format=colorized -j 0 --reports=n ./app
-
-check:
+	pipenv run flake8
 	pipenv check
+	pipenv run isort .
+	pipenv run black --line-length 120 .
 
-test: check lint
+lint-check:
+	pipenv run flake8
+	pipenv check
+	pipenv run isort --check-only .
+	pipenv run black --line-length 120 --check .
+
+test: lint-check
 	pipenv run pytest tests --cov-report term-missing --cov app --capture no
 
 mock_services:

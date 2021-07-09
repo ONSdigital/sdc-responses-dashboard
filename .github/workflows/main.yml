@@ -32,16 +32,15 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-      - name: Build & Test
+      - name: Build
         run: |
           python -m pip install --upgrade pip
           pip install pipenv
           npm install yarn
           yarn compile
           pipenv install --dev
-          pipenv run pylint --output-format=colorized -j 0 --reports=n ./app
-          pipenv run flake8 ./app
-          pipenv run pytest tests --cov-report term-missing --cov app --capture no
+      - name: Test
+        run: make test
       - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
           version: '270.0.0'

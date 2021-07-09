@@ -12,10 +12,9 @@ structlog = "*"
 gunicorn = "*"
 
 [dev-packages]
-pylint = "*"
-pylint-mccabe = "*"
-pylint-quotes = "*"
+black = "==21.6b0"
 selenium = "*"
+isort = "*"
 behave = "*"
 pytest = "*"
 pytest-cov = "*"
