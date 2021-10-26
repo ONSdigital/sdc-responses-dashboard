@@ -82,7 +82,7 @@ def _filter_ready_collection_exercises(collection_exercises: list) -> list:
     return [
         collection_exercise
         for collection_exercise in collection_exercises
-        if collection_exercise["state"] in {"READY_FOR_LIVE", "LIVE"}
+        if collection_exercise["state"] in {"READY_FOR_LIVE", "LIVE", "ENDED"}
     ]
 
 
