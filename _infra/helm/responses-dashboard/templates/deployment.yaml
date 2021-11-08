@@ -26,7 +26,7 @@ spec:
           {{- if eq .Values.image.tag "latest" }}
           image: "{{ .Values.image.name}}/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
           {{- else }}
-          image: "{{ .Values.image.name}}/{{ .Chart.Name }}:{{ .Values.image.version }}"
+          image: "{{ .Values.image.name}}/{{ .Chart.Name }}:{{ .Values.image.tag }}"
           {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
