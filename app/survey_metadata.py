@@ -3,6 +3,7 @@ from structlog import get_logger
 from app.controllers.collection_exercise_controller import get_collection_exercise_list
 from app.controllers.survey_controller import get_survey_list
 from app.exceptions import UnknownSurveyError
+from typing import Optional, Mapping
 
 logger = get_logger()
 
@@ -22,15 +23,15 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
     }
 
     for collection_exercise in collection_exercises:
+        events = collection_exercise["events"]
         try:
             survey_data[collection_exercise["surveyId"]]["collectionExercises"].append(
                 {
                     "collectionExerciseId": collection_exercise["id"],
                     "userDescription": collection_exercise["userDescription"],
                     "exerciseRef": collection_exercise["exerciseRef"],
-                    "scheduledExecutionDateTime": collection_exercise["scheduledExecutionDateTime"],
-                    "scheduledReturnDateTime": collection_exercise["scheduledReturnDateTime"],
-                    "scheduledStartDateTime": collection_exercise["scheduledStartDateTime"],
+                    "exerciseGoLiveDate": get_event_timestamp_for_tag(events, "go_live"),
+                    "exerciseReturnDate": get_event_timestamp_for_tag(events, "return_by"),
                 }
             )
         except KeyError as e:
@@ -43,6 +44,10 @@ def map_surveys_to_collection_exercises(surveys, collection_exercises) -> list:
     return list(survey_data.values())
 
 
+def get_event_timestamp_for_tag(events: list[Mapping[str, str]], tag: str) -> Optional[str]:
+    return next((event["timestamp"] for event in events if event.get("tag") == tag), None) if events else None
+
+
 def map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises) -> dict:
     collection_exercises_to_survey_ids = {}
     for survey in surveys_to_collection_exercises:
@@ -53,9 +58,8 @@ def map_collection_exercise_id_to_survey_id(surveys_to_collection_exercises) -> 
                 "longName": survey["longName"],
                 "surveyType": survey["surveyType"],
                 "userDescription": collection_exercise["userDescription"],
-                "scheduledExecutionDateTime": collection_exercise["scheduledExecutionDateTime"],
-                "scheduledReturnDateTime": collection_exercise["scheduledReturnDateTime"],
-                "scheduledStartDateTime": collection_exercise["scheduledStartDateTime"],
+                "exerciseGoLiveDate": collection_exercise["exerciseGoLiveDate"],
+                "exerciseReturnDate": collection_exercise["exerciseReturnDate"],
                 "exerciseRef": collection_exercise["exerciseRef"],
             }
 
