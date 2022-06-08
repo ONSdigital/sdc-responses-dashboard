@@ -90,7 +90,6 @@ class TestSurveyMetadata(AppContextTestCase):
                 "userDescription": "December 2017",
                 "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
                 "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
-
             },
             "24fb3e68-4dca-46db-bf49-04b84e07e77c": {
                 "exerciseRef": "201801",
