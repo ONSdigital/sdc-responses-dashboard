@@ -1,9 +1,10 @@
+from typing import Mapping, Optional
+
 from structlog import get_logger
 
 from app.controllers.collection_exercise_controller import get_collection_exercise_list
 from app.controllers.survey_controller import get_survey_list
 from app.exceptions import UnknownSurveyError
-from typing import Optional, Mapping
 
 logger = get_logger()
 
