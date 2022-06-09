@@ -6,6 +6,7 @@ import responses
 from app.exceptions import UnknownSurveyError
 from app.survey_metadata import (
     fetch_survey_and_collection_exercise_metadata,
+    get_event_timestamp_for_tag,
     map_collection_exercise_id_to_survey_id,
     map_surveys_to_collection_exercises,
 )
@@ -34,17 +35,15 @@ class TestSurveyMetadata(AppContextTestCase):
                         "collectionExerciseId": "14fb3e68-4dca-46db-bf49-04b84e07e77c",
                         "userDescription": "December 2017",
                         "exerciseRef": "201712",
-                        "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                        "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                        "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                        "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
+                        "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
                     },
                     {
                         "collectionExerciseId": "24fb3e68-4dca-46db-bf49-04b84e07e77c",
                         "userDescription": "January 2018",
                         "exerciseRef": "201801",
-                        "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                        "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                        "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                        "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
+                        "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
                     },
                 ],
             },
@@ -59,9 +58,8 @@ class TestSurveyMetadata(AppContextTestCase):
                         "collectionExerciseId": "14fb3e68-4dca-46db-bf49-04b84e07e777",
                         "userDescription": "Quarterly Business Survey",
                         "exerciseRef": "201812",
-                        "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                        "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                        "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                        "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
+                        "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
                     }
                 ],
             },
@@ -76,35 +74,32 @@ class TestSurveyMetadata(AppContextTestCase):
             "14fb3e68-4dca-46db-bf49-04b84e07e777": {
                 "exerciseRef": "201812",
                 "longName": "Quarterly Business Survey",
-                "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
                 "shortName": "QBS",
                 "surveyId": "04dbb407-4438-4f89-acc4-53445d753111",
                 "surveyType": "Business",
-                "userDescription": "Quarterly " "Business Survey",
+                "userDescription": "Quarterly Business Survey",
+                "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
+                "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
             },
             "14fb3e68-4dca-46db-bf49-04b84e07e77c": {
                 "exerciseRef": "201712",
                 "longName": "Business Register and Employment Survey",
-                "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
                 "shortName": "BRES",
                 "surveyId": "cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87",
                 "surveyType": "Business",
                 "userDescription": "December 2017",
+                "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
+                "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
             },
             "24fb3e68-4dca-46db-bf49-04b84e07e77c": {
                 "exerciseRef": "201801",
                 "longName": "Business Register and Employment Survey",
-                "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
                 "shortName": "BRES",
                 "surveyId": "cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87",
                 "surveyType": "Business",
                 "userDescription": "January 2018",
+                "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
+                "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
             },
         }
 
@@ -135,9 +130,8 @@ class TestSurveyMetadata(AppContextTestCase):
                         "collectionExerciseId": "24fb3e68-4dca-46db-bf49-04b84e07e77c",
                         "userDescription": "January 2018",
                         "exerciseRef": "201801",
-                        "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                        "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                        "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                        "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
+                        "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
                     }
                 ],
             },
@@ -152,9 +146,8 @@ class TestSurveyMetadata(AppContextTestCase):
                         "collectionExerciseId": "14fb3e68-4dca-46db-bf49-04b84e07e777",
                         "userDescription": "Quarterly Business Survey",
                         "exerciseRef": "201812",
-                        "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                        "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                        "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
+                        "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
+                        "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
                     }
                 ],
             },
@@ -163,25 +156,23 @@ class TestSurveyMetadata(AppContextTestCase):
         expected_collection_exercises = {
             "14fb3e68-4dca-46db-bf49-04b84e07e777": {
                 "exerciseRef": "201812",
-                "longName": "Quarterly Business " "Survey",
+                "longName": "Quarterly Business Survey",
                 "shortName": "QBS",
                 "surveyType": "Business",
                 "surveyId": "04dbb407-4438-4f89-acc4-53445d753111",
-                "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
                 "userDescription": "Quarterly Business Survey",
+                "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
+                "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
             },
             "24fb3e68-4dca-46db-bf49-04b84e07e77c": {
                 "exerciseRef": "201801",
-                "longName": "Business Register and " "Employment Survey",
+                "longName": "Business Register and Employment Survey",
                 "shortName": "BRES",
                 "surveyType": "Business",
                 "surveyId": "cb0711c3-0ac8-41d3-ae0e-567e5ea1ef87",
-                "scheduledExecutionDateTime": "2017-09-10T23:00:00.000Z",
-                "scheduledReturnDateTime": "2017-10-06T00:00:00.000Z",
-                "scheduledStartDateTime": "2017-09-11T23:00:00.000Z",
                 "userDescription": "January 2018",
+                "exerciseGoLiveDate": "2017-09-11T24:00:00.000Z",
+                "exerciseReturnDate": "2017-10-06T00:00:00.000Z",
             },
         }
 
@@ -199,7 +190,9 @@ class TestSurveyMetadata(AppContextTestCase):
 
         for survey in surveys:
             self.assertEqual(
-                survey["surveyType"], "Business", 'Found survey type not equal to "Business" in surveys list'
+                survey["surveyType"],
+                "Business",
+                'Found survey type not equal to "Business" in surveys list',
             )
 
         for collection_exercise in collection_exercises.values():
@@ -209,11 +202,34 @@ class TestSurveyMetadata(AppContextTestCase):
                 'Found survey type not equal to "Business" in collection exercise map',
             )
 
+    def test_get_event_timestamp_for_tag(self):
+        timestamp = "2017-09-11T24:00:00.000Z"
+        event_timestamp = get_event_timestamp_for_tag([{"tag": "go_live", "timestamp": timestamp}], "go_live")
+        self.assertEqual(event_timestamp, timestamp)
+
+    def test_get_event_timestamp_for_tag_missing_event(self):
+        event_timestamp = get_event_timestamp_for_tag(
+            [{"tag": "return_by", "timestamp": "2017-10-11T24:00:00.000Z"}], "go_live"
+        )
+        self.assertEqual(event_timestamp, None)
+
+    def test_get_event_timestamp_for_tag_empty_events(self):
+        event_timestamp = get_event_timestamp_for_tag({}, "go_live")
+        self.assertEqual(event_timestamp, None)
+
+    def test_get_event_timestamp_for_tag_none_events(self):
+        event_timestamp = get_event_timestamp_for_tag(None, "go_live")
+        self.assertEqual(event_timestamp, None)
+
     def fetch_mock_survey_and_collection_exercises_response(self):
         # Requires @responses.activate
         with self.app.app_context():
             # Mock the survey and collection exercise services
-            responses.add(responses.GET, self.app.config["SURVEY_URL"] + "/surveys", json=self.surveys_response)
+            responses.add(
+                responses.GET,
+                self.app.config["SURVEY_URL"] + "/surveys",
+                json=self.surveys_response,
+            )
             responses.add(
                 responses.GET,
                 self.app.config["COLLECTION_EXERCISE_URL"] + "/collectionexercises",

@@ -28,7 +28,23 @@
     "created": null,
     "updated": null,
     "deleted": false,
-    "validationErrors": null
+    "validationErrors": null,
+    "events":[
+      {
+         "id":"383c2f3f-ead7-46b1-82c1-2c3c0938ee9e",
+         "collectionExerciseId":"2f3275bd-c433-4a99-8771-d331e7508d9d",
+         "tag":"go_live",
+         "timestamp":"2017-09-11T24:00:00.000Z",
+         "eventStatus":"SCHEDULED"
+      },
+      {
+         "id":"eb9adff0-c596-4047-b514-52ee5f7da063",
+         "collectionExerciseId":"2f3275bd-c433-4a99-8771-d331e7508d9d",
+         "tag":"return_by",
+         "timestamp":"2017-10-06T00:00:00.000Z",
+         "eventStatus":"SCHEDULED"
+      }
+   ]
   },
   {
     "id": "24fb3e68-4dca-46db-bf49-04b84e07e77c",
@@ -59,7 +75,23 @@
     "created": null,
     "updated": null,
     "deleted": false,
-    "validationErrors": null
+    "validationErrors": null,
+        "events":[
+      {
+         "id":"383c2f3f-ead7-46b1-82c1-2c3c0938ee9e",
+         "collectionExerciseId":"2f3275bd-c433-4a99-8771-d331e7508d9d",
+         "tag":"go_live",
+         "timestamp":"2017-09-11T24:00:00.000Z",
+         "eventStatus":"SCHEDULED"
+      },
+      {
+         "id":"eb9adff0-c596-4047-b514-52ee5f7da063",
+         "collectionExerciseId":"2f3275bd-c433-4a99-8771-d331e7508d9d",
+         "tag":"return_by",
+         "timestamp":"2017-10-06T00:00:00.000Z",
+         "eventStatus":"SCHEDULED"
+      }
+   ]
   },
   {
     "id": "14fb3e68-4dca-46db-bf49-04b84e07e777",
@@ -90,6 +122,22 @@
     "created": null,
     "updated": null,
     "deleted": false,
-    "validationErrors": null
+    "validationErrors": null,
+    "events":[
+      {
+         "id":"383c2f3f-ead7-46b1-82c1-2c3c0938ee9e",
+         "collectionExerciseId":"2f3275bd-c433-4a99-8771-d331e7508d9d",
+         "tag":"go_live",
+         "timestamp":"2017-09-11T24:00:00.000Z",
+         "eventStatus":"SCHEDULED"
+      },
+      {
+         "id":"eb9adff0-c596-4047-b514-52ee5f7da063",
+         "collectionExerciseId":"2f3275bd-c433-4a99-8771-d331e7508d9d",
+         "tag":"return_by",
+         "timestamp":"2017-10-06T00:00:00.000Z",
+         "eventStatus":"SCHEDULED"
+      }
+   ]
   }
 ]
