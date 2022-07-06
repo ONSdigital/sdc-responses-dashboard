@@ -118,14 +118,14 @@ const initialiseCollexDataTable = () =>
         width: "50%"
       },
       {
-        data: "scheduledStartDateTime",
+        data: "exerciseGoLiveDate",
         defaultContent: "No go live provided",
         title: "Go Live",
         width: "25%",
         render: customDateRenderer
       },
       {
-        data: "scheduledReturnDateTime",
+        data: "exerciseReturnDate",
         defaultContent: "No return by date provided",
         title: "Return By Date",
         width: "25%",
