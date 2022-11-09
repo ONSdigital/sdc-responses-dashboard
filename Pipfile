@@ -12,7 +12,7 @@ structlog = "*"
 gunicorn = "*"
 
 [dev-packages]
-black = "==21.6b0"
+black = "*"
 selenium = "*"
 isort = "*"
 behave = "*"
