@@ -8,7 +8,7 @@ logger = get_logger()
 
 
 def not_found_error(error):
-    logger.debug("Handling 404 error", error=error)
+    logger.info("Handling 404 error", error=error)
     return (
         render_template(
             "errors/error.html", status_code=404, error_name="Not found error", error_msg=ERROR_MESSAGE_NOT_FOUND

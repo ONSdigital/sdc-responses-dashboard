@@ -11,7 +11,7 @@ logger = get_logger()
 
 def get_survey_list():
     url = f'{app.config["SURVEY_URL"]}/surveys'
-    logger.debug("Attempting to retrieve surveys")
+    logger.info("Attempting to retrieve surveys")
     try:
         response = requests.get(url, auth=HTTPBasicAuth(app.config["AUTH_USERNAME"], app.config["AUTH_PASSWORD"]))
     except requests.exceptions.ConnectionError:
@@ -21,5 +21,5 @@ def get_survey_list():
         logger.error("Failed to retrieve surveys", status_code=response.status_code, response=response.content)
         response.raise_for_status()
 
-    logger.debug("Successfully retrieved surveys")
+    logger.info("Successfully retrieved surveys")
     return response.json()
