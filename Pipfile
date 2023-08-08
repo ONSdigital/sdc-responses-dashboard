@@ -10,6 +10,7 @@ requests = "*"
 responses = "*"
 structlog = "*"
 gunicorn = "*"
+certifi = "*"
 
 [dev-packages]
 black = "*"
