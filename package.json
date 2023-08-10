@@ -45,13 +45,11 @@
   },
   "dependencies": {
     "bootstrap": "3.4.1",
-    "datatables.net": "^1.13.6",
+    "datatables.net": "1.10.19",
     "datatables.net-scroller": "1.5.1",
     "domready": "^1.0.8",
-    "jquery": "^3.7.0",
-    "jquery-ui": "^1.13.2",
-    "lodash": "^4.17.21",
-    "lodash.template": "^4.5.0",
+    "jquery": "3.4.1",
+    "jquery-ui": "1.12.1",
     "moment": "^2.23.0",
     "pace-js": "1.0.2"
   }
