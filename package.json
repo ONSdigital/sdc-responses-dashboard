@@ -29,7 +29,7 @@
         "gulp-rename": "^1.4.0",
         "gulp-tap": "^1.0.1",
         "gulp-uglify": "^3.0.1",
-        "prettier": "^1.15.3",
+        "prettier": "^1.15.3"
     },
     "dependencies": {
         "bootstrap": "3.4.1",
@@ -39,6 +39,6 @@
         "jquery": "3.4.1",
         "jquery-ui": "1.12.1",
         "moment": "^2.23.0",
-        "pace-js": "1.0.2",
-    },
+        "pace-js": "1.0.2"
+    }
 }
