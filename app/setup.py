@@ -28,7 +28,6 @@ from app.views.dashboard import dashboard_blueprint
 
 
 def create_app():
-
     app_config = getattr(config, os.getenv("APP_SETTINGS", "Config"))
     check_required_config(app_config)
 
@@ -67,7 +66,6 @@ def add_error_handlers(app):
 
 
 def versioned_url_for(endpoint, **values):
-
     if endpoint == "static":
         filename = values.get("filename", None)
         if filename:
