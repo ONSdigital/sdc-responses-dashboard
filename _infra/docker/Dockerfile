@@ -1,4 +1,4 @@
-FROM node:21.7-alpine AS yarn-compile
+FROM node:21-alpine AS yarn-compile
 WORKDIR /app
 COPY . /app
 EXPOSE 8078
