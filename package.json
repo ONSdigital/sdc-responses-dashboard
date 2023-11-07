@@ -21,6 +21,9 @@
         "url": "https://github.com/ONSdigital/sdc-responses-dashboard/issues"
     },
     "homepage": "https://github.com/ONSdigital/sdc-responses-dashboard#readme",
+    "engines": {
+        "node": "^12.13.0"
+    },
     "devDependencies": {
         "@babel/core": "^7.1.5",
         "@babel/preset-env": "^7.1.5",
