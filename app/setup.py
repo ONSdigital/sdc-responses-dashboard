@@ -102,6 +102,7 @@ def _configure_logger(level="INFO", indent=None):
         renderer_processor,
     ]
     structlog.configure(
+        context_class=dict,
         logger_factory=LoggerFactory(),
         processors=processors,
         cache_logger_on_first_use=True,
