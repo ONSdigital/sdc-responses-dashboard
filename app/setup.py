@@ -13,7 +13,6 @@ from structlog.stdlib import (
     add_logger_name,
     filter_by_level,
 )
-from structlog.threadlocal import wrap_dict
 
 import config
 from app.api.health import health_blueprint
@@ -103,7 +102,6 @@ def _configure_logger(level="INFO", indent=None):
         renderer_processor,
     ]
     structlog.configure(
-        # context_class=wrap_dict(dict),
         logger_factory=LoggerFactory(),
         processors=processors,
         cache_logger_on_first_use=True,
