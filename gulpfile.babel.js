@@ -8,7 +8,6 @@ import browserify from "browserify";
 import tap from "gulp-tap";
 import buffer from "gulp-buffer";
 import eslint from "gulp-eslint";
-import prettierEslint from "gulp-prettier-eslint";
 
 gulp.task("clean:dist", () => del("app/static/dist/"));
 
@@ -16,7 +15,6 @@ gulp.task("clean:dist", () => del("app/static/dist/"));
 gulp.task("prettier:js", () =>
   gulp
     .src("app/static/assets/js/*.js")
-    .pipe(prettierEslint())
     .pipe(gulp.dest("app/static/assets/js"))
     .pipe(eslint())
     .pipe(eslint.format())
