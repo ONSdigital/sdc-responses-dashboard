@@ -7,27 +7,8 @@ import uglify from "gulp-uglify";
 import browserify from "browserify";
 import tap from "gulp-tap";
 import buffer from "gulp-buffer";
-import eslint from "gulp-eslint";
 
 gulp.task("clean:dist", () => del("app/static/dist/"));
-
-// use prettier for fix and js issues such as style before linting
-gulp.task("prettier:js", () =>
-  gulp
-    .src("app/static/assets/js/*.js")
-    .pipe(gulp.dest("app/static/assets/js"))
-    .pipe(eslint())
-    .pipe(eslint.format())
-);
-
-// lint js file with eslint
-gulp.task("eslint:js", () =>
-  gulp
-    .src("app/static/assets/js/*.js")
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
-);
 
 // transpile JS into ES5 for backwards compatibility
 gulp.task("transpile:scripts", () =>
