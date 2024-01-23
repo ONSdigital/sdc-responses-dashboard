@@ -82,6 +82,15 @@ def _configure_logger(log_level: str = "INFO") -> None:
         event_dict["severity"] = method_name
         return event_dict
 
+    def parse_exception(_, __, event_dict: dict) -> dict:
+        """
+        Formats the exception string in the event_dict.
+        """
+        exception = event_dict.get("exception")
+        if exception:
+            event_dict["exception"] = exception.replace('"', "'").split("\n")
+        return event_dict
+
     logging.basicConfig(format="%(message)s", stream=sys.stdout, level=log_level)
 
     structlog.configure(
@@ -89,6 +98,7 @@ def _configure_logger(log_level: str = "INFO") -> None:
             structlog.contextvars.merge_contextvars,
             add_severity_level,
             add_service,
+            parse_exception,
             structlog.processors.format_exc_info,
             structlog.processors.TimeStamper(fmt="%Y-%m-%dT%H:%M%s", utc=True, key="created_at"),
             structlog.processors.JSONRenderer(indent=None),
