@@ -6,14 +6,6 @@ import structlog
 from flask import Flask, current_app, url_for
 from flask_cors import CORS
 from structlog import wrap_logger
-from structlog.processors import JSONRenderer, TimeStamper, format_exc_info
-from structlog.stdlib import (
-    LoggerFactory,
-    add_log_level,
-    add_logger_name,
-    filter_by_level,
-)
-from structlog.threadlocal import wrap_dict
 
 import config
 from app.api.health import health_blueprint
@@ -75,37 +67,44 @@ def versioned_url_for(endpoint, **values):
     return url_for(endpoint, **values)
 
 
-def _configure_logger(level="INFO", indent=None):
-    logging.basicConfig(stream=sys.stdout, level=level, format="%(message)s")
-
-    try:
-        indent = int(os.getenv("LOGGING_JSON_INDENT") or indent)
-    except TypeError:
-        indent = None
-    except ValueError:
-        indent = None
-
-    def add_service(_, __, event_dict):
+def _configure_logger(log_level: str = "INFO") -> None:
+    def add_service(_, __, event_dict: dict) -> dict:
         """
         Add the service name to the event dict.
         """
         event_dict["service"] = os.getenv("NAME", "sdc-responses-dashboard")
         return event_dict
 
-    renderer_processor = JSONRenderer(indent=indent)
-    processors = [
-        add_log_level,
-        filter_by_level,
-        add_service,
-        format_exc_info,
-        add_logger_name,
-        TimeStamper(fmt="%Y-%m-%dT%H:%M%s", utc=True, key="created_at"),
-        renderer_processor,
-    ]
+    def add_severity_level(_, method_name: str, event_dict: dict) -> dict:
+        """
+        Adds the log level to the event dict.
+        """
+        event_dict["severity"] = method_name
+        return event_dict
+
+    def parse_exception(_, __, event_dict: dict) -> dict:
+        """
+        Formats the exception string in the event_dict.
+        """
+        exception = event_dict.get("exception")
+        if exception:
+            event_dict["exception"] = exception.replace('"', "'").split("\n")
+        return event_dict
+
+    logging.basicConfig(format="%(message)s", stream=sys.stdout, level=log_level)
+
     structlog.configure(
-        context_class=wrap_dict(dict),
-        logger_factory=LoggerFactory(),
-        processors=processors,
+        processors=[
+            structlog.contextvars.merge_contextvars,
+            add_severity_level,
+            add_service,
+            parse_exception,
+            structlog.processors.format_exc_info,
+            structlog.processors.TimeStamper(fmt="%Y-%m-%dT%H:%M%s", utc=True, key="created_at"),
+            structlog.processors.JSONRenderer(indent=None),
+        ],
+        wrapper_class=structlog.make_filtering_bound_logger(logging.getLevelName(log_level)),
+        logger_factory=structlog.stdlib.LoggerFactory(),
         cache_logger_on_first_use=True,
     )
 
