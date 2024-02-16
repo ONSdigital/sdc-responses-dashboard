@@ -10,8 +10,7 @@ image:
 container:
   port: 8080
 service:
-  type: ClusterIP
-  port: 8080
+  type: NodePort
 
 resources:
   requests:
@@ -37,7 +36,7 @@ loggingLevel: INFO
 
 ingress:
   enabled: true
-  host: responses-dashboard.example.com
+  host: responses-dashboard.robinm3.example.com
   certName: responses-dashboard-cert
   frontendConfigName: responses-dashboard-frontend-config
 
