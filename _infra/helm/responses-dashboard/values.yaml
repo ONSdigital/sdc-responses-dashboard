@@ -40,6 +40,7 @@ ingress:
   host: responses-dashboard.robinm3.example.com
   certName: responses-dashboard-cert
   frontendConfigName: responses-dashboard-frontend-config
+  timeoutSec: 30
 
 frontendConfig:
   sslPolicy: responses-dashboard-ingress-ssl-policy
