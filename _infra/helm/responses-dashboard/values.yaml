@@ -1,6 +1,6 @@
 env: dev
 namespace: dev
-publicIP: false
+publicIP: true
 
 image:
   name: eu.gcr.io/ons-rasrmbs-management
