@@ -36,7 +36,7 @@ reportRefreshSeconds: 10
 loggingLevel: INFO
 
 ingress:
-  enabled: false
+  enabled: true
   host: responses-dashboard.example.com
   certName: responses-dashboard-cert
   frontendConfigName: responses-dashboard-frontend-config
