@@ -3,9 +3,4 @@ apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
   name: responses-dashboard-backend-config
-spec:
-  securityPolicy:
-    name: "ras-cloud-armor-policy-responses-dashboard"
-  sessionAffinity: 
-    affinityType: CLIENT_IP
 {{- end }}
