@@ -1,6 +1,6 @@
 env: dev
 namespace: dev
-publicIP: true
+publicIP: false
 
 image:
   name: eu.gcr.io/ons-rasrmbs-management
@@ -10,7 +10,7 @@ image:
 container:
   port: 8080
 service:
-  type: NodePort
+  type: ClusterIP
   port: 8080
 
 resources:
@@ -36,8 +36,8 @@ reportRefreshSeconds: 10
 loggingLevel: INFO
 
 ingress:
-  enabled: true
-  host: responses-dashboard.robinm3.example.com
+  enabled: false
+  host: responses-dashboard.example.com
   certName: responses-dashboard-cert
   frontendConfigName: responses-dashboard-frontend-config
   timeoutSec: 30
