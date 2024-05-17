@@ -6,7 +6,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 @when("they click on that collection exercise period")
 def click_on_collex(context):
-
     # Wait for collex menu to load
     WebDriverWait(context.browser, timeout=10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, '[data-id="collex-table"]'))
@@ -18,7 +17,6 @@ def click_on_collex(context):
 
 @then("they can view report figures on that collection exercise")
 def get_report_figures(context):
-
     # Wait for data retrieval
     WebDriverWait(context.browser, timeout=10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, '[data-id="counters"]'))

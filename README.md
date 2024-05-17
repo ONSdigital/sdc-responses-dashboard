@@ -107,16 +107,6 @@ Run all linting with
 make lint
 ```
 
-Run JS linting with
-```bash
-yarn lint
-```
-
-Reformat JS and fix minor JS linting errors with
-```bash
-yarn fix-lint
-```
-
 ### Unit tests
 
 Run the python unit tests with

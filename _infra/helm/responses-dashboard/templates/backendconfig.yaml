@@ -6,6 +6,6 @@ metadata:
 spec:
   securityPolicy:
     name: "ras-cloud-armor-policy"
-  sessionAffinity: 
+  sessionAffinity:
     affinityType: CLIENT_IP
 {{- end }}
