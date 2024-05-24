@@ -1,3 +1,4 @@
 [flake8]
 extend-ignore = E203
 max_line_length = 120
+exclude = node_modules

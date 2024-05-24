@@ -17,7 +17,6 @@ class TestDashboardView(AppContextTestCase):
 
     def mock_successful_external_api_calls(self):
         with self.app.app_context():
-
             responses.add(
                 responses.GET, self.app.config["SURVEY_URL"] + "/surveys", json=self.surveys_response, status=200
             )
@@ -74,7 +73,6 @@ class TestDashboardView(AppContextTestCase):
         collex_response_missing_description = self.collex_response.copy()
         collex_response_missing_description[0]["userDescription"] = None
         with self.app.app_context():
-
             responses.add(
                 responses.GET, self.app.config["SURVEY_URL"] + "/surveys", json=self.surveys_response, status=200
             )
