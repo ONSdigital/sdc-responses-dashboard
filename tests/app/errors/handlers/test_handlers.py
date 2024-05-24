@@ -15,7 +15,6 @@ class TestErrorHandlers(AppContextTestCase):
 
     @responses.activate
     def test_internal_server_error(self):
-
         with self.app.app_context():
             responses.add(responses.GET, self.app.config["SURVEY_URL"] + "/surveys", status=500)
 
