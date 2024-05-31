@@ -128,3 +128,5 @@ make smoke_test
 This will test the basic functionality of the dashboard UI in a chrome browser, headless by default.
 
 To the run these tests in a non headless browser set `HEADLESS=False` in the test environment.
+
+Test
