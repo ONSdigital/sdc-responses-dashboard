@@ -10,6 +10,7 @@ requests = "*"
 responses = "*"
 structlog = "*"
 gunicorn = "*"
+jinja2 = "*"
 
 [dev-packages]
 black = "*"
