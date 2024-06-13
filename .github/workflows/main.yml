@@ -90,11 +90,11 @@ jobs:
           echo "appVersion: $APP_VERSION"
           echo "chartVersion: $CHART_VERSION"
           echo "Here 0"
-          touch ~/.ssh/id_ed25519
+          touch id_ed25519
           echo "Here 1"
-          cat <<< "${{ secrets.BOT_SSH_SIGNING_KEY }}" > ~/.ssh/id_ed25519
+          cat <<< "${{ secrets.BOT_SSH_SIGNING_KEY }}" > id_ed25519
           echo "Here 2"
-          echo -ltra ~/.ssh
+          echo -ltra
           echo "Here 3"
           if [ ${{ env.tag }} = $APP_VERSION ]; then
             echo "versions match, incrementing patch"
@@ -110,7 +110,7 @@ jobs:
             git config user.email "${{ secrets.BOT_EMAIL }}"
             git config --global gpg.format ssh
             git config --global commit.gpgsign true
-            git config --global user.signingkey ~/.ssh/id_ed25519
+            git config --global user.signingkey id_ed25519
             git remote set-url origin https://ras-rm-pr-bot:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
             git remote update
             git fetch
@@ -128,7 +128,7 @@ jobs:
               git config user.email "${{ secrets.BOT_EMAIL }}"
               git config --global gpg.format ssh
               git config --global commit.gpgsign true
-              git config --global user.signingkey "key::${GITHUB_SSH_SIGNING_KEY}"
+              git config --global user.signingkey id_ed25519
               git remote set-url origin https://ras-rm-pr-bot:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
               git remote update
               git fetch
