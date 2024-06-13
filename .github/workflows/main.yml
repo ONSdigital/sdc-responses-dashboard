@@ -80,7 +80,7 @@ jobs:
         run: echo $BOT_GPG_KEY | base64 --decode | gpg --batch --import
         env:
           BOT_GPG_KEY: ${{ secrets.BOT_GPG_KEY }}
-      - name: Prepare gpg signing step for passing passphrase to the gpg CLI
+      - name: Prepare gpg CLI signing step
         run: |
           rm -rf /tmp/gpg.sh
           echo '#!/bin/bash' >> /tmp/gpg.sh
