@@ -79,7 +79,7 @@ jobs:
       - name: Import BOT GPG key
         run: echo $BOT_GPG_KEY | base64 --decode | gpg --batch --import
         env:
-          GPG_KEY: ${{ secrets.BOT_GPG_KEY }}
+          BOT_GPG_KEY: ${{ secrets.BOT_GPG_KEY }}
       - name: Prepare gpg signing step for passing passphrase to the gpg CLI
         run: |
           rm -rf /tmp/gpg.sh
