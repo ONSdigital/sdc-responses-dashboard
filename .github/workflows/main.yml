@@ -89,12 +89,10 @@ jobs:
       - name: Setup git
         run: |
           git config commit.gpgsign true
-          git config user.signingkey $BOT_GPG_KEY_ID
+          git config user.signingkey "${{ secrets.BOT_GPG_KEY_ID }}"
           git config gpg.program /tmp/gpg.sh
           git config user.name "${{ secrets.BOT_USERNAME }}"
           git config user.email "${{ secrets.BOT_EMAIL }}"
-        env:
-          BOT_GPG_KEY_ID: ${{ secrets.BOT_GPG_KEY_ID }}
       - name: update versions
         if: github.ref != 'refs/heads/main'
         env:
