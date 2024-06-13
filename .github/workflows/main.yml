@@ -80,6 +80,7 @@ jobs:
         if: github.ref != 'refs/heads/main'
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          GITHUB_SSH_SIGNING_KEY: ${{ secrets.BOT_SSH_SIGNING_KEY }}
           COMMIT_MSG: |
             auto patch increment
         shell: bash
@@ -89,6 +90,7 @@ jobs:
           export CHART_VERSION=$(grep -E "version:\s+" $CHART_DIRECTORY/Chart.yaml | cut -d" " -f2 | sed -r 's/"//g')
           echo "appVersion: $APP_VERSION"
           echo "chartVersion: $CHART_VERSION"
+          echo ls ~/.ssh
           if [ ${{ env.tag }} = $APP_VERSION ]; then
             echo "versions match, incrementing patch"
             OLD_PATCH=$(echo ${{ env.tag }} | cut -d '.' -f3)
@@ -103,7 +105,7 @@ jobs:
             git config user.email "${{ secrets.BOT_EMAIL }}"
             git config --global gpg.format ssh
             git config --global commit.gpgsign true
-            git config --global user.signingkey "key::${{ secrets.BOT_SSH_SIGNING_KEY }}"
+            git config --global user.signingkey "key::${GITHUB_SSH_SIGNING_KEY}"
             git remote set-url origin https://ras-rm-pr-bot:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
             git remote update
             git fetch
@@ -121,7 +123,7 @@ jobs:
               git config user.email "${{ secrets.BOT_EMAIL }}"
               git config --global gpg.format ssh
               git config --global commit.gpgsign true
-              git config --global user.signingkey "key::${{ secrets.BOT_SSH_SIGNING_KEY }}"
+              git config --global user.signingkey "key::${GITHUB_SSH_SIGNING_KEY}"
               git remote set-url origin https://ras-rm-pr-bot:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
               git remote update
               git fetch
