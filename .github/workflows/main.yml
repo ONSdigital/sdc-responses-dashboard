@@ -101,6 +101,7 @@ jobs:
             sed -i -e "s/version: .*/$NEW_CHART_VERSION/g" $CHART_DIRECTORY/Chart.yaml
             git config user.name "ras-rm-pr-bot"
             git config user.email "${{ secrets.BOT_EMAIL }}"
+            git config --global gpg.format openpgp
             git config --global commit.gpgsign true
             git config --global user.signingkey ${{ secrets.BOT_GPG_SIGNING_KEY }}
             git remote set-url origin https://ras-rm-pr-bot:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
@@ -118,6 +119,7 @@ jobs:
               sed -i -e "s/version: .*/$NEW_CHART_VERSION/g" $CHART_DIRECTORY/Chart.yaml
               git config user.name "ras-rm-pr-bot"
               git config user.email "${{ secrets.BOT_EMAIL }}"
+              git config --global gpg.format openpgp
               git config --global commit.gpgsign true
               git config --global user.signingkey ${{ secrets.BOT_GPG_SIGNING_KEY }}
               git remote set-url origin https://ras-rm-pr-bot:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
