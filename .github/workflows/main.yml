@@ -89,13 +89,6 @@ jobs:
           export CHART_VERSION=$(grep -E "version:\s+" $CHART_DIRECTORY/Chart.yaml | cut -d" " -f2 | sed -r 's/"//g')
           echo "appVersion: $APP_VERSION"
           echo "chartVersion: $CHART_VERSION"
-          echo "Here 0"
-          touch id_ed25519
-          echo "Here 1"
-          cat <<< "${{ secrets.BOT_SSH_SIGNING_KEY }}" > id_ed25519
-          echo "Here 2"
-          echo -ltra
-          echo "Here 3"
           if [ ${{ env.tag }} = $APP_VERSION ]; then
             echo "versions match, incrementing patch"
             OLD_PATCH=$(echo ${{ env.tag }} | cut -d '.' -f3)
@@ -108,9 +101,8 @@ jobs:
             sed -i -e "s/version: .*/$NEW_CHART_VERSION/g" $CHART_DIRECTORY/Chart.yaml
             git config user.name "ras-rm-pr-bot"
             git config user.email "${{ secrets.BOT_EMAIL }}"
-            git config --global gpg.format ssh
             git config --global commit.gpgsign true
-            git config --global user.signingkey id_ed25519
+            git config --global user.signingkey ${{ secrets.BOT_GPG_SIGNING_KEY }}
             git remote set-url origin https://ras-rm-pr-bot:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
             git remote update
             git fetch
@@ -126,9 +118,8 @@ jobs:
               sed -i -e "s/version: .*/$NEW_CHART_VERSION/g" $CHART_DIRECTORY/Chart.yaml
               git config user.name "ras-rm-pr-bot"
               git config user.email "${{ secrets.BOT_EMAIL }}"
-              git config --global gpg.format ssh
               git config --global commit.gpgsign true
-              git config --global user.signingkey id_ed25519
+              git config --global user.signingkey ${{ secrets.BOT_GPG_SIGNING_KEY }}
               git remote set-url origin https://ras-rm-pr-bot:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
               git remote update
               git fetch
