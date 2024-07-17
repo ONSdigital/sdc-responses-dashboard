@@ -13,7 +13,9 @@ env:
   REGISTRY_HOSTNAME: europe-west2-docker.pkg.dev
   HOST: ${{ secrets.GOOGLE_PROJECT_ID }}
   GAR_REPOSITORY: ${{ secrets.GAR_REPOSITORY }}
-  RELEASE_HOST: ${{ secrets.RELEASE_PROJECT_ID }}
+#  Temp override
+#  RELEASE_HOST: ${{ secrets.RELEASE_PROJECT_ID }}
+  RELEASE_HOST: ons-ci-rmrasbs
   CHART_DIRECTORY: _infra/helm/responses-dashboard
   SPINNAKER_TOPIC: ${{ secrets.SPINNAKER_TOPIC }}
   ARTIFACT_BUCKET: ${{ secrets.ARTIFACT_BUCKET }}
