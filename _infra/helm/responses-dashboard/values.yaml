@@ -3,6 +3,7 @@ namespace: dev
 publicIP: false
 
 image:
+  devRepo: europe-west2-docker.pkg.dev/ons-ci-rmrasbs/images
   name: europe-west2-docker.pkg.dev/ons-ci-rmrasbs/images
   tag: latest
   pullPolicy: Always
