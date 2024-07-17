@@ -12,8 +12,7 @@ env:
   IMAGE: responses-dashboard
   REGISTRY_HOSTNAME: europe-west2-docker.pkg.dev
   HOST: ${{ secrets.GOOGLE_PROJECT_ID }}
-#  GAR_REPOSITORY: ${{ secrets.GAR_REPOSITORY }}
-  GAR_REPOSITORY: ons-ci-rmrasbs
+  GAR_REPOSITORY: ${{ secrets.GAR_REPOSITORY }}
   RELEASE_HOST: ${{ secrets.RELEASE_PROJECT_ID }}
   CHART_DIRECTORY: _infra/helm/responses-dashboard
   SPINNAKER_TOPIC: ${{ secrets.SPINNAKER_TOPIC }}
