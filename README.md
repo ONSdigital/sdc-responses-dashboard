@@ -72,7 +72,7 @@ pipenv run python run.py
 To run with ras-rm docker-dev:
 ```
 docker build -t sdcplatform/sdc-responses-dashboard .
-docker-compose up -d
+docker compose up -d
 ```
 If you want to run with mock services, you need to change the host to `host.docker.internal` to allow it to connect to
 localhost connection.
