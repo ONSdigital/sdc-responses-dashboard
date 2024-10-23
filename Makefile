@@ -8,16 +8,14 @@ compile:
 build:
 	pipenv install --dev
 
-# remove --ignore=70624 --ignore=72731 once flask-cors updated beyond 5.0.0
-# remove --ignore=70612 once jinja2 is updated beyond 3.1.4
 lint:
-	pipenv check --ignore=70612 --ignore=70624 --ignore=72731
+	pipenv check --ignore=70612 --ignore=70624
 	pipenv run isort .
 	pipenv run black --line-length 120 .
 	pipenv run flake8
 
 lint-check:
-	pipenv check --ignore=70612 --ignore=70624 --ignore=72731
+	pipenv check --ignore=70612 --ignore=70624
 	pipenv run isort --check-only .
 	pipenv run black --line-length 120 --check .
 	pipenv run flake8
