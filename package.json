@@ -45,7 +45,7 @@
         "pace-js": "1.0.2"
     },
     "overrides": {
-        "chokidar": "^3.5.3",
+        "chokidar": "^4.0.1",
         "glob-parent": "^6.0.2"
     }
 }
