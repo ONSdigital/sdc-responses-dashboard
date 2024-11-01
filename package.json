@@ -23,7 +23,7 @@
         "@babel/core": "^7.1.5",
         "@babel/preset-env": "^7.1.5",
         "@babel/register": "^7.0.0",
-        "browserify": "^17.0.0",
+        "browserify": "^17.0.1",
         "del": "^3.0.0",
         "gulp": "5.0.0",
         "gulp-babel": "^8.0.0",
@@ -44,7 +44,7 @@
         "pace-js": "1.0.2"
     },
     "overrides": {
-        "chokidar": "^3.5.3",
+        "chokidar": "^4.0.1",
         "glob-parent": "^6.0.2"
     }
 }
