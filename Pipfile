@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
 flask-cors = "*"
 requests = "*"
 responses = "*"
 structlog = "*"
 gunicorn = "*"
+flask = "*"
 
 [dev-packages]
 black = "*"
