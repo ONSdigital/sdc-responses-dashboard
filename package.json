@@ -34,7 +34,7 @@
         "gulp-uglify": "^3.0.1"
     },
     "dependencies": {
-        "bootstrap": "3.4.1",
+        "bootstrap": "^5.3.8",
         "datatables.net": "^1.13.8",
         "datatables.net-scroller": "1.5.1",
         "domready": "^1.0.8",
