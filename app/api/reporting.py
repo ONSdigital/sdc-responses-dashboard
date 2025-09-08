@@ -15,17 +15,17 @@ logger = get_logger()
 @reporting_blueprint.route("/reporting/survey/<survey_id>/collection-exercise/<collex_id>", methods=["GET"])
 def reporting_details(survey_id, collex_id):
     if not parse_uuid(survey_id):
-        logger.info("Malformed survey ID", survey_id=survey_id)
+        logger.error("Malformed survey ID", survey_id=survey_id)
         abort(404, "Malformed survey ID")
 
     if not parse_uuid(collex_id):
-        logger.info("Malformed collection exercise ID", collex_id=collex_id)
+        logger.error("Malformed collection exercise ID", collex_id=collex_id)
         abort(404, "Malformed collection exercise ID")
 
     try:
         report = get_reporting_details(survey_id, collex_id)
     except HTTPError:
-        logger.info("Invalid collection exercise or survey id")
+        logger.error("Invalid collection exercise or survey id")
         abort(404)
 
     return json.dumps(report)
