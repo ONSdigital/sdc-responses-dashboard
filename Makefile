@@ -1,5 +1,5 @@
 start:
-	yarn compile
+#	yarn compile
 	pipenv run python run.py
 
 compile:
