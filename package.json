@@ -6,9 +6,8 @@
         "name": "ONS Digital",
         "url": "http://onsdigital.github.io/"
     },
-    "main": "gulpfile.babel.js",
     "scripts": {
-        "compile": "yarn && gulp compile"
+        "compile": "yarn"
     },
     "repository": {
         "type": "git",
