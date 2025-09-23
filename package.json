@@ -20,6 +20,9 @@
     },
     "homepage": "https://github.com/ONSdigital/sdc-responses-dashboard#readme",
     "devDependencies": {
+        "@babel/core": "^7.1.5",
+        "@babel/preset-env": "^7.1.5",
+        "@babel/register": "^7.0.0",
         "browserify": "^17.0.1",
         "del": "^3.0.0",
         "gulp": "5.0.0",
