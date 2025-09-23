@@ -20,9 +20,6 @@
     },
     "homepage": "https://github.com/ONSdigital/sdc-responses-dashboard#readme",
     "devDependencies": {
-        "@babel/core": "^7.1.5",
-        "@babel/preset-env": "^7.1.5",
-        "@babel/register": "^7.0.0",
         "browserify": "^17.0.1",
         "del": "^3.0.0",
         "gulp": "5.0.0",
@@ -32,16 +29,6 @@
         "gulp-rename": "^2.0.0",
         "gulp-tap": "^2.0.0",
         "gulp-uglify": "^3.0.1"
-    },
-    "dependencies": {
-        "bootstrap": "3.4.1",
-        "datatables.net": "^1.13.8",
-        "datatables.net-scroller": "1.5.1",
-        "domready": "^1.0.8",
-        "jquery": "^3.7.1",
-        "jquery-ui": "^1.13.2",
-        "moment": "^2.23.0",
-        "pace-js": "1.0.2"
     },
     "overrides": {
         "chokidar": "^4.0.1",
