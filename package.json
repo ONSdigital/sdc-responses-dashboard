@@ -34,8 +34,7 @@
         "gulp-uglify": "^3.0.1"
     },
     "dependencies": {
-        "datatables.net": "^1.13.8",
-        "datatables.net-scroller": "1.5.1"
+        "bootstrap": "3.4.1"
     },
     "overrides": {
         "chokidar": "^4.0.1",
