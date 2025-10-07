@@ -30,7 +30,7 @@ pip install --U pip setuptools pipenv
 
 **Run with Make:**
 
-Compile static asssets with
+Compile static assets with
 ```bash
 make compile
 ```
