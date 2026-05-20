@@ -24,7 +24,8 @@ npm install yarn --global
 Install pyenv and pipenv
 ```bash
 brew install pyenv
-pyenv install
+pyenv install 3.14
+pyenv local 3.14
 pip install --U pip setuptools pipenv
 ```
 
