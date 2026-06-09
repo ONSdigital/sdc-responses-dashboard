@@ -4,6 +4,7 @@ import moment from "moment";
 
 require("jquery-ui/ui/effect");
 require("jquery-ui/ui/effects/effect-bounce");
+const bootstrap = require("bootstrap/dist/js/bootstrap.bundle");
 
 const getReport = () => ({
   accountsPending: {
@@ -110,11 +111,14 @@ const createCounters = (countersElement, figureData) => {
   $(`#${figureData.id}-counter`).effect("bounce", "slow");
 
   // Adds a tooltip to each counter
-  $(`#${figureData.id}-box .inner`).tooltip({
-    title: figureData.tooltip.title,
-    placement: figureData.tooltip.placement,
-    html: true
-  });
+  const counterElement = document.querySelector(`#${figureData.id}-box .inner`);
+  if (counterElement) {
+    new bootstrap.Tooltip(counterElement, {
+      title: figureData.tooltip.title,
+      placement: figureData.tooltip.placement,
+      html: true
+    });
+  }
 };
 
 const updateProgressData = response => {

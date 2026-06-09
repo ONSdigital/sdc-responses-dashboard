@@ -6,9 +6,14 @@ if (!window.$ || !window.jQuery) {
   window.$ = window.jQuery = $;
 }
 
-require("datatables.net")(window, $);
+require("datatables.net-bs5")(window, $);
 require("datatables.net-scroller")(window, $);
-require("bootstrap/dist/js/bootstrap");
+const bootstrap = require("bootstrap/dist/js/bootstrap.bundle");
+
+const getModalElement = modalID => document.querySelector(modalID);
+
+const getModal = (modalID, config = {}) =>
+  bootstrap.Modal.getOrCreateInstance(getModalElement(modalID), config);
 
 const setDataTableHeaderWidth = () => {
   // sets the width of the data table headers to 100%
@@ -25,14 +30,14 @@ const enableModalToggle = () => {
   const collexID = $("#collex-id").data("collex");
 
   if (!collexID) {
-    $("#modal-survey").modal({
+    getModal("#modal-survey", {
       backdrop: "static",
       keyboard: false
-    });
+    }).show();
 
-    $("#modal-collex").attr({
-      "data-backdrop": "static",
-      "data-keyboard": "false"
+    getModal("#modal-collex", {
+      backdrop: "static",
+      keyboard: false
     });
   }
 };
@@ -146,7 +151,7 @@ const populateCollexTable = (collexTable, surveyID) => {
   const collectionExercises = getCollexFromSurveyId(surveys, surveyID);
   collexTable.rows.add(collectionExercises).draw();
 
-  $("#modal-collex").modal("toggle");
+  getModal("#modal-collex").show();
 
   // Dynamically set scroller rowHeight
   setCollexTableHeight();
@@ -160,7 +165,7 @@ const surveyTableClickEvent = (surveyTable, collexTable) =>
       const surveyShortName = $(this).data("survey-short-name"); // eslint-disable-line no-invalid-this
 
       $("#chosen-survey").text(surveyShortName);
-      $("#modal-survey").modal("toggle");
+      getModal("#modal-survey").hide();
 
       populateCollexTable(collexTable, surveyID);
     }
