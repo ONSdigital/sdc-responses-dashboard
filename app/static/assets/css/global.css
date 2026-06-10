@@ -11,6 +11,10 @@
 	content: "";
 }
 
+.main-header .sidebar-toggle {
+	padding: 0;
+}
+
 .small-box>.inner {
 	padding: 20px;
 }

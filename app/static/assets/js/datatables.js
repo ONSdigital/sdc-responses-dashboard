@@ -42,6 +42,21 @@ const enableModalToggle = () => {
   }
 };
 
+const enableCollexBackButton = () => {
+  $("#modal-collex-back-btn").on("click", event => {
+    event.preventDefault();
+
+    const collexModalElement = getModalElement("#modal-collex");
+    collexModalElement.addEventListener(
+      "hidden.bs.modal",
+      () => getModal("#modal-survey").show(),
+      { once: true }
+    );
+
+    getModal("#modal-collex").hide();
+  });
+};
+
 const setCollexTableHeight = () => {
   // Dynamically set scroller rowHeight
   const checkCollexTableExist = setInterval(function() {
@@ -201,5 +216,6 @@ const initialiseDataTables = () => {
 
 domready(() => {
   enableModalToggle();
+  enableCollexBackButton();
   initialiseDataTables();
 });
