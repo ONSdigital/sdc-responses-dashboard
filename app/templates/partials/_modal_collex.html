@@ -2,9 +2,6 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
                 <h4 class="modal-title">Choose A Collection Exercise For <strong><span id="chosen-survey"></span></strong></h4>
             </div>
             <div class="modal-body">
@@ -12,15 +9,15 @@
                 <div class="sidebar-form">
                     <div class="input-group">
                         <input type="text" id="collex-search" name="q" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <span>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-secondary">
                             <i class="fa fa-search"></i>
                             </button>
                         </span>
                     </div>
                 </div>
                 <!-- /.search form -->
-                <div id="collex_modal_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div id="collex_modal_wrapper" class="dataTables_wrapper dt-bootstrap5">
                     <div class="row">
                         <div class="col-sm-12">
                             <table id="collex-datatable" data-id="collex-table" class="table table-bordered table-striped dataTable table-cell-border table-datatable-hover" role="grid" aria-describedby="surveys" style="clear:both;">
@@ -30,7 +27,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary pull-left" data-dismiss="modal" data-toggle="modal" data-target="#modal-survey">Back</button>
+                <button type="button" id="modal-collex-back-btn" class="btn btn-primary float-start">Back</button>
             </div>
         </div>
         <!-- /.modal-content -->

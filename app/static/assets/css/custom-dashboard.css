@@ -3,7 +3,7 @@
  * -----------
  */
 
-.modal-header .close {
+.modal-header .btn-close {
     display: none;
 }
 
